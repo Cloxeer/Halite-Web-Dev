@@ -215,69 +215,42 @@ localBusinessCta:
 portfolio:
   eyebrow: Work
   title: Sites for local businesses
-  subtitle: Example layouts for restaurants, tattoo shops, and salons—plus apps
-    I've shipped.
+  subtitle: Live sites for restaurants, tattoo shops, and local food brands.
   body: Founding client projects appear here first. Every Halite site is
     customized with your photos, colors, and story.
   projects:
-    - name: Mesilla Valley Café (Example)
-      description: Restaurant site—menu section, hours, tap-to-call, and gallery.
-        Built for phones and Google Maps.
-      image: https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1280&h=800&fit=crop
-      href: /apply
-      linkLabel: Request a similar site
+    - name: El Vagon Tacos
+      description: Restaurant site—full menu, daily specials, hours, tap-to-call, and
+        photo gallery. Built for phones and Google Maps.
+      image: images/halite/el-vagon-tacos.png
+      href: https://cloxeer.github.io/El-Vagon-Tacos/
+      linkLabel: Visit live site
       tags:
         - Restaurant
-        - Example
+        - Live Site
         - Mobile-First
       imageFirst: true
-      isDemo: true
-    - name: Ink & Iron Tattoo (Example)
-      description: Portfolio gallery, booking contact form, and artist story—designed
-        for tattoo studios in Las Cruces and El Paso.
-      image: https://images.unsplash.com/photo-1598371830936-001056573fc1?w=1280&h=800&fit=crop
-      href: /apply
-      linkLabel: Request a similar site
+    - name: Syncere Tattoo
+      description: Tattoo studio site—artist portfolios, gallery, studio story, and a
+        booking request form. Designed for Las Cruces and El Paso.
+      image: images/halite/syncere-tattoo.png
+      href: https://cloxeer.github.io/Syncere-Tattoo/
+      linkLabel: Visit live site
       tags:
         - Tattoo Studio
-        - Example
+        - Live Site
         - Gallery
       imageFirst: false
-      isDemo: true
-    - name: Desert Bloom Salon (Example)
-      description: Services, team photos, and online booking link—clean layout for
-        salons and barbershops.
-      image: https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1280&h=800&fit=crop
-      href: /apply
-      linkLabel: Request a similar site
-      tags:
-        - Salon
-        - Example
-        - Services
-      imageFirst: true
-      isDemo: true
-    - name: WhatsYourVibe.org
-      description: A place for creators to share projects, find collaborators, and
-        connect with others who are building things. Built to be fast and easy
-        to use on any device.
-      image: images/halite/whatyourvibe.png
-      href: https://whatyourvibe.org
+    - name: La Mesillera Jalapeño Salsa
+      description: Food brand site—product story, ingredients, and where to buy. Clean
+        layout that makes a local salsa look shelf-ready.
+      image: images/halite/la-mesillera.png
+      href: https://cloxeer.github.io/La-Mesillera-Jalapeno-Salsa/
       linkLabel: Visit live site
       tags:
-        - Community
-        - Profiles & Search
-        - Mobile-Friendly
-      imageFirst: false
-    - name: GetCampusGig.com
-      description: A campus gig board for NMSU students—post tasks, pick up work, and
-        build trust with other students. Made for real everyday use on phones.
-      image: images/halite/getcampusgig.png
-      href: https://getcampusgig.com
-      linkLabel: Visit live site
-      tags:
-        - Marketplace
-        - Student-Verified
-        - Mobile-Friendly
+        - Food Brand
+        - Live Site
+        - Product Story
       imageFirst: true
 workflow:
   eyebrow: How we work
@@ -744,8 +717,8 @@ pageCopy:
   work:
     eyebrow: Work
     title: Sites for local businesses
-    description: Example restaurant, tattoo, and salon layouts—plus real apps I've
-      shipped. Founding client work goes here first.
+    description: Live restaurant, tattoo, and food-brand sites, built and shipped
+      for real local businesses.
     link:
       label: Meet Sebastian
       href: /about#about
