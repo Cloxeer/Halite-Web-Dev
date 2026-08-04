@@ -1,0 +1,2067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>A straightforward process from first conversation to launch | Halite Studio</title>
+<meta name="description" content="Halite WebDev builds professional websites for restaurants, tattoo shops, and salons in Las Cruces, Albuquerque, Santa Fe, and El Paso. Founding rates from $500. Talk directly to Sebastian—the person building your site."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Source%20Sans%203:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --font-display: 'Fraunces';
+  --font-body: 'Source Sans 3';
+  --color-text: oklch(0.22 0.01 50);
+  --color-muted: oklch(0.52 0.02 50);
+  --color-accent: oklch(0.63 0.09 48);
+  --color-background: oklch(0.995 0.004 90);
+  --color-surface: oklch(0.97 0.012 85);
+  --halite-cream: oklch(0.995 0.004 90);
+  --halite-sand: oklch(0.97 0.012 85);
+  --halite-stone: oklch(0.52 0.02 50);
+  --halite-rock: oklch(0.22 0.01 50);
+  --halite-crystal: oklch(0.94 0.03 78);
+  --halite-crystal-deep: oklch(0.52 0.07 45);
+  --primary: oklch(0.63 0.09 48);
+  --primary-hover: oklch(0.58 0.09 48);
+  --primary-foreground: oklch(0.99 0.005 90);
+  --primary-soft: oklch(0.96 0.02 78);
+  --primary-muted: oklch(0.9 0.035 72);
+  --border: oklch(0.9 0.018 80);
+  --hero-image: url('../images/halite/hero.png');
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body), "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.halite-layout-offset {
+  transform: translate(
+    calc(var(--layout-x, 0) * 1px),
+    calc(var(--layout-y, 0) * 1px)
+  );
+}
+
+[data-halite-preview] .halite-layout-offset {
+  transform: translate(
+    calc(var(--layout-x, 0) * 1px),
+    calc(var(--layout-y, 0) * 1px)
+  );
+}
+
+span.halite-layout-offset,
+a.halite-layout-offset,
+label.halite-layout-offset,
+strong.halite-layout-offset,
+em.halite-layout-offset {
+  display: inline-block;
+}
+
+@media (max-width: 767px) {
+  body:not([data-halite-preview]) .halite-layout-offset {
+    transform: translate(
+      calc(var(--layout-x, 0) * 100vw / 1440),
+      calc(var(--layout-y, 0) * 100vw / 1440)
+    );
+  }
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; height: auto; }
+ul { list-style: none; }
+button { cursor: pointer; background: none; border: none; font: inherit; }
+input, textarea { font: inherit; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display), "Fraunces", ui-serif, Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  color: var(--halite-rock);
+}
+
+.section-container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 72rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+@media (min-width: 640px) {
+  .section-container { padding-left: 1.5rem; padding-right: 1.5rem; }
+}
+@media (min-width: 1024px) {
+  .section-container { padding-left: 2rem; padding-right: 2rem; }
+}
+
+.section-eyebrow {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--halite-crystal-deep);
+}
+
+.btn-hover-effect {
+  transition: all 0.3s;
+}
+.btn-hover-effect:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+}
+/* Inside a card that already lifts on hover, don't stack a second lift on the
+   button — keep one clean movement (the card). The button keeps its shadow cue. */
+.wd-pricing-card .btn-hover-effect:hover,
+.wd-confrontation-card .btn-hover-effect:hover,
+.wd-service-card .btn-hover-effect:hover {
+  transform: none;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+.btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+.scroll-mt { scroll-margin-top: 6rem; }
+
+/* Header */
+.wd-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  border-bottom: 1px solid transparent;
+  background: #fff;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.wd-header.scrolled {
+  border-color: var(--border);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.wd-header-inner {
+  display: flex;
+  height: 4rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.wd-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+.wd-logo img { width: 2.25rem; height: 2.25rem; flex-shrink: 0; }
+.wd-logo-text { display: flex; flex-direction: column; line-height: 1; }
+.wd-logo-primary {
+  font-family: var(--font-display), "Fraunces", serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--halite-rock);
+}
+@media (min-width: 640px) { .wd-logo-primary { font-size: 1.25rem; } }
+.wd-logo-accent {
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--halite-crystal-deep);
+}
+@media (min-width: 640px) { .wd-logo-accent { font-size: 0.75rem; } }
+
+.wd-nav-desktop {
+  display: none;
+  align-items: center;
+  gap: 2rem;
+}
+@media (min-width: 1024px) { .wd-nav-desktop { display: flex; } }
+.wd-nav-desktop a:not(.wd-nav-cta) {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--halite-stone);
+  transition: color 0.15s;
+}
+.wd-nav-desktop a:not(.wd-nav-cta):hover { color: var(--halite-crystal-deep); }
+.wd-nav-desktop a:not(.wd-nav-cta)[aria-current="page"] {
+  color: var(--halite-rock);
+  font-weight: 600;
+}
+.wd-nav-cta {
+  display: inline-flex;
+  border-radius: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #fff;
+}
+.wd-nav-cta:hover {
+  color: #fff;
+}
+
+.wd-nav-phone {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--halite-rock);
+  white-space: nowrap;
+  transition: color 0.15s;
+}
+.wd-nav-phone:hover { color: var(--halite-crystal-deep); }
+
+.wd-nav-mobile-phone {
+  font-family: var(--font-body), "Source Sans 3", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--halite-crystal-deep);
+}
+
+.wd-menu-btn {
+  position: relative;
+  z-index: 51;
+  display: inline-flex;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+  color: var(--halite-rock);
+}
+@media (min-width: 1024px) { .wd-menu-btn { display: none; } }
+
+body.wd-menu-open { overflow: hidden; }
+
+.wd-nav-mobile {
+  position: fixed;
+  inset: 4rem 0 0 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-background);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+.wd-nav-mobile.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+@media (min-width: 1024px) {
+  .wd-nav-mobile {
+    display: none !important;
+  }
+}
+
+.wd-nav-mobile-panel {
+  width: 100%;
+  max-width: 24rem;
+  padding: 2rem 1.5rem;
+}
+
+.wd-nav-mobile nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+  text-align: center;
+}
+
+.wd-nav-mobile nav > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.4s ease-out,
+    transform 0.4s ease-out,
+    color 0.15s;
+}
+
+.wd-nav-mobile.open nav > *:nth-child(1) { transition-delay: 0.05s; }
+.wd-nav-mobile.open nav > *:nth-child(2) { transition-delay: 0.1s; }
+.wd-nav-mobile.open nav > *:nth-child(3) { transition-delay: 0.15s; }
+.wd-nav-mobile.open nav > *:nth-child(4) { transition-delay: 0.2s; }
+.wd-nav-mobile.open nav > *:nth-child(5) { transition-delay: 0.25s; }
+.wd-nav-mobile.open nav > *:nth-child(6) { transition-delay: 0.3s; }
+
+.wd-nav-mobile.open nav > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.wd-nav-mobile:not(.open) nav > * {
+  transition-delay: 0s;
+  transition-duration: 0.2s;
+}
+
+.wd-nav-mobile a:not(.wd-nav-mobile-cta) {
+  font-family: var(--font-display), "Fraunces", serif;
+  font-size: 1.75rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  color: var(--halite-stone);
+}
+.wd-nav-mobile a:not(.wd-nav-mobile-cta):hover { color: var(--halite-crystal-deep); }
+.wd-nav-mobile a:not(.wd-nav-mobile-cta)[aria-current="page"] {
+  color: var(--halite-rock);
+  font-weight: 600;
+}
+
+.wd-nav-mobile-cta {
+  margin-top: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.25;
+  white-space: nowrap;
+  color: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.wd-nav-mobile-cta:hover {
+  color: #fff;
+}
+.wd-menu-btn svg { width: 1.5rem; height: 1.5rem; }
+
+main { padding-top: 4rem; }
+
+/* Hero */
+:root {
+  /* Liquid glass tiles hero */
+  --wd-glass-base: #0d0a1f;        /* deep indigo canvas (replaces the brown rock) */
+  --wd-glass-glow-core: #fff2d4;   /* sun-gold white bloom at the centre */
+  --wd-glass-glow-mid: #ff9e3d;    /* summer orange */
+  --wd-glass-glow-outer: #e0552b;  /* warm sunset red-orange rim */
+  --wd-glass-tile-radius: 12px;
+  --wd-glass-tile-size: 66px;
+  --wd-glass-tile-gap: 6px;
+  /* Card hover lift (Motion-style: small rise, soft diffuse shadow) */
+  --wd-card-lift: -4px;
+  --wd-card-hover-shadow: 0 14px 28px -16px rgba(24, 12, 8, 0.28);
+}
+.wd-hero { background: var(--wd-glass-base); }
+.wd-hero-media {
+  position: relative;
+  min-height: 520px;
+  width: 100%;
+  overflow: hidden;
+}
+@media (min-width: 1024px) { .wd-hero-media { min-height: 600px; } }
+/* Colour bloom that glows through the frosted tiles, brightest centre-right */
+.wd-hero-glow {
+  position: absolute;
+  inset: -12%;
+  background: radial-gradient(58% 58% at 62% 52%,
+    var(--wd-glass-glow-core) 0%,
+    var(--wd-glass-glow-mid) 34%,
+    var(--wd-glass-glow-outer) 63%,
+    transparent 84%);
+}
+/* Grid of frosted-glass tiles laid over the bloom */
+.wd-hero-tiles {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--wd-glass-tile-size), 1fr));
+  grid-auto-rows: var(--wd-glass-tile-size);
+  gap: var(--wd-glass-tile-gap);
+  padding: var(--wd-glass-tile-gap);
+  overflow: hidden;
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+.wd-hero-tile {
+  border-radius: var(--wd-glass-tile-radius);
+  background: linear-gradient(135deg, rgba(255,255,255,0.32), rgba(255,255,255,0.05));
+  border: 1px solid rgba(255,255,255,0.20);
+  box-shadow:
+    inset 1px 1px 0 rgba(255,255,255,0.55),
+    inset -1px -1px 3px rgba(38,18,74,0.28),
+    0 2px 8px rgba(18,7,44,0.20);
+}
+/* Centre-out cascade: JS sets each tile's animation-delay by ring distance,
+   then adds .is-cascading to start them all from the same instant. */
+@keyframes wd-hero-tile-in {
+  from { opacity: 0; transform: scale(0.55); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.wd-hero-tiles.is-cascading .wd-hero-tile {
+  opacity: 0;
+  animation: wd-hero-tile-in 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .wd-hero-tiles.is-cascading .wd-hero-tile { animation: none; opacity: 1; }
+  .wd-pricing-card:hover,
+  .wd-confrontation-card:hover,
+  .wd-service-card:hover { transform: none; }
+}
+/* Left-anchored scrim keeps the white hero copy legible over the bloom */
+.wd-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right,
+    color-mix(in srgb, var(--wd-glass-base) 84%, transparent) 0%,
+    color-mix(in srgb, var(--wd-glass-base) 52%, transparent) 34%,
+    transparent 62%);
+}
+.wd-hero-content {
+  position: relative;
+  display: flex;
+  min-height: 520px;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+@media (min-width: 1024px) {
+  .wd-hero-content { min-height: 600px; padding-top: 8rem; padding-bottom: 8rem; }
+}
+.wd-hero-inner { max-width: 42rem; }
+.wd-hero-eyebrow {
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--halite-crystal);
+}
+.wd-hero h1 {
+  margin-bottom: 1.5rem;
+  font-size: 2.25rem;
+  font-weight: 600;
+  line-height: 1.12;
+  color: #fff;
+}
+@media (min-width: 640px) { .wd-hero h1 { font-size: 3rem; } }
+@media (min-width: 1024px) { .wd-hero h1 { font-size: 3.75rem; } }
+.wd-hero h1 .accent { color: var(--halite-crystal); }
+.wd-hero-body {
+  margin-bottom: 2rem;
+  max-width: 36rem;
+  font-size: 1.125rem;
+  line-height: 1.625;
+  color: #f5f5f7;
+}
+@media (min-width: 640px) { .wd-hero-body { font-size: 1.25rem; } }
+.wd-hero-cta {
+  display: inline-flex;
+  border-radius: 0.5rem;
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+}
+.wd-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+.wd-hero-cta-secondary {
+  display: inline-flex;
+  border-radius: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.35);
+  color: #fff;
+  background: rgba(255,255,255,0.08);
+  transition: background 0.15s, border-color 0.15s;
+}
+.wd-hero-cta-secondary:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.55);
+}
+.wd-hero-pricing-teaser {
+  margin-top: 1rem;
+  font-size: 0.9375rem;
+  color: #d1d1d6;
+}
+.wd-hero-pricing-teaser a {
+  color: var(--halite-crystal);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.wd-hero-pricing-teaser a:hover { color: #fff; }
+
+/* Trust strip */
+.wd-trust-strip {
+  background: var(--halite-sand);
+  border-bottom: 1px solid var(--border);
+}
+.wd-trust-strip-grid {
+  display: grid;
+  gap: 1rem;
+  padding: 1.25rem 0;
+}
+@media (min-width: 640px) {
+  .wd-trust-strip-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .wd-trust-strip-grid { grid-template-columns: repeat(4, 1fr); gap: 0; }
+  .wd-trust-stat + .wd-trust-stat { border-left: 1px solid var(--border); padding-left: 1.5rem; }
+}
+.wd-trust-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-align: center;
+}
+@media (min-width: 1024px) { .wd-trust-stat { text-align: left; } }
+.wd-trust-stat strong {
+  font-family: var(--font-display), "Fraunces", serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--halite-rock);
+  line-height: 1.2;
+}
+.wd-trust-stat span {
+  font-size: 0.8125rem;
+  color: var(--halite-stone);
+}
+
+/* Value props bar */
+.halite-value-bar { background: var(--halite-rock); }
+.wd-value-props {
+  display: grid;
+  divide-color: #424245;
+}
+.wd-value-props li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+}
+@media (min-width: 640px) {
+  .wd-value-props { grid-template-columns: repeat(3, 1fr); }
+  .wd-value-props li { padding: 1.25rem 1rem; }
+  .wd-value-props li + li { border-left: 1px solid #424245; }
+  .wd-value-props li { border-top: none; }
+}
+@media (max-width: 639px) {
+  .wd-value-props li + li { border-top: 1px solid #424245; }
+}
+.wd-value-props span {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #fff;
+}
+@media (min-width: 640px) { .wd-value-props span { font-size: 1rem; } }
+.wd-chevron { display: none; width: 1rem; height: 1rem; color: #86868b; flex-shrink: 0; }
+@media (min-width: 640px) { .wd-chevron { display: block; } }
+
+/* Services */
+.wd-services { background: #fff; padding: 4rem 0; }
+@media (min-width: 1024px) { .wd-services { padding: 5rem 0; } }
+.wd-services-inner { display: flex; flex-direction: column; gap: 3rem; }
+.wd-services h2 {
+  text-align: center;
+  font-size: 1.875rem;
+  font-weight: 600;
+}
+@media (min-width: 640px) { .wd-services h2 { font-size: 2.25rem; } }
+@media (min-width: 1024px) { .wd-services h2 { font-size: 2.75rem; } }
+
+.wd-service-grid {
+  display: grid;
+  gap: 1rem;
+}
+@media (min-width: 640px) { .wd-service-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .wd-service-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.wd-service-card {
+  overflow: hidden;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  background: var(--halite-sand);
+  transition: all 0.3s;
+}
+@media (hover: hover) {
+  .wd-service-card:hover {
+    border-color: var(--primary);
+    background: #fff;
+    box-shadow: var(--wd-card-hover-shadow);
+    transform: translateY(var(--wd-card-lift));
+  }
+}
+.wd-service-toggle {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+}
+.wd-service-icon { width: 2.5rem; height: 2.5rem; color: var(--primary); }
+.wd-service-toggle h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.375;
+  color: var(--halite-rock);
+}
+@media (min-width: 640px) { .wd-service-toggle h3 { font-size: 1.25rem; } }
+.wd-service-toggle h3 em { font-style: normal; color: var(--halite-crystal-deep); }
+.wd-service-hint {
+  font-size: 0.75rem;
+  color: var(--halite-stone);
+}
+.wd-service-chevron {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--halite-stone);
+  transition: transform 0.3s;
+}
+@media (hover: hover) {
+  .wd-service-card:hover .wd-service-chevron {
+    transform: rotate(180deg);
+    color: var(--halite-crystal-deep);
+  }
+}
+.wd-service-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+@media (hover: hover) {
+  .wd-service-card:hover .wd-service-panel {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+}
+@media (hover: none) {
+  .wd-service-card .wd-service-panel {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+  .wd-service-card .wd-service-chevron {
+    transform: rotate(180deg);
+    color: var(--halite-crystal-deep);
+  }
+}
+.wd-service-panel-inner { overflow: hidden; }
+.wd-service-detail {
+  border-top: 1px solid var(--border);
+  padding: 0.5rem 1.5rem 1.5rem;
+}
+.wd-service-detail h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--halite-crystal-deep);
+}
+.wd-service-detail p {
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.625;
+  color: var(--halite-stone);
+}
+.wd-service-detail a {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--primary);
+  transition: color 0.15s;
+}
+.wd-service-detail a:hover { color: var(--halite-rock); }
+.wd-services-footer-cta {
+  display: flex;
+  justify-content: center;
+  padding-top: 0.5rem;
+}
+.wd-services-footer-cta a {
+  display: inline-flex;
+  border-radius: 0.5rem;
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+/* Pricing */
+.wd-pricing { background: #fff; padding: 4rem 0; }
+@media (min-width: 1024px) { .wd-pricing { padding: 5rem 0; } }
+.wd-pricing-inner { display: flex; flex-direction: column; gap: 3rem; }
+.wd-pricing-header { text-align: center; max-width: 42rem; margin: 0 auto; }
+.wd-pricing-header-compact { margin-bottom: 0.5rem; }
+.wd-pricing-header-compact .wd-pricing-beta-badge { margin-top: 0; }
+.wd-pricing-header h2 {
+  font-size: 1.875rem;
+  font-weight: 600;
+}
+@media (min-width: 640px) { .wd-pricing-header h2 { font-size: 2.25rem; } }
+.wd-pricing-intro {
+  margin-top: 1rem;
+  font-size: 1rem;
+  line-height: 1.625;
+  color: var(--halite-stone);
+}
+.wd-pricing-beta-badge {
+  display: inline-block;
+  margin-top: 1.25rem;
+  border-radius: 9999px;
+  background: var(--halite-crystal-deep);
+  color: #fff;
+  padding: 0.375rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.wd-pricing-billing-toggle {
+  display: inline-flex;
+  align-self: center;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  background: var(--halite-sand);
+}
+.wd-pricing-billing-btn {
+  border: 0;
+  border-radius: 9999px;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--halite-stone);
+  background: transparent;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.wd-pricing-billing-btn.active {
+  background: #fff;
+  color: var(--halite-rock);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+.wd-pricing-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.wd-pricing-panel[hidden] {
+  display: none;
+}
+.wd-pricing-handoff {
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border);
+}
+.wd-pricing-handoff h3 {
+  margin-bottom: 0.75rem;
+}
+@media (min-width: 768px) {
+  .wd-pricing-grid-handoff { grid-template-columns: repeat(2, 1fr); }
+}
+.wd-pricing-handoff-card {
+  min-height: 100%;
+}
+.wd-pricing-section h3 {
+  margin-bottom: 1.25rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--halite-rock);
+}
+.wd-pricing-note {
+  margin-bottom: 1.25rem;
+  font-size: 0.875rem;
+  line-height: 1.625;
+  color: var(--halite-stone);
+}
+.wd-pricing-grid {
+  display: grid;
+  gap: 1rem;
+}
+@media (min-width: 768px) { .wd-pricing-grid { grid-template-columns: repeat(2, 1fr); } }
+.wd-pricing-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  background: var(--halite-sand);
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+@media (hover: hover) {
+  .wd-pricing-card:hover {
+    transform: translateY(var(--wd-card-lift));
+    box-shadow: var(--wd-card-hover-shadow);
+  }
+}
+.wd-pricing-card-highlighted {
+  border-color: var(--primary);
+  background: #fff;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+}
+.wd-pricing-card h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--halite-rock);
+}
+.wd-pricing-card-desc {
+  font-size: 0.875rem;
+  line-height: 1.625;
+  color: var(--halite-stone);
+}
+.wd-pricing-price-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 0.75rem;
+}
+.wd-pricing-beta {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--halite-crystal-deep);
+  line-height: 1;
+}
+.wd-pricing-standard {
+  font-size: 0.875rem;
+  color: var(--halite-stone);
+}
+.wd-pricing-standard s { text-decoration-thickness: 1px; }
+.wd-pricing-suffix {
+  font-size: 0.875rem;
+  color: var(--halite-stone);
+}
+.wd-pricing-setup {
+  font-size: 0.875rem;
+  color: var(--halite-stone);
+}
+.wd-pricing-features {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--halite-stone);
+}
+.wd-pricing-features li {
+  position: relative;
+  padding-left: 1.125rem;
+}
+.wd-pricing-features li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 9999px;
+  background: var(--primary);
+}
+.wd-pricing-card a {
+  align-self: flex-start;
+  margin-top: auto;
+}
+.wd-pricing-care {
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  background: var(--halite-sand);
+  padding: 1.5rem;
+}
+@media (min-width: 768px) { .wd-pricing-care { padding: 2rem; } }
+.wd-pricing-care h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--halite-rock);
+}
+.wd-pricing-care-price {
+  margin: 0.75rem 0 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--halite-crystal-deep);
+}
+.wd-pricing-addons {
+  display: grid;
+  gap: 0.75rem;
+}
+@media (min-width: 768px) { .wd-pricing-addons { grid-template-columns: repeat(2, 1fr); } }
+.wd-pricing-addon {
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  background: var(--halite-sand);
+  padding: 1rem 1.25rem;
+}
+.wd-pricing-addon-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+.wd-pricing-addon h4 {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--halite-rock);
+}
+.wd-pricing-addon-price {
+  flex-shrink: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--halite-crystal-deep);
+}
+.wd-pricing-addon p {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--halite-stone);
+}
+.wd-pricing-testimonial {
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.625;
+  color: var(--halite-stone);
+}
+.wd-pricing-footer-cta {
+  display: flex;
+  justify-content: center;
+}
+
+/* Page intro */
+.wd-page-intro {
+  border-bottom: 1px solid var(--border);
+  background: var(--halite-sand);
+  padding: 3.5rem 0;
+}
+@media (min-width: 1024px) { .wd-page-intro { padding: 4rem 0; } }
+.wd-page-intro .section-container { max-width: 48rem; }
+.wd-page-intro h1 {
+  font-size: 1.875rem;
+  font-weight: 600;
+}
+@media (min-width: 640px) { .wd-page-intro h1 { font-size: 2.25rem; } }
+@media (min-width: 1024px) { .wd-page-intro h1 { font-size: 2.75rem; } }
+.wd-page-intro p {
+  margin-top: 1rem;
+  font-size: 1rem;
+  line-height: 1.625;
+  color: var(--halite-stone);
+}
+@media (min-width: 640px) { .wd-page-intro p { font-size: 1.125rem; } }
+.wd-page-intro-link {
+  display: inline-block;
+  margin-top: 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--halite-accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.wd-page-intro-link:hover { color: var(--halite-rock); }
+
+/* Confrontation */
+.wd-confrontation {
+  background: var(--halite-sand);
+  padding: 5rem 0;
+}
+@media (min-width: 1024px) { .wd-confrontation { padding: 6rem 0; } }
+.wd-confrontation-inner { display: flex; flex-direction: column; gap: 3rem; }
+.wd-confrontation-header {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 48rem;
+  text-align: center;
+}
+.wd-confrontation-header h2 {
+  font-size: 1.875rem;
+  line-height: 1.2;
+  font-weight: 600;
+}
+@media (min-width: 640px) { .wd-confrontation-header h2 { font-size: 2.25rem; } }
+@media (min-width: 1024px) { .wd-confrontation-header h2 { font-size: 2.75rem; } }
+.wd-confrontation-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+@media (min-width: 1024px) { .wd-confrontation-grid { grid-template-columns: repeat(3, 1fr); } }
+.wd-confrontation-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  background: #fff;
+  padding: 1.5rem;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+@media (hover: hover) {
+  .wd-confrontation-card:hover {
+    transform: translateY(var(--wd-card-lift));
+    box-shadow: var(--wd-card-hover-shadow);
+  }
+}
+.wd-confrontation-card h3 { font-size: 1.25rem; font-weight: 600; }
+.wd-confrontation-card p {
+  font-size: 1rem;
+  line-height: 1.625;
+  color: var(--halite-stone);
+}
+
+/* Framework */
+.wd-framework {
+  background: var(--halite-rock);
+  color: var(--halite-cream);
+  padding: 5rem 0;
+}
+@media (min-width: 1024px) { .wd-framework { padding: 6rem 0; } }
+.wd-framework-grid {
+  display: grid;
+  gap: 2.5rem;
+}
+@media (min-width: 1024px) {
+  .wd-framework-grid {
+    grid-template-columns: 0.9fr 1.1fr;
+    align-items: center;
+  }
+}
+.wd-framework .section-eyebrow { color: var(--halite-crystal); }
+.wd-framework h2 {
+  font-size: 1.875rem;
+  line-height: 1.2;
+  font-weight: 600;
+  color: #fff;
+}
+@media (min-width: 640px) { .wd-framework h2 { font-size: 2.25rem; } }
+@media (min-width: 1024px) { .wd-framework h2 { font-size: 2.75rem; } }
+.wd-framework-copy { display: flex; flex-direction: column; gap: 1.25rem; }
+.wd-framework-copy p {
+  font-size: 1rem;
+  line-height: 1.625;
+  color: #a1a1a6;
+}
+@media (min-width: 640px) { .wd-framework-copy p { font-size: 1.125rem; } }
+.wd-framework-copy p.emphasis { font-weight: 500; color: #fff; }
+
+.wd-founder {
+  padding: 4rem 0;
+  background: var(--color-background);
+}
+@media (min-width: 1024px) { .wd-founder { padding: 6rem 0; } }
+.wd-founder-grid {
+  display: grid;
+  gap: 2.5rem;
+  align-items: start;
+}
+@media (min-width: 900px) {
+  .wd-founder-grid {
+    grid-template-columns: minmax(220px, 320px) 1fr;
+    gap: 3rem;
+  }
+}
+.wd-founder-portrait { display: flex; justify-content: center; }
+.wd-founder-photo,
+.wd-founder-photo-carousel {
+  width: min(100%, 280px);
+  aspect-ratio: 3 / 4;
+  border-radius: 1.25rem;
+  box-shadow: 0 20px 40px oklch(0.22 0.01 50 / 0.12);
+}
+.wd-founder-photo {
+  object-fit: cover;
+  object-position: top center;
+}
+.wd-founder-photo-carousel {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-surface);
+}
+.wd-founder-photo-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  opacity: 0;
+  animation-duration: 12s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+.wd-founder-photo-slide:nth-child(1) {
+  animation-name: wd-founder-photo-first;
+}
+.wd-founder-photo-slide:nth-child(2) {
+  animation-name: wd-founder-photo-second;
+}
+@keyframes wd-founder-photo-first {
+  0%, 42% { opacity: 1; }
+  50%, 92% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes wd-founder-photo-second {
+  0%, 42% { opacity: 0; }
+  50%, 92% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wd-founder-photo-slide {
+    animation: none;
+    opacity: 0;
+  }
+  .wd-founder-photo-slide:first-child {
+    opacity: 1;
+  }
+}
+.wd-founder-photo-placeholder {
+  display: grid;
+  place-items: center;
+  background: linear-gradient(145deg, var(--primary-soft), var(--color-surface));
+  color: var(--halite-crystal-deep);
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 600;
+}
+.wd-founder-copy h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  line-height: 1.1;
+  margin-bottom: 0.75rem;
+}
+.wd-founder-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--halite-rock);
+}
+.wd-founder-role {
+  color: var(--halite-stone);
+  margin-bottom: 1.25rem;
+}
+.wd-founder-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: var(--halite-stone);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+.wd-founder-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+  padding: 0;
+  list-style: none;
+}
+.wd-founder-highlights li {
+  padding: 0.5rem 0.875rem;
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--halite-crystal-deep);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.wd-founder-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+}
+.wd-founder-contact a {
+  color: var(--halite-crystal-deep);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.wd-legal {
+  padding: 2rem 0 4rem;
+}
+.wd-legal-inner {
+  max-width: 48rem;
+}
+.wd-legal-updated {
+  font-size: 0.875rem;
+  color: var(--halite-stone);
+  margin-bottom: 1rem;
+}
+.wd-legal-intro {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--halite-stone);
+  margin-bottom: 2rem;
+}
+.wd-legal-section {
+  margin-bottom: 2rem;
+}
+.wd-legal-section h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--halite-rock);
+}
+.wd-legal-section p {
+  color: var(--halite-stone);
+  line-height: 1.7;
+  margin-bottom: 0.75rem;
+}
+
+/* Local business CTA */
+.wd-local-cta {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--primary-soft);
+  padding: 3.5rem 0;
+}
+@media (min-width: 1024px) { .wd-local-cta { padding: 4rem 0; } }
+.wd-local-cta-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  text-align: center;
+}
+.wd-local-cta h2 {
+  font-size: 1.875rem;
+  font-weight: 600;
+}
+@media (min-width: 640px) { .wd-local-cta h2 { font-size: 2.25rem; } }
+.wd-local-cta p {
+  max-width: 42rem;
+  font-size: 1rem;
+  line-height: 1.625;
+  color: var(--halite-stone);
+}
+@media (min-width: 640px) { .wd-local-cta p { font-size: 1.125rem; } }
+
+/* Portfolio */
+.wd-portfolio {
+  background: #fff;
+  padding: 5rem 0;
+}
+@media (min-width: 1024px) { .wd-portfolio { padding: 6rem 0; } }
+.wd-portfolio-inner { display: flex; flex-direction: column; gap: 3rem; }
+.wd-portfolio-header {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 48rem;
+  text-align: center;
+}
+.wd-portfolio-header h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.875rem;
+  font-weight: 600;
+}
+@media (min-width: 640px) { .wd-portfolio-header h2 { font-size: 2.25rem; } }
+@media (min-width: 1024px) { .wd-portfolio-header h2 { font-size: 2.75rem; } }
+.wd-portfolio-header h3 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--halite-stone);
+}
+@media (min-width: 640px) { .wd-portfolio-header h3 { font-size: 1.5rem; } }
+.wd-portfolio-header p { font-size: 1.125rem; color: var(--halite-stone); }
+
+.wd-portfolio-list { display: flex; flex-direction: column; gap: 4rem; }
+.wd-portfolio-item {
+  display: grid;
+  align-items: center;
+  gap: 2rem;
+}
+@media (min-width: 1024px) {
+  .wd-portfolio-item { grid-template-columns: repeat(2, 1fr); gap: 3rem; }
+  .wd-portfolio-item.image-second .wd-portfolio-image { order: 2; }
+  .wd-portfolio-item.image-second .wd-portfolio-copy { order: 1; }
+}
+.wd-portfolio-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  background: var(--halite-sand);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.wd-portfolio-demo-badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 1;
+  border-radius: 9999px;
+  background: rgba(42, 40, 36, 0.88);
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.65rem;
+}
+.wd-portfolio-image img { width: 100%; object-fit: cover; object-position: top; }
+.wd-portfolio-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+.wd-portfolio-tags span {
+  border-radius: 9999px;
+  background: var(--halite-sand);
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--halite-stone);
+}
+.wd-portfolio-copy h3 {
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+@media (min-width: 640px) { .wd-portfolio-copy h3 { font-size: 1.875rem; } }
+.wd-portfolio-copy p {
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.625;
+  color: var(--halite-stone);
+}
+@media (min-width: 640px) { .wd-portfolio-copy p { font-size: 1.125rem; } }
+.wd-portfolio-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--halite-crystal-deep);
+  transition: color 0.15s;
+}
+.wd-portfolio-link:hover { color: var(--halite-rock); }
+.wd-portfolio-link svg { width: 1rem; height: 1rem; }
+
+/* Workflow */
+.wd-workflow {
+  background: var(--halite-sand);
+  padding: 5rem 0;
+}
+@media (min-width: 1024px) { .wd-workflow { padding: 6rem 0; } }
+.wd-workflow-inner { display: flex; flex-direction: column; gap: 3rem; }
+.wd-workflow-header {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 42rem;
+  text-align: center;
+}
+.wd-workflow-header h2 {
+  font-size: 1.875rem;
+  font-weight: 600;
+}
+@media (min-width: 640px) { .wd-workflow-header h2 { font-size: 2.25rem; } }
+.wd-workflow-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+@media (min-width: 1024px) { .wd-workflow-grid { grid-template-columns: repeat(3, 1fr); } }
+.wd-workflow-card {
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  background: #fff;
+  padding: 1.5rem;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.wd-workflow-step {
+  display: inline-flex;
+  margin-bottom: 1rem;
+  border-radius: 9999px;
+  background: color-mix(in oklch, var(--primary) 10%, transparent);
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+.wd-workflow-card h3 {
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.wd-workflow-card p {
+  font-size: 1rem;
+  line-height: 1.625;
+  color: var(--halite-stone);
+}
+
+/* Differentiators */
+.wd-differentiators {
+  background: var(--halite-sand);
+  padding: 5rem 0;
+}
+@media (min-width: 1024px) { .wd-differentiators { padding: 6rem 0; } }
+.wd-diff-grid {
+  display: grid;
+  gap: 3rem;
+}
+@media (min-width: 1024px) {
+  .wd-diff-grid {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: start;
+  }
+}
+.wd-diff-intro { display: flex; flex-direction: column; gap: 1.25rem; }
+.wd-diff-intro h2 {
+  font-size: 1.875rem;
+  font-weight: 600;
+}
+@media (min-width: 640px) { .wd-diff-intro h2 { font-size: 2.25rem; } }
+@media (min-width: 1024px) { .wd-diff-intro h2 { font-size: 2.75rem; } }
+.wd-diff-intro p {
+  font-size: 1rem;
+  line-height: 1.625;
+  color: var(--halite-stone);
+}
+@media (min-width: 640px) { .wd-diff-intro p { font-size: 1.125rem; } }
+.wd-diff-link {
+  display: inline-flex;
+  width: fit-content;
+  font-weight: 600;
+  color: var(--halite-crystal-deep);
+  transition: color 0.15s;
+}
+.wd-diff-link:hover { color: var(--halite-rock); }
+.wd-diff-cards {
+  display: grid;
+  gap: 1rem;
+}
+@media (min-width: 640px) { .wd-diff-cards { grid-template-columns: repeat(2, 1fr); } }
+.wd-diff-card {
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  background: #fff;
+  padding: 1.25rem;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  transition: box-shadow 0.15s;
+}
+.wd-diff-card:hover { box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+.wd-diff-card svg { margin-bottom: 0.75rem; width: 2rem; height: 2rem; color: var(--primary); }
+.wd-diff-card h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+.wd-diff-card p {
+  font-size: 0.875rem;
+  line-height: 1.625;
+  color: var(--halite-stone);
+}
+
+/* Contact CTA */
+.wd-contact-cta {
+  border-bottom: 1px solid var(--border);
+  background: var(--primary-muted);
+  padding: 3.5rem 0;
+}
+@media (min-width: 1024px) { .wd-contact-cta { padding: 4rem 0; } }
+.wd-contact-cta.is-apply-lead {
+  border-bottom: none;
+  background: linear-gradient(180deg, var(--halite-sand) 0%, var(--halite-cream) 100%);
+  padding: 4rem 0 1.25rem;
+}
+@media (min-width: 1024px) { .wd-contact-cta.is-apply-lead { padding: 5rem 0 1.5rem; } }
+.wd-contact-cta-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+.wd-contact-cta h2 {
+  font-size: 1.875rem;
+  font-weight: 600;
+}
+@media (min-width: 640px) { .wd-contact-cta h2 { font-size: 2.25rem; } }
+@media (min-width: 1024px) { .wd-contact-cta h2 { font-size: 3rem; } }
+.wd-contact-cta h3 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--halite-crystal-deep);
+}
+.wd-contact-cta.is-apply-lead h3 {
+  color: var(--halite-rock);
+  font-weight: 500;
+}
+@media (min-width: 640px) { .wd-contact-cta h3 { font-size: 1.5rem; } }
+.wd-contact-cta p {
+  max-width: 36rem;
+  font-size: 1rem;
+  color: var(--halite-stone);
+}
+.wd-contact-cta.is-apply-lead p {
+  max-width: 40rem;
+  line-height: 1.625;
+}
+@media (min-width: 640px) { .wd-contact-cta p { font-size: 1.125rem; } }
+.wd-contact-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding-top: 0.5rem;
+}
+.wd-btn-secondary {
+  display: inline-flex;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  background: #fff;
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--halite-rock);
+  transition: border-color 0.15s, color 0.15s;
+}
+.wd-btn-secondary:hover {
+  border-color: var(--halite-crystal-deep);
+  color: var(--halite-crystal-deep);
+}
+
+/* Application form */
+.wd-apply-form {
+  background: linear-gradient(
+    180deg,
+    var(--halite-cream) 0%,
+    var(--halite-sand) 40%,
+    var(--halite-sand) 100%
+  );
+  color: var(--halite-rock);
+  padding: 1.5rem 0 5rem;
+}
+@media (min-width: 1024px) { .wd-apply-form { padding: 2rem 0 6rem; } }
+.wd-contact-cta.is-apply-lead + .wd-apply-form,
+.wd-page-intro + .wd-apply-form {
+  padding-top: 0;
+}
+.wd-apply-form-grid {
+  display: grid;
+  gap: 2.5rem;
+}
+.wd-apply-form-grid.compact {
+  grid-template-columns: 1fr;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+@media (min-width: 1024px) {
+  .wd-apply-form-grid {
+    grid-template-columns: 1fr 1.1fr;
+    align-items: start;
+  }
+  .wd-apply-form-grid.compact { grid-template-columns: 1fr; }
+}
+.wd-apply-form-intro .section-eyebrow { color: var(--halite-crystal-deep); }
+.wd-apply-form-intro h2 {
+  margin-bottom: 1rem;
+  font-size: 1.875rem;
+  font-weight: 600;
+  color: var(--halite-rock);
+}
+@media (min-width: 640px) { .wd-apply-form-intro h2 { font-size: 2.25rem; } }
+@media (min-width: 1024px) { .wd-apply-form-intro h2 { font-size: 2.75rem; } }
+.wd-apply-form-intro p {
+  font-size: 1rem;
+  line-height: 1.625;
+  color: var(--halite-stone);
+}
+@media (min-width: 640px) { .wd-apply-form-intro p { font-size: 1.125rem; } }
+.wd-apply-phone-note {
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--halite-rock);
+}
+.wd-apply-phone-note a {
+  color: var(--halite-crystal-deep);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.halite-elevated-form {
+  background: #fff;
+  border-radius: 1rem;
+  border: 1px solid color-mix(in oklch, var(--border) 55%, transparent);
+  padding: 1.5rem;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 12px 32px rgba(0, 0, 0, 0.07);
+}
+@media (min-width: 640px) { .halite-elevated-form { padding: 2.25rem; } }
+.wd-contact-cta.is-apply-lead + .wd-apply-form .halite-elevated-form {
+  margin-top: 0.25rem;
+}
+
+.wd-form { display: flex; flex-direction: column; gap: 1.25rem; }
+.wd-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--halite-rock);
+}
+.wd-form input,
+.wd-form textarea {
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid color-mix(in oklch, var(--border) 85%, transparent);
+  background: var(--halite-cream);
+  padding: 0.75rem 1rem;
+  color: var(--halite-rock);
+  transition: border-color 0.15s, box-shadow 0.15s, background-color 0.15s;
+}
+.wd-form input::placeholder,
+.wd-form textarea::placeholder {
+  color: color-mix(in oklch, var(--halite-stone) 65%, transparent);
+}
+.wd-form input:focus,
+.wd-form textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: #fff;
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--primary) 18%, transparent);
+}
+.wd-form textarea { resize: vertical; min-height: 6rem; }
+.wd-form-submit {
+  width: 100%;
+  border-radius: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
+.wd-form-success {
+  padding: 2rem 0;
+  text-align: center;
+}
+.wd-form-success p:first-child {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--halite-rock);
+  margin-bottom: 0.75rem;
+}
+.wd-form-success p { color: var(--halite-stone); }
+.wd-form-success a { color: var(--halite-crystal-deep); text-decoration: underline; }
+
+/* Footer */
+.wd-footer {
+  border-top: 1px solid var(--border);
+  background: var(--halite-sand);
+  padding: 3rem 0;
+}
+.wd-footer-grid {
+  display: grid;
+  gap: 2.5rem;
+}
+@media (min-width: 1024px) { .wd-footer-grid { grid-template-columns: 1.2fr 1fr; } }
+.wd-footer-brand { display: flex; flex-direction: column; gap: 1rem; }
+.wd-footer-brand p {
+  max-width: 28rem;
+  font-size: 0.875rem;
+  line-height: 1.625;
+  color: var(--halite-stone);
+}
+.wd-footer-brand a { transition: color 0.15s; }
+.wd-footer-brand a:hover { color: var(--halite-crystal-deep); }
+.wd-footer-links {
+  display: grid;
+  gap: 2rem;
+}
+@media (min-width: 640px) { .wd-footer-links { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .wd-footer-links { grid-template-columns: repeat(3, 1fr); } }
+.wd-footer-links h3 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--halite-rock);
+  margin-bottom: 0.75rem;
+}
+.wd-footer-links a {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--halite-stone);
+  margin-bottom: 0.75rem;
+  transition: color 0.15s;
+}
+.wd-footer-links a:hover { color: var(--halite-crystal-deep); }
+
+/* Animated underline for every nav + footer text link. Anchored to the inner
+   <span> so it fills exactly the text width (not the anchor box), and wipes in
+   from the left on hover. currentColor makes it match the link's own color. */
+.wd-nav-desktop a:not(.wd-nav-cta) > span,
+.wd-nav-mobile a:not(.wd-nav-mobile-cta) > span,
+.wd-footer-links a > span,
+.wd-footer-brand a:not(.wd-logo) > span {
+  position: relative;
+  display: inline-block;
+}
+.wd-nav-desktop a:not(.wd-nav-cta) > span::after,
+.wd-nav-mobile a:not(.wd-nav-mobile-cta) > span::after,
+.wd-footer-links a > span::after,
+.wd-footer-brand a:not(.wd-logo) > span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.3s ease;
+}
+.wd-nav-desktop a:not(.wd-nav-cta):hover > span::after,
+.wd-nav-mobile a:not(.wd-nav-mobile-cta):hover > span::after,
+.wd-footer-links a:hover > span::after,
+.wd-footer-brand a:not(.wd-logo):hover > span::after {
+  transform: scaleX(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .wd-nav-desktop a:not(.wd-nav-cta) > span::after,
+  .wd-nav-mobile a:not(.wd-nav-mobile-cta) > span::after,
+  .wd-footer-links a > span::after,
+  .wd-footer-brand a:not(.wd-logo) > span::after {
+    transition: none;
+  }
+}
+.wd-footer-copy {
+  margin-top: 2rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--halite-stone);
+}
+.bb-footer-credit { color: var(--halite-stone); }
+.bb-footer-credit a { color: inherit; }
+.bb-footer-credit { border-top-color: var(--border); }
+
+/* Testimonials */
+.wd-testimonials {
+  background: var(--halite-cream);
+  padding: 4rem 0;
+}
+@media (min-width: 1024px) { .wd-testimonials { padding: 5rem 0; } }
+.wd-testimonials-header {
+  text-align: center;
+  max-width: 40rem;
+  margin: 0 auto 2.5rem;
+}
+.wd-testimonials-header h2 {
+  font-family: var(--font-display), "Fraunces", serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--halite-rock);
+  margin: 0.5rem 0 0.75rem;
+}
+.wd-testimonials-rating {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--halite-crystal-deep);
+}
+.wd-testimonials-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+@media (min-width: 768px) {
+  .wd-testimonials-grid { grid-template-columns: repeat(3, 1fr); }
+}
+.wd-testimonial-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+.wd-testimonial-stars {
+  color: #c9953a;
+  font-size: 0.9375rem;
+  letter-spacing: 0.05em;
+}
+.wd-testimonial-card blockquote {
+  flex: 1;
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--halite-rock);
+}
+.wd-testimonial-card footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  border-top: 1px solid var(--border);
+  padding-top: 0.875rem;
+}
+.wd-testimonial-card cite {
+  font-style: normal;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--halite-rock);
+}
+.wd-testimonial-card footer span {
+  font-size: 0.8125rem;
+  color: var(--halite-stone);
+}
+.wd-testimonials-disclaimer {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--halite-stone);
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Back to top */
+.wd-back-to-top {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 50;
+  display: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+  transition: opacity 0.2s;
+}
+.wd-back-to-top.visible { display: flex; }
+.wd-back-to-top svg { width: 1.25rem; height: 1.25rem; }
+
+
+</style>
+</head>
+<body>
+
+<header class="wd-header" id="wd-header" data-halite-section="nav">
+  <div class="section-container wd-header-inner">
+    <a href="../index.html" class="wd-logo" aria-label="Halite Studio">
+  <img data-halite-path='["assets","logo"]' data-halite-image="true" src="../images/halite/logo.svg" alt="" width="36" height="36"/>
+  <span class="wd-logo-text">
+    <span data-halite-path='["brand","namePrimary"]' class="wd-logo-primary">Halite</span>
+    <span data-halite-path='["brand","nameAccent"]' class="wd-logo-accent">WebDev</span>
+  </span>
+</a>
+    <nav class="wd-nav-desktop" aria-label="Main">
+      <a href="../services/index.html"><span data-halite-path='["nav","links","0","label"]'>Services</span></a>
+          <a href="../work/index.html"><span data-halite-path='["nav","links","1","label"]'>Work</span></a>
+          <a href="index.html" aria-current="page"><span data-halite-path='["nav","links","2","label"]'>Process</span></a>
+          <a href="../pricing/index.html"><span data-halite-path='["nav","links","3","label"]'>Pricing</span></a>
+          <a href="../about/index.html"><span data-halite-path='["nav","links","4","label"]'>About</span></a>
+      <a href="tel:+15053739851" class="wd-nav-phone"><span data-halite-path='["nav","phoneCta","label"]'>Call (505) 373-9851</span></a>
+      <a href="../apply/index.html" class="btn-hover-effect btn-primary wd-nav-cta"><span data-halite-path='["nav","applyCta","label"]'>Let&#39;s chat</span></a>
+    </nav>
+    <button type="button" class="wd-menu-btn" id="wd-menu-btn" aria-expanded="false" aria-controls="wd-nav-mobile" aria-label="Open menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="wd-nav-mobile" id="wd-nav-mobile" role="dialog" aria-modal="true" aria-label="Mobile navigation" aria-hidden="true">
+    <div class="wd-nav-mobile-panel">
+      <nav aria-label="Mobile">
+        <a href="../services/index.html"><span data-halite-path='["nav","links","0","label"]'>Services</span></a>
+          <a href="../work/index.html"><span data-halite-path='["nav","links","1","label"]'>Work</span></a>
+          <a href="index.html" aria-current="page"><span data-halite-path='["nav","links","2","label"]'>Process</span></a>
+          <a href="../pricing/index.html"><span data-halite-path='["nav","links","3","label"]'>Pricing</span></a>
+          <a href="../about/index.html"><span data-halite-path='["nav","links","4","label"]'>About</span></a>
+        <a href="tel:+15053739851" class="wd-nav-mobile-phone"><span data-halite-path='["nav","phoneCta","label"]'>Call (505) 373-9851</span></a>
+        <a href="../apply/index.html" class="btn-hover-effect btn-primary wd-nav-mobile-cta"><span data-halite-path='["nav","mobileApplyCta","label"]'>Let&#39;s chat</span></a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="wd-page-intro" data-halite-section="pageIntro">
+  <div class="section-container">
+    <p data-halite-path='["pageCopy","process","eyebrow"]' data-halite-rich="true" class="section-eyebrow">How we work</p>
+    <h1 data-halite-path='["pageCopy","process","title"]' data-halite-rich="true">A straightforward process from first conversation to launch</h1>
+    <p data-halite-path='["pageCopy","process","description"]' data-halite-rich="true">You&#39;ll always know what&#39;s happening, what it costs, and who to talk to.</p>
+    
+  </div>
+</section>
+
+<section id="process" class="scroll-mt wd-workflow" data-halite-section="workflow">
+  <div class="section-container wd-workflow-inner">
+    
+    <div class="wd-workflow-grid">
+      <article class="wd-workflow-card">
+        <span class="wd-workflow-step"><span data-halite-path='["labels","stepLabel"]'>Step</span> <span data-halite-path='["workflow","steps","0","step"]'>01</span></span>
+        <h3><span data-halite-path='["workflow","steps","0","title"]'>A short Zoom call</span></h3>
+        <p><span data-halite-path='["workflow","steps","0","description"]' data-halite-rich="true">We learn about your business, what you have now, and what you&#39;d like your site to do. We&#39;ll share a clear price range—no obligation to move forward.</span></p>
+      </article>
+<article class="wd-workflow-card">
+        <span class="wd-workflow-step"><span data-halite-path='["labels","stepLabel"]'>Step</span> <span data-halite-path='["workflow","steps","1","step"]'>02</span></span>
+        <h3><span data-halite-path='["workflow","steps","1","title"]'>You share your content</span></h3>
+        <p><span data-halite-path='["workflow","steps","1","description"]' data-halite-rich="true">Photos, logo, menu or portfolio, hours, and the words you want on the page. We put it together and send previews for your feedback.</span></p>
+      </article>
+<article class="wd-workflow-card">
+        <span class="wd-workflow-step"><span data-halite-path='["labels","stepLabel"]'>Step</span> <span data-halite-path='["workflow","steps","2","step"]'>03</span></span>
+        <h3><span data-halite-path='["workflow","steps","2","title"]'>Review and refine</span></h3>
+        <p><span data-halite-path='["workflow","steps","2","description"]' data-halite-rich="true">We adjust until the site feels right. You approve before anything goes live.</span></p>
+      </article>
+<article class="wd-workflow-card">
+        <span class="wd-workflow-step"><span data-halite-path='["labels","stepLabel"]'>Step</span> <span data-halite-path='["workflow","steps","3","step"]'>04</span></span>
+        <h3><span data-halite-path='["workflow","steps","3","title"]'>Launch and hand off</span></h3>
+        <p><span data-halite-path='["workflow","steps","3","description"]' data-halite-rich="true">We help connect your domain and publish your site. You get a live walkthrough plus a built-in CMS to update your own text and photos—no monthly plan. Need a bigger change later? It&#39;s quoted as you go.</span></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="scroll-mt wd-differentiators" data-halite-section="differentiators">
+  <div class="section-container wd-diff-grid">
+    <div class="wd-diff-intro">
+      <h2><span data-halite-path='["differentiators","title"]' data-halite-rich="true">One person. Full accountability.</span></h2>
+      <p><span data-halite-path='["differentiators","body"]' data-halite-rich="true">Halite WebDev is a small studio in Las Cruces. You work directly with the person building your site—clear answers, honest timelines, and genuine care for your business.</span></p>
+      <a href="../about/index.html" class="wd-diff-link"><span data-halite-path='["differentiators","link","label"]'>Meet Sebastian</span> &gt;</a>
+    </div>
+    <div class="wd-diff-cards">
+      <article class="wd-diff-card">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <h3><span data-halite-path='["differentiators","items","0","title"]'>Talk to a real person</span></h3>
+        <p><span data-halite-path='["differentiators","items","0","body"]' data-halite-rich="true">Phone, email, or our contact form—you&#39;ll hear back from Sebastian personally. No account managers, no runaround.</span></p>
+      </article>
+<article class="wd-diff-card">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+        <h3><span data-halite-path='["differentiators","items","1","title"]'>Clear scope and pricing</span></h3>
+        <p><span data-halite-path='["differentiators","items","1","body"]' data-halite-rich="true">We confirm what&#39;s included and what it costs before work begins. Maintenance is optional—you choose what fits your business.</span></p>
+      </article>
+<article class="wd-diff-card">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+        <h3><span data-halite-path='["differentiators","items","2","title"]'>Serving southern New Mexico &amp; El Paso</span></h3>
+        <p><span data-halite-path='["differentiators","items","2","body"]' data-halite-rich="true">Based in Las Cruces. We work with owners across Albuquerque, Santa Fe, and El Paso over Zoom—the same personal service wherever you are.</span></p>
+      </article>
+<article class="wd-diff-card">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
+        <h3><span data-halite-path='["differentiators","items","3","title"]'>Edit it yourself with the CMS</span></h3>
+        <p><span data-halite-path='["differentiators","items","3","body"]' data-halite-rich="true">Change your text, photos, hours, and prices anytime through the built-in CMS—no subscription, no waiting. Bigger changes are quoted as you need them.</span></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="wd-footer" data-halite-section="footer">
+  <div class="section-container wd-footer-grid">
+    <div class="wd-footer-brand">
+      <a href="../index.html" class="wd-logo" aria-label="Halite Studio">
+  <img data-halite-path='["assets","logo"]' data-halite-image="true" src="../images/halite/logo.svg" alt="" width="36" height="36"/>
+  <span class="wd-logo-text">
+    <span data-halite-path='["brand","namePrimary"]' class="wd-logo-primary">Halite</span>
+    <span data-halite-path='["brand","nameAccent"]' class="wd-logo-accent">WebDev</span>
+  </span>
+</a>
+      <p><span data-halite-path='["brand","founderNote"]' data-halite-rich="true">A small Las Cruces studio. You work directly with Sebastian—the person building your site. Clear prices, honest answers, and genuine care for your business.</span></p>
+      <p><a href="mailto:salsalgadonm@gmail.com"><span data-halite-path='["brand","email"]'>salsalgadonm@gmail.com</span></a></p>
+      <p><a href="tel:+15053739851"><span data-halite-path='["brand","phone"]'>(505) 373-9851</span></a></p>
+    </div>
+    <div class="wd-footer-links">
+      <div>
+        <h3><span data-halite-path='["labels","footerServicesHeading"]'>Services</span></h3>
+        <a href="../services/index.html"><span data-halite-path='["footer","services","0","label"]'>Website Design</span></a>
+<a href="index.html"><span data-halite-path='["footer","services","1","label"]'>Our Process</span></a>
+<a href="../pricing/index.html"><span data-halite-path='["footer","services","2","label"]'>Pricing</span></a>
+      </div>
+      <div>
+        <h3><span data-halite-path='["labels","footerCompanyHeading"]'>Company</span></h3>
+        <a href="../about/index.html"><span data-halite-path='["footer","company","0","label"]'>About</span></a>
+<a href="../work/index.html"><span data-halite-path='["footer","company","1","label"]'>Work</span></a>
+<a href="../apply/index.html"><span data-halite-path='["footer","company","2","label"]'>Let&#39;s chat</span></a>
+      </div>
+      <div>
+        <h3><span data-halite-path='["labels","footerLegalHeading"]'>Legal</span></h3>
+        <a href="../privacy/index.html"><span data-halite-path='["footer","legal","0","label"]'>Privacy Policy</span></a>
+<a href="../terms/index.html"><span data-halite-path='["footer","legal","1","label"]'>Terms of Service</span></a>
+<a href="../service-agreement/index.html"><span data-halite-path='["footer","legal","2","label"]'>Service Agreement</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="section-container wd-footer-copy">
+    <p><span data-halite-path='["footer","copyright"]'>© 2026–2026 Halite WebDev. All rights reserved.</span></p>
+  </div>
+  <button type="button" class="btn-primary wd-back-to-top" id="wd-back-to-top" aria-label="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  </button>
+  
+</footer>
+
+<script>
+(function() {
+  var header = document.getElementById('wd-header');
+  if (header) {
+    function onScroll() {
+      header.classList.toggle('scrolled', window.scrollY > 24);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  var menuBtn = document.getElementById('wd-menu-btn');
+  var mobileNav = document.getElementById('wd-nav-mobile');
+  if (menuBtn && mobileNav) {
+    var menuIcon = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><line x1=\"4\" x2=\"20\" y1=\"12\" y2=\"12\"/><line x1=\"4\" x2=\"20\" y1=\"6\" y2=\"6\"/><line x1=\"4\" x2=\"20\" y1=\"18\" y2=\"18\"/></svg>";
+    var closeIcon = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M18 6 6 18\"/><path d=\"m6 6 12 12\"/></svg>";
+    function setMenuOpen(open) {
+      mobileNav.classList.toggle('open', open);
+      document.body.classList.toggle('wd-menu-open', open);
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      mobileNav.setAttribute('aria-hidden', open ? 'false' : 'true');
+      menuBtn.innerHTML = open ? closeIcon : menuIcon;
+      if (!open) {
+        menuBtn.focus();
+      }
+    }
+    menuBtn.addEventListener('click', function() {
+      setMenuOpen(!mobileNav.classList.contains('open'));
+    });
+    mobileNav.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        setMenuOpen(false);
+      });
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
+        setMenuOpen(false);
+      }
+    });
+  }
+
+  var backToTop = document.getElementById('wd-back-to-top');
+  if (backToTop) {
+    function onBackScroll() {
+      backToTop.classList.toggle('visible', window.scrollY > 300);
+    }
+    window.addEventListener('scroll', onBackScroll, { passive: true });
+    onBackScroll();
+    backToTop.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+
+
+})();
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+{
+  "version": 2,
+  "projectType": "web-developer",
+  "sections": [
+    "nav",
+    "hero",
+    "trustStrip",
+    "testimonials",
+    "contactCta",
+    "pageIntro",
+    "services",
+    "confrontation",
+    "framework",
+    "founder",
+    "legalPage",
+    "pricing",
+    "portfolio",
+    "workflow",
+    "differentiators",
+    "applicationForm",
+    "footer"
+  ],
+  "pages": [
+    {
+      "id": "home",
+      "path": "index.html",
+      "sections": [
+        "nav",
+        "hero",
+        "trustStrip",
+        "confrontation",
+        "services",
+        "testimonials",
+        "localBusinessCta",
+        "footer"
+      ],
+      "label": "Home"
+    },
+    {
+      "id": "services",
+      "path": "services/index.html",
+      "sections": [
+        "nav",
+        "pageIntro",
+        "confrontation",
+        "framework",
+        "services",
+        "footer"
+      ],
+      "label": "Services"
+    },
+    {
+      "id": "work",
+      "path": "work/index.html",
+      "sections": [
+        "nav",
+        "pageIntro",
+        "portfolio",
+        "footer"
+      ],
+      "label": "Work"
+    },
+    {
+      "id": "process",
+      "path": "process/index.html",
+      "sections": [
+        "nav",
+        "pageIntro",
+        "workflow",
+        "differentiators",
+        "footer"
+      ],
+      "label": "Process"
+    },
+    {
+      "id": "pricing",
+      "path": "pricing/index.html",
+      "sections": [
+        "nav",
+        "pageIntro",
+        "pricing",
+        "contactCta",
+        "footer"
+      ],
+      "label": "Pricing"
+    },
+    {
+      "id": "about",
+      "path": "about/index.html",
+      "sections": [
+        "nav",
+        "pageIntro",
+        "founder",
+        "contactCta",
+        "footer"
+      ],
+      "label": "About"
+    },
+    {
+      "id": "privacy",
+      "path": "privacy/index.html",
+      "sections": [
+        "nav",
+        "pageIntro",
+        "legalPage",
+        "footer"
+      ],
+      "label": "Privacy"
+    },
+    {
+      "id": "terms",
+      "path": "terms/index.html",
+      "sections": [
+        "nav",
+        "pageIntro",
+        "legalPage",
+        "footer"
+      ],
+      "label": "Terms"
+    },
+    {
+      "id": "service-agreement",
+      "path": "service-agreement/index.html",
+      "sections": [
+        "nav",
+        "pageIntro",
+        "legalPage",
+        "footer"
+      ],
+      "label": "Service Agreement"
+    },
+    {
+      "id": "apply",
+      "path": "apply/index.html",
+      "sections": [
+        "nav",
+        "pageIntro",
+        "applicationForm",
+        "footer"
+      ],
+      "label": "Apply"
+    }
+  ]
+}
