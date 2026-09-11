@@ -1,0 +1,160 @@
+meta:
+  title: Halite Studio | Landing pages for local shops
+  description: I'm Sebastian, a CS student in Las Cruces. I build custom landing
+    pages for restaurants, tattoo shops, and local businesses. Fast on phones.
+    From $500. We sit on Zoom together.
+brand:
+  name: Halite Studio
+  email: salsalgadonm@gmail.com
+  phone: (505) 373-9851
+  phoneTel: "+15053739851"
+  location: Las Cruces, NM
+  legalName: Halite Studio
+  founderNote: I'm Sebastian, a CS student in Las Cruces. You work with me, not a
+    call center. Clear prices, Zoom together, and a page that looks like your
+    shop.
+assets:
+  logo: images/halite/logo.svg
+  hero: images/halite/hero.png
+  getCampusGig: images/halite/getcampusgig.png
+  whatYourVibe: images/halite/whatyourvibe.png
+hero:
+  eyebrow: LAS CRUCES · EL PASO · SOUTHERN NM
+  headline: Your shop. On their phone.
+  headlineAccent: ""
+  body: When someone taps you on Maps, they land here. I build that page with you
+    on Zoom. From $500.
+  image: images/halite/hero.png
+  imageAlt: Natural halite crystals on weathered stone
+services:
+  title: How we help local shops
+  cards:
+    - id: brand
+      prompt: I want a site that
+      emphasis: feels like my shop.
+      icon: Globe
+      serviceTitle: A page that looks like you
+      body: Your photos, colors, menu or portfolio, hours, and story. One place that
+        feels like walking into your shop, not a generic template.
+      href: /work
+      cta: See our work
+    - id: pricing
+      prompt: I want to know
+      emphasis: what it costs.
+      icon: Search
+      serviceTitle: A clear number first
+      body: We publish starting prices and confirm the full scope in writing before
+        work begins. No hidden fees. You can think it over.
+      href: /pricing
+      cta: View pricing
+    - id: cost
+      prompt: I need a site
+      emphasis: without learning web stuff.
+      icon: Rocket
+      serviceTitle: We sit on Zoom together
+      body: You do not need to be technical. We share a screen, I ask what you like,
+        you send photos when you can. We go at your pace.
+      href: /process
+      cta: See how we work
+    - id: mobile
+      prompt: People tap me
+      emphasis: on Google Maps.
+      icon: Zap
+      serviceTitle: That tap deserves a real page
+      body: Most people look you up on their phone. The page they open should load
+        fast, show your photos, and make it easy to call or visit.
+      href: /services#framework
+      cta: How we build
+    - id: updates
+      prompt: I'll need to update
+      emphasis: my menu later.
+      icon: Layers
+      serviceTitle: Change it yourself
+      body: Your site comes with a simple editor so you can change menu items, photos,
+        and hours without waiting on me. Bigger changes, I quote first.
+      href: /pricing
+      cta: See what's included
+    - id: apply
+      prompt: I'm ready for a
+      emphasis: friendly conversation.
+      icon: MessageCircle
+      serviceTitle: Let's Talk About Your Project
+      body: Share a few details and we will set a short Zoom. No hard sell. Just what
+        you need, what it costs, and whether we fit.
+      href: /apply
+      cta: Let's talk
+testimonials:
+  eyebrow: ""
+  title: ""
+  ratingSummary: ""
+  disclaimer: ""
+  items: []
+portfolio:
+  eyebrow: Work
+  title: Live shops I have already shipped
+  subtitle: Restaurant, tattoo, and food-brand pages on real phones.
+  body: This is the work. Open them on your phone if you want. That is the test.
+  projects:
+    - name: El Vagon Tacos
+      description: Full menu, hours, tap-to-call, and photos. Built so someone can
+        order or visit from a phone.
+      image: images/halite/el-vagon-tacos.png
+      mobileImage: images/halite/el-vagon-tacos-mobile.png
+      href: https://cloxeer.github.io/El-Vagon-Tacos/
+      linkLabel: Visit live site
+      tags:
+        - Restaurant
+        - Live Site
+        - Mobile-First
+      imageFirst: true
+    - name: Syncere Tattoo
+      description: Artists, gallery, shop story, and a booking form. Dark, quiet, and
+        easy to tap through.
+      image: images/halite/syncere-tattoo.png
+      mobileImage: images/halite/syncere-tattoo-mobile.png
+      href: https://cloxeer.github.io/Syncere-Tattoo/
+      linkLabel: Visit live site
+      tags:
+        - Tattoo Studio
+        - Live Site
+        - Gallery
+      imageFirst: true
+    - name: La Mesillera Jalapeño Salsa
+      description: One salsa, English and Spanish, order by phone. Her own domain.
+        Built for an owner who is not technical.
+      image: images/halite/la-mesillera.png
+      mobileImage: images/halite/la-mesillera-mobile.png
+      href: https://lamesillerajalapenosalsa.com/
+      linkLabel: Visit live site
+      tags:
+        - Food Brand
+        - Live Site
+        - Product Story
+      imageFirst: true
+founder:
+  eyebrow: ""
+  title: Hi, I'm Sebastian.
+  name: Sebastian Salgado
+  role: CS student, Halite Studio
+  image: images/halite/sebastian-2.jpg
+  images:
+    - images/halite/sebastian-2.jpg
+    - images/halite/sebastian-1.jpg
+  imageAlt: Sebastian Salgado, Halite Studio
+  paragraphs:
+    - I run Halite Studio from Las Cruces while I study computer science. I
+      started it because local shops deserve a page that looks like them, not a
+      Facebook wall or a template they cannot change.
+    - You work with me. We sit on Zoom. You send photos when you can. I will not
+      sell you SEO magic. I will make a landing page that feels good in a hand,
+      and show you how to update it.
+  highlights:
+    - label: Custom landing pages for local shops
+    - label: You talk to the person building it
+    - label: Clear prices before we start
+    - label: Las Cruces, El Paso, southern NM
+contactCta:
+  title: Talk to me today
+  subtitle: Text me or send a short note.
+  body: Most owners want cost and timing. I will answer both on a free Zoom.
+    Same-day reply on business days.

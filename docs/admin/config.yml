@@ -1,0 +1,299 @@
+backend:
+  name: github
+  repo: Cloxeer/Halite-Web-Dev
+  branch: main
+  base_url: https://sveltia-cms-auth.halitestudio.workers.dev
+site_url: https://cloxeer.github.io/Halite-Web-Dev
+display_url: https://cloxeer.github.io/Halite-Web-Dev
+site_id: cloxeer.github.io
+media_folder: public/images
+public_folder: /images
+collections:
+  - name: content
+    label: Site content
+    files:
+      - name: site
+        label: Halite Studio | Landing pages for local shops
+        file: content.yml
+        fields:
+          - name: meta
+            label: Basics
+            widget: object
+            fields:
+              - name: title
+                label: Site title
+                widget: string
+              - name: description
+                label: Description
+                widget: text
+          - name: brand
+            label: Business details
+            widget: object
+            fields:
+              - name: name
+                label: Business name
+                widget: string
+              - name: email
+                label: Email
+                widget: string
+              - name: phone
+                label: Phone (display)
+                widget: string
+              - name: phoneTel
+                label: Phone (dial)
+                widget: string
+              - name: location
+                label: Location
+                widget: string
+              - name: legalName
+                label: Legal name
+                widget: string
+              - name: founderNote
+                label: Founder note
+                widget: text
+              - name: social
+                label: Social links
+                widget: object
+                required: false
+                fields:
+                  - name: linkedin
+                    label: LinkedIn URL
+                    widget: string
+                    required: false
+                  - name: twitter
+                    label: Twitter URL
+                    widget: string
+                    required: false
+                  - name: github
+                    label: GitHub URL
+                    widget: string
+                    required: false
+          - name: assets
+            label: Photos
+            widget: object
+            fields:
+              - name: logo
+                label: Logo
+                widget: image
+              - name: hero
+                label: Hero image
+                widget: image
+              - name: getCampusGig
+                label: Get Campus Gig
+                widget: image
+              - name: whatYourVibe
+                label: What's your vibe
+                widget: image
+          - name: hero
+            label: Hero
+            widget: object
+            fields:
+              - name: eyebrow
+                label: Eyebrow
+                widget: string
+              - name: headline
+                label: Headline
+                widget: string
+              - name: headlineAccent
+                label: Headline accent
+                widget: string
+              - name: body
+                label: Body
+                widget: text
+              - name: image
+                label: Image
+                widget: image
+              - name: imageAlt
+                label: Image alt
+                widget: string
+          - name: services
+            label: Services
+            widget: object
+            fields:
+              - name: title
+                label: Title
+                widget: string
+              - name: cards
+                label: Cards
+                widget: list
+                required: false
+                fields:
+                  - name: id
+                    label: id
+                    widget: hidden
+                    required: false
+                  - name: prompt
+                    label: Prompt
+                    widget: string
+                  - name: emphasis
+                    label: Emphasis
+                    widget: string
+                  - name: icon
+                    label: icon
+                    widget: hidden
+                    required: false
+                  - name: serviceTitle
+                    label: Service title
+                    widget: string
+                  - name: body
+                    label: Body
+                    widget: text
+                  - name: href
+                    label: href
+                    widget: hidden
+                    required: false
+                  - name: cta
+                    label: CTA label
+                    widget: string
+          - name: testimonials
+            label: Testimonials
+            widget: object
+            required: false
+            fields:
+              - name: eyebrow
+                label: Eyebrow
+                widget: string
+              - name: title
+                label: Title
+                widget: string
+              - name: ratingSummary
+                label: Rating summary
+                widget: string
+              - name: disclaimer
+                label: Disclaimer
+                widget: text
+              - name: items
+                label: Items
+                widget: list
+                required: false
+                fields:
+                  - name: quote
+                    label: Quote
+                    widget: text
+                  - name: name
+                    label: Name
+                    widget: string
+                  - name: role
+                    label: Role
+                    widget: string
+                  - name: rating
+                    label: rating
+                    widget: hidden
+                    required: false
+          - name: portfolio
+            label: Portfolio
+            widget: object
+            fields:
+              - name: eyebrow
+                label: Eyebrow
+                widget: string
+              - name: title
+                label: Title
+                widget: string
+              - name: subtitle
+                label: Subtitle
+                widget: string
+              - name: body
+                label: Body
+                widget: text
+              - name: projects
+                label: Projects
+                widget: list
+                required: false
+                fields:
+                  - name: name
+                    label: Name
+                    widget: string
+                  - name: description
+                    label: Description
+                    widget: text
+                  - name: image
+                    label: Image
+                    widget: image
+                  - name: mobileImage
+                    label: Mobile image
+                    widget: image
+                    required: false
+                  - name: href
+                    label: href
+                    widget: hidden
+                    required: false
+                  - name: tags
+                    label: Tags
+                    widget: list
+                    required: false
+                    field:
+                      name: item
+                      label: Tags
+                      widget: string
+                  - name: imageFirst
+                    label: imageFirst
+                    widget: hidden
+                    required: false
+                  - name: linkLabel
+                    label: Link label
+                    widget: string
+                    required: false
+                  - name: isDemo
+                    label: isDemo
+                    widget: hidden
+                    required: false
+          - name: founder
+            label: Founder
+            widget: object
+            fields:
+              - name: eyebrow
+                label: Eyebrow
+                widget: string
+              - name: title
+                label: Title
+                widget: string
+              - name: name
+                label: Name
+                widget: string
+              - name: role
+                label: Role
+                widget: string
+              - name: image
+                label: Photo
+                widget: image
+              - name: images
+                label: More photos
+                widget: list
+                required: false
+                field:
+                  name: item
+                  label: More photos
+                  widget: image
+              - name: imageAlt
+                label: Image alt
+                widget: string
+              - name: paragraphs
+                label: Paragraphs
+                widget: list
+                required: false
+                field:
+                  name: item
+                  label: Paragraphs
+                  widget: text
+              - name: highlights
+                label: Highlights
+                widget: list
+                required: false
+                fields:
+                  - name: label
+                    label: Label
+                    widget: string
+          - name: contactCta
+            label: Contact CTA
+            widget: object
+            fields:
+              - name: title
+                label: Title
+                widget: string
+              - name: subtitle
+                label: Subtitle
+                widget: string
+              - name: body
+                label: Body
+                widget: text

@@ -1,0 +1,656 @@
+identity:
+  id: ws_050fb455922d
+project:
+  version: 2
+  projectType: web-developer
+  sections:
+    - nav
+    - hero
+    - trustStrip
+    - testimonials
+    - contactCta
+    - pageIntro
+    - services
+    - confrontation
+    - framework
+    - founder
+    - legalPage
+    - pricing
+    - portfolio
+    - workflow
+    - differentiators
+    - applicationForm
+    - footer
+  pages:
+    - id: home
+      path: index.html
+      sections:
+        - nav
+        - hero
+        - portfolio
+        - founder
+        - localBusinessCta
+        - footer
+      label: Home
+    - id: services
+      path: services/index.html
+      sections:
+        - nav
+        - pageIntro
+        - confrontation
+        - framework
+        - services
+        - footer
+      label: Services
+    - id: work
+      path: work/index.html
+      sections:
+        - nav
+        - pageIntro
+        - portfolio
+        - footer
+      label: Work
+    - id: process
+      path: process/index.html
+      sections:
+        - nav
+        - pageIntro
+        - workflow
+        - footer
+      label: Process
+    - id: pricing
+      path: pricing/index.html
+      sections:
+        - nav
+        - pageIntro
+        - pricing
+        - contactCta
+        - footer
+      label: Pricing
+    - id: about
+      path: about/index.html
+      sections:
+        - nav
+        - pageIntro
+        - founder
+        - contactCta
+        - footer
+      label: About
+    - id: privacy
+      path: privacy/index.html
+      sections:
+        - nav
+        - pageIntro
+        - legalPage
+        - footer
+      label: Privacy
+    - id: terms
+      path: terms/index.html
+      sections:
+        - nav
+        - pageIntro
+        - legalPage
+        - footer
+      label: Terms
+    - id: service-agreement
+      path: service-agreement/index.html
+      sections:
+        - nav
+        - pageIntro
+        - legalPage
+        - footer
+      label: Service Agreement
+    - id: apply
+      path: apply/index.html
+      sections:
+        - nav
+        - pageIntro
+        - applicationForm
+        - footer
+      label: Apply
+site:
+  type: web-developer
+  integrations:
+    cmsEnabled: true
+  theme:
+    fontDisplay: Outfit
+    fontBody: Figtree
+    colorText: oklch(0.24 0.02 40)
+    colorMuted: oklch(0.46 0.03 45)
+    colorAccent: oklch(0.55 0.12 48)
+    colorBackground: oklch(0.985 0.008 70)
+    colorSurface: oklch(0.96 0.014 60)
+  brand:
+    namePrimary: Halite
+    nameAccent: Studio
+    reachNote: Text me anytime. If you'd rather talk, I take calls 4–7pm weekdays
+      (MT) — or we book a 20-minute Zoom.
+    foundedYear: "2026"
+    currentYear: "2026"
+  nav:
+    links:
+      - label: Services
+        href: /services
+      - label: Work
+        href: /work
+      - label: Process
+        href: /process
+      - label: Pricing
+        href: /pricing
+      - label: About
+        href: /about
+    phoneCta:
+      label: ""
+      href: sms:+15053739851?body=It%27s%20about%20Halite%20Studio
+    applyCta:
+      label: Let's talk
+      href: /apply
+    mobileApplyCta:
+      label: Let's talk
+      href: /apply
+  hero:
+    primaryCta:
+      label: Let's talk
+      href: /apply
+    secondaryCta:
+      label: ""
+      href: sms:+15053739851?body=It%27s%20about%20Halite%20Studio
+    pricingTeaser: From <strong>$500</strong>
+  valueProps:
+    - title: Built for phones
+    - title: Looks like your shop
+    - title: From $500
+  trustStrip:
+    items:
+      - value: Las Cruces, NM
+        label: Local studio · southern NM & El Paso
+      - value: From $500
+        label: Founding rates · published pricing
+      - value: Talk to Sebastian
+        label: One builder · no runaround
+      - value: 5.0 ★
+        label: Early client feedback
+  services:
+    showTitle: true
+    showFooterCta: true
+    footerCta:
+      label: Schedule a free Zoom call
+      href: /apply
+  confrontation:
+    eyebrow: What you get
+    title: ""
+    cards:
+      - title: Looks like your place
+        body: Your photos, logo, hours, and story on one page. People should feel like
+          they already walked in.
+      - title: Made for a thumb
+        body: Most visits start on a phone, often from Maps. Tap to call, hours, and a
+          menu or gallery that is easy to scroll.
+      - title: We do it together
+        body: I am a CS student, not an agency. We sit on Zoom. You do not need to know
+          how websites work.
+  framework:
+    eyebrow: How we build
+    title: Your photos. A layout that already works.
+    paragraphs:
+      - Every Halite page starts from layouts we have already used on real
+        shops, then we swap in your colors, photos, and words so it feels like
+        you.
+      - It should load quickly on a phone and make it obvious how to call,
+        message, or visit. You stay focused on the shop. I handle the website
+        part.
+    emphasis: Founding rates start at $500 for a Starter site and $750 for a Full
+      site. We confirm the exact price before any work begins.
+  localBusinessCta:
+    title: Want that Maps tap to land somewhere you are proud of?
+    body: "Free 20-minute Zoom, or text me. Bring whatever you have: photos, a
+      Facebook page, or nothing yet. We will look at it together."
+    cta: Let's talk
+    href: /apply
+  workflow:
+    eyebrow: How we work
+    title: You start on this page.
+    steps:
+      - step: "01"
+        title: You look around, then Let's talk
+        description: You're on this site. When you're ready, tap Let's talk. No account,
+          no homework, no need to know websites.
+      - step: "02"
+        title: A short Zoom call
+        description: We look at your shop together. I'll tell you if a $500 template
+          fits, or if custom is smarter. No obligation to move forward.
+      - step: "03"
+        title: You share your content
+        description: Photos, logo, menu or portfolio, hours, and the words you want on
+          the page. We put it together and send previews for your feedback.
+      - step: "04"
+        title: Review and refine
+        description: We adjust until the site feels right. You approve before anything
+          goes live.
+      - step: "05"
+        title: Launch and hand off
+        description: We help connect your domain and publish your site. You get a live
+          walkthrough plus a built-in CMS to update your own text and photos—no
+          monthly plan. Need a bigger change later? It's quoted as you go.
+  differentiators:
+    title: One person. You can text him.
+    body: Halite Studio is me, Sebastian, in Las Cruces. Clear answers, honest
+      timelines, and a page that looks like your shop.
+    link:
+      label: Meet Sebastian
+      href: /about
+    items:
+      - title: Talk to a real person
+        body: Text, email, or our contact form—you'll hear back from Sebastian
+          personally. No account managers, no runaround.
+        icon: Users
+      - title: Clear scope and pricing
+        body: We confirm what's included and what it costs before work begins.
+          Maintenance is optional—you choose what fits your business.
+        icon: CheckCircle
+      - title: Serving southern New Mexico & El Paso
+        body: Based in Las Cruces. We work with owners across Albuquerque, Santa Fe, and
+          El Paso over Zoom—the same personal service wherever you are.
+        icon: Heart
+      - title: Edit it yourself with the CMS
+        body: Change your text, photos, hours, and prices anytime through the built-in
+          CMS—no subscription, no waiting. Bigger changes are quoted as you need
+          them.
+        icon: Layers
+  pricing:
+    eyebrow: Pricing
+    title: Clear starting prices
+    description: Straightforward options for restaurants, tattoo shops, salons, and
+      local businesses across Las Cruces, Albuquerque, Santa Fe, and El Paso.
+      Every project starts with a free Zoom call—we confirm scope and price in
+      writing before work begins.
+    betaBadge: Founding rates
+    billingToggleOnetime: Pay once
+    billingToggleMonthly: Pay monthly
+    upfrontHeading: Website build — pay once, you own it
+    upfrontPlans:
+      - id: starter
+        name: Starter Site
+        description: A focused 3–5 page site for shops and solo businesses—home, about,
+          gallery or menu, and contact. You register your domain; we connect it
+          at launch.
+        price: $750
+        betaPrice: $500
+        priceSuffix: one-time
+        features:
+          - 3–5 pages custom-built for your business
+          - Gallery or menu section, about, and contact
+          - Contact form that emails you directly
+          - Your domain connected at launch (you purchase the domain)
+          - Edit your own text and photos with the built-in CMS
+          - Complete site files plus written hosting instructions
+        cta:
+          label: Start with a Starter site
+          href: /apply
+        highlighted: false
+      - id: full
+        name: Full Site
+        description: A complete 6+ page site for restaurants and shops that need a full
+          menu, gallery, about, and more room to tell your story.
+        price: $1,050
+        betaPrice: $750
+        priceSuffix: one-time
+        features:
+          - 6 or more pages customized to your business
+          - Full menu, portfolio, or gallery section
+          - About page, contact page, and extra sections
+          - Your domain connected at launch (you purchase the domain)
+          - Edit your own text and photos with the built-in CMS
+          - Google Search Console setup at launch
+        cta:
+          label: Start with a Full site
+          href: /apply
+        highlighted: true
+    handoffHeading: After launch — you own it, and you can edit it yourself
+    handoffIntro: Every build includes a live walkthrough, your finished site files,
+      and a built-in CMS so you can update text and photos anytime. No monthly
+      plan, no lock-in.
+    handoffOptions:
+      - id: diy
+        name: DIY Handoff — included
+        description: Included with every website—no extra cost, no subscription. You
+          leave the project owning your site and able to update it yourself.
+        price: Included
+        priceSuffix: ""
+        features:
+          - Live 1-hour walkthrough of your site, domain, and CMS
+          - Built-in CMS to change your own text and photos anytime
+          - Complete site ZIP plus written redeploy and hosting instructions
+          - You purchase and own your domain—we connect DNS at launch
+          - Need a bigger change later? Request a quote anytime
+          - No monthly subscription, ever
+        highlighted: true
+    handoffNote: You purchase and own your domain name (usually about $12–$15 per
+      year through GoDaddy, Namecheap, or similar). Halite does not buy domains
+      on your behalf—you share access so we can connect your site. The live
+      walkthrough and the built-in CMS are included with every build, so
+      day-to-day text and photo updates are yours to make. Larger changes can be
+      quoted anytime. Details are in our Service Agreement.
+    waasHeading: Prefer to pay monthly? Finance the build
+    waasNote: "Can't pay all at once? Split the same price over 6 or 12 months—your
+      choice. This is financing to help you get online, not a subscription: once
+      the term is paid you're done, and you own your site. No ongoing fees, no
+      lock-in."
+    waasPlans: []
+    addonsHeading: Optional add-on
+    addons: []
+    testimonialNote: Founding clients who leave an honest Google review receive 10%
+      off their build.
+    footerCta:
+      label: Schedule a free Zoom call
+      href: /apply
+  contactCta:
+    primaryCta:
+      label: Let's talk
+      href: /apply
+    secondaryCta:
+      label: ""
+      href: ""
+  applicationForm:
+    eyebrow: Get started
+    title: Tell me about your shop.
+    body: A few details is enough. Facebook page, photos, or nothing yet. We will
+      figure out the right fit.
+    phoneNote: "Prefer to text? Sebastian replies fast:"
+    submitLabel: Send message
+    successTitle: Message sent — thank you!
+    successBody: We received your details and will reply within one business day. If
+      you need us sooner, email
+    compact: true
+    delivery: formsubmit
+    formUrl: https://docs.google.com/forms/d/e/1FAIpQLSdtX1MzjSXjcvp_HkPbZAdyJGt-bfVQPpfqLDN_CR4NX0WUTQ/viewform
+    soonerLead: If you want to reach me sooner, please text
+    soonerTrail: and say it's about Halite Studio.
+    smsPrefill: It's about Halite Studio
+    formAgainLabel: Open the form again
+    backLinkLabel: ← Back
+  footerCredit:
+    enabled: false
+  footer:
+    services:
+      - label: Website Design
+        href: /services
+      - label: Our Process
+        href: /process
+      - label: Pricing
+        href: /pricing
+    company:
+      - label: About
+        href: /about
+      - label: Work
+        href: /work
+      - label: Let's talk
+        href: /apply
+    legal:
+      - label: Privacy Policy
+        href: /privacy
+      - label: Terms of Service
+        href: /terms
+      - label: Service Agreement
+        href: /service-agreement
+    copyright: © {foundedYear}–{currentYear} {legalName}. All rights reserved.
+  legalPages:
+    privacy:
+      lastUpdated: June 27, 2026
+      intro: Halite WebDev ("we," "us," or "our") respects your privacy. This policy
+        explains what information we collect, how we use it, and your choices.
+        We are a small studio operated by Sebastian Salgado in Las Cruces, New
+        Mexico.
+      sections:
+        - heading: Information we collect
+          paragraphs:
+            - When you contact us through our website form, email, or phone, we
+              may collect your name, business name, email address, phone number,
+              website or social links you provide, and any message you send us.
+            - When we build or host your website, we may also process business
+              content you provide (text, images, logos) and basic analytics data
+              such as page views and device type, if analytics are enabled on
+              your site.
+        - heading: How we use your information
+          paragraphs:
+            - We use your information to respond to inquiries, provide quotes,
+              build and maintain your website, send invoices, and deliver
+              ongoing website care if you subscribe to a maintenance or monthly
+              plan.
+            - We do not sell your personal information. We do not use your data
+              for unrelated advertising.
+        - heading: Form submissions
+          paragraphs:
+            - Our contact form is delivered through a third-party form service
+              (FormSubmit) that forwards submissions to our email. That provider
+              may process submission data according to its own privacy policy.
+        - heading: Hosting and client sites
+          paragraphs:
+            - Client websites may be hosted through third-party providers (such
+              as Vercel or similar services). Those providers process technical
+              data (IP addresses, request logs) as part of normal hosting
+              operations.
+            - If your site includes a contact form, form submissions may be
+              processed by the form provider configured for your project.
+        - heading: Data retention
+          paragraphs:
+            - We keep client project files, contracts, and correspondence as
+              long as needed to provide services and meet legal or accounting
+              obligations. You may request deletion of non-essential personal
+              data after your project ends, subject to records we must retain.
+        - heading: Your rights
+          paragraphs:
+            - You may request access to, correction of, or deletion of personal
+              information we hold about you by emailing salsalgadonm@gmail.com.
+              We will respond within a reasonable time.
+        - heading: Contact
+          paragraphs:
+            - "Questions about this policy: Sebastian Salgado, Halite WebDev,
+              Las Cruces, NM — salsalgadonm@gmail.com or (505) 373-9851."
+    terms:
+      lastUpdated: June 27, 2026
+      intro: These Terms of Service ("Terms") govern your use of the Halite WebDev
+        website (halitewebdev.com and related pages) and your relationship with
+        us when you hire us for a project. We keep this in plain language so you
+        know what to expect. Halite WebDev is operated by Sebastian Salgado. By
+        using our site or working with us, you agree to these Terms.
+      sections:
+        - heading: Who we are
+          paragraphs:
+            - Halite WebDev is a small web design studio operated by Sebastian
+              Salgado, an individual based in Las Cruces, New Mexico. When we
+              say "we," "us," or "Halite" in these Terms, we mean Halite
+              WebDev—not a large agency or anonymous support team. You work
+              directly with Sebastian on your project.
+        - heading: Website use
+          paragraphs:
+            - You may use our website for lawful purposes only. You may not
+              attempt to disrupt the site, scrape it for abuse, or misrepresent
+              your identity when contacting us.
+            - Content on this site (text, design, branding) is owned by Halite
+              WebDev unless otherwise noted. You may not copy our marketing
+              materials for commercial use without permission.
+        - heading: Services and quotes
+          paragraphs:
+            - Pricing shown on our website represents starting rates. Final
+              scope and price are confirmed in writing before work begins.
+            - We reserve the right to decline projects that are outside our
+              capacity, unethical, or misaligned with our studio.
+        - heading: No guarantee of results
+          paragraphs:
+            - We build professional websites and set up foundations for search
+              visibility, but we do not guarantee specific search rankings,
+              traffic levels, or revenue outcomes. Business results depend on
+              many factors outside our control.
+        - heading: Limitation of liability
+          paragraphs:
+            - To the fullest extent permitted by law, Halite WebDev is not
+              liable for indirect, incidental, or consequential damages arising
+              from use of our website or services. Our total liability for any
+              claim related to a project is limited to the amount you paid us
+              for that project in the twelve months before the claim.
+            - Nothing in these Terms limits liability where limitation is not
+              permitted by applicable law.
+        - heading: Changes
+          paragraphs:
+            - We may update these Terms from time to time. The "Last updated"
+              date at the top will change when we do. Continued use of the site
+              after changes constitutes acceptance of the updated Terms.
+        - heading: Governing law
+          paragraphs:
+            - These Terms are governed by the laws of the State of New Mexico,
+              without regard to conflict-of-law rules. Disputes shall be brought
+              in courts located in Doña Ana County, New Mexico, unless otherwise
+              required by law.
+        - heading: Contact
+          paragraphs:
+            - "Questions about these Terms: salsalgadonm@gmail.com or (505)
+              373-9851."
+    service-agreement:
+      lastUpdated: June 27, 2026
+      intro: This page summarizes key terms for Halite WebDev website projects and
+        monthly plans. A signed agreement may include additional details. This
+        summary is provided for transparency before you hire us.
+      sections:
+        - heading: Parties and scope
+          paragraphs:
+            - Halite WebDev (Sebastian Salgado) provides website design,
+              development, hosting setup, and domain connection for small
+              businesses.
+            - You (the "Client") provide business information, content, photos,
+              logos, and timely feedback needed to complete the project.
+        - heading: Upfront (pay-once) projects
+          paragraphs:
+            - "For upfront packages, you pay the agreed project fee according to
+              the payment schedule in your quote (typically a deposit to start
+              and balance before or at launch). Founding rates: Starter site
+              $500, Full site $750 unless otherwise quoted."
+            - "Every build includes the DIY Handoff at no extra cost: your
+              complete site files, written instructions, a live 1-hour
+              walkthrough, and access to the built-in CMS so you can update your
+              own text and photos. There is no monthly plan and no
+              subscription."
+            - You must register and own your domain name; Halite does not
+              purchase domains on your behalf. You share registrar access so we
+              can connect your site.
+            - Larger changes (new pages, redesigns, major photo work) are quoted
+              separately.
+        - heading: Monthly financing (6- or 12-month term)
+          paragraphs:
+            - Monthly financing splits the same one-time build price over a 6-
+              or 12-month term to make it easier to get online. It is a payment
+              plan, not a subscription—there are no ongoing hosting or care fees
+              included, and no lock-in after the term.
+            - "Starter site financing: $85/month for 6 months, or $45/month for
+              12 months. Full site financing: $130/month for 6 months, or
+              $65/month for 12 months. Exact terms are stated in your quote."
+            - You may pay off the remaining balance early at any time. Once the
+              financed price is paid in full, the site is yours and nothing
+              further is owed.
+            - If you stop payments before the price is paid off, you remain
+              responsible for the remaining build balance as stated in your
+              signed agreement.
+        - heading: Updating your site yourself
+          paragraphs:
+            - Every site includes a built-in CMS so you can change your own text
+              and photos anytime—hours, prices, a new photo, a menu item, and
+              similar updates—without paying for edits.
+            - Larger changes such as new pages, redesigns, e-commerce setup, or
+              copywriting from scratch are not self-service and are quoted
+              separately.
+            - If you'd rather I make a change for you, send it over and I'll
+              quote it first. Turnaround is typically 3–5 business days unless
+              otherwise agreed.
+        - heading: Ownership and handoff
+          paragraphs:
+            - You own the content you provide (your words, logos, photos) and
+              must register your domain in your own name with a third-party
+              registrar. Halite does not take legal ownership of your domain.
+            - Halite builds custom websites tailored to your
+              business—lightweight, fast on phones, and straightforward to
+              maintain.
+            - For upfront projects paid in full, you receive your complete site
+              files plus written instructions to redeploy or transfer to another
+              host. The DIY Handoff—including the live 1-hour walkthrough and
+              CMS access—is included at no extra charge.
+            - For financed projects, full ZIP handoff is available once the
+              financed price is paid in full or upon early payoff.
+            - You always receive your site files and reasonable handoff notes. A
+              migration fee may apply for extra hand-holding beyond the standard
+              export.
+        - heading: Client responsibilities
+          paragraphs:
+            - You agree to provide accurate business information, respond to
+              requests within a reasonable time, and ensure you have rights to
+              any images or content you supply.
+            - Delays in client feedback may shift launch timelines. We are not
+              responsible for launch delays caused by missing content or
+              approvals.
+        - heading: Solo operator disclosure
+          paragraphs:
+            - Halite WebDev is operated by Sebastian Salgado as an individual
+              studio. You work directly with the builder. Support is provided
+              during reasonable business hours—not 24/7 emergency response
+              unless explicitly agreed as a paid add-on.
+        - heading: Payment and late fees
+          paragraphs:
+            - Invoices are due on the date stated. Late payments may pause work,
+              hosting, or support until the account is current.
+            - Monthly plans are billed automatically when card billing is set
+              up, or by invoice when agreed.
+        - heading: Questions
+          paragraphs:
+            - "Before signing, ask anything that is unclear. Contact:
+              salsalgadonm@gmail.com or (505) 373-9851. We're happy to walk
+              through this in plain language on a short call."
+  pageCopy:
+    services:
+      eyebrow: Services
+      title: Landing pages for local shops
+      description: A page that looks like you, loads on a phone, and is easy to tap.
+        Clear prices. We start with a free Zoom.
+    work:
+      eyebrow: Work
+      title: Live shops I have already shipped
+      description: Open these on your phone. Restaurant, tattoo, and food-brand pages
+        built for real owners.
+      link:
+        label: Meet Sebastian
+        href: /about#about
+    process:
+      eyebrow: How we work
+      title: You start on this page. Then we work in five clear steps.
+      description: Let's talk, a short Zoom, your photos, a review, then launch.
+        You'll always know what's next.
+    apply:
+      eyebrow: Get started
+      title: Let's talk about your shop
+      description: A few details or a text. Same-day reply on business days. No hard sell.
+    pricing:
+      eyebrow: Pricing
+      title: Clear starting prices
+      description: Straightforward options for restaurants, tattoo shops, salons, and
+        local businesses across Las Cruces, Albuquerque, Santa Fe, and El Paso.
+        Every project starts with a free Zoom call—we confirm scope and price in
+        writing before any work begins.
+    about:
+      eyebrow: About
+      title: A CS student in Las Cruces
+      description: I build custom landing pages for local shops. We sit on Zoom. You
+        do not need to be technical.
+    privacy:
+      eyebrow: Legal
+      title: Privacy Policy
+      description: How Halite WebDev collects, uses, and protects your information.
+    terms:
+      eyebrow: Legal
+      title: Terms of Service
+      description: Plain-language terms for using our website and working with us on a
+        project.
+    service-agreement:
+      eyebrow: Legal
+      title: Service Agreement Summary
+      description: Key terms for website projects and monthly plans—plain language
+        before you sign.
+  meta:
+    favicon: /images/logo.png

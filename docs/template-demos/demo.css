@@ -1,0 +1,64 @@
+/**
+ * ELI5: Shared clothes for the five $500 starter previews so they stay simple.
+ * What: Base type, page width, and button styles for Halite template demos.
+ * Owns: Shared demo chrome only. Each demo page sets its own colors.
+ * Depends on: the five demo index.html files in sibling folders.
+ */
+
+:root {
+  --demo-bg: #f6f1ea;
+  --demo-ink: #231c18;
+  --demo-muted: #6a5c52;
+  --demo-accent: #b4532a;
+  --demo-card: #fffaf4;
+  --demo-font: "Georgia", "Times New Roman", serif;
+  --demo-sans: "Segoe UI", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  min-height: 100vh;
+  background: var(--demo-bg);
+  color: var(--demo-ink);
+  font-family: var(--demo-sans);
+  line-height: 1.5;
+}
+
+.demo-wrap { max-width: 40rem; margin: 0 auto; padding: 1.25rem 1.15rem 3rem; }
+.demo-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.demo-hero h1 {
+  font-family: var(--demo-font);
+  font-size: 2.4rem;
+  line-height: 1.1;
+  margin: 0 0 0.75rem;
+}
+.demo-hero p { margin: 0 0 1.25rem; color: var(--demo-muted); max-width: 28rem; }
+.demo-btn {
+  display: inline-block;
+  padding: 0.7rem 1rem;
+  background: var(--demo-accent);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 999px;
+  font-weight: 600;
+}
+.demo-panel {
+  margin-top: 2rem;
+  padding: 1.1rem 1.15rem;
+  background: var(--demo-card);
+  border-radius: 1rem;
+}
+.demo-panel h2 { margin: 0 0 0.5rem; font-size: 1.05rem; }
+.demo-panel p, .demo-panel li { margin: 0; color: var(--demo-muted); font-size: 0.95rem; }
+.demo-panel ul { margin: 0.4rem 0 0; padding-left: 1.1rem; }
+.demo-note { margin-top: 2rem; font-size: 0.8rem; color: var(--demo-muted); }

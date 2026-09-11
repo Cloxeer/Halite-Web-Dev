@@ -3,28 +3,28 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Sites for local businesses | Halite Studio</title>
-<meta name="description" content="Halite WebDev builds professional websites for restaurants, tattoo shops, and salons in Las Cruces, Albuquerque, Santa Fe, and El Paso. Founding rates from $500. Talk directly to Sebastian—the person building your site."/>
+<title>Live shops I have already shipped | Halite Studio</title>
+<meta name="description" content="I&#39;m Sebastian, a CS student in Las Cruces. I build custom landing pages for restaurants, tattoo shops, and local businesses. Fast on phones. From $500. We sit on Zoom together."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Source%20Sans%203:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 :root {
-  --font-display: 'Fraunces';
-  --font-body: 'Source Sans 3';
-  --color-text: oklch(0.22 0.01 50);
-  --color-muted: oklch(0.52 0.02 50);
-  --color-accent: oklch(0.63 0.09 48);
-  --color-background: oklch(0.995 0.004 90);
-  --color-surface: oklch(0.97 0.012 85);
+  --font-display: 'Outfit';
+  --font-body: 'Figtree';
+  --color-text: oklch(0.24 0.02 40);
+  --color-muted: oklch(0.46 0.03 45);
+  --color-accent: oklch(0.55 0.12 48);
+  --color-background: oklch(0.985 0.008 70);
+  --color-surface: oklch(0.96 0.014 60);
   --halite-cream: oklch(0.995 0.004 90);
   --halite-sand: oklch(0.97 0.012 85);
-  --halite-stone: oklch(0.52 0.02 50);
+  --halite-stone: oklch(0.49 0.02 50);
   --halite-rock: oklch(0.22 0.01 50);
   --halite-crystal: oklch(0.94 0.03 78);
-  --halite-crystal-deep: oklch(0.52 0.07 45);
-  --primary: oklch(0.63 0.09 48);
-  --primary-hover: oklch(0.58 0.09 48);
+  --halite-crystal-deep: oklch(0.49 0.07 45);
+  --primary: oklch(0.54 0.11 48);
+  --primary-hover: oklch(0.49 0.11 48);
   --primary-foreground: oklch(0.99 0.005 90);
   --primary-soft: oklch(0.96 0.02 78);
   --primary-muted: oklch(0.9 0.035 72);
@@ -32,15 +32,34 @@
   --hero-image: url('../images/halite/hero.png');
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scrollbar-width: none; }
+/* Clean, app-like surface: hide the scrollbar. Scrolling stays fully functional. */
+html::-webkit-scrollbar { display: none; }
+
+/* Smooth cross-device page transition — opacity only, so position:fixed stays intact.
+   Fade IN on load; JS adds .is-leaving to fade OUT before navigating. Reduced-motion = instant. */
+@media (prefers-reduced-motion: no-preference) {
+  .wd-page-fade { animation: wd-page-in 520ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .wd-page-fade.is-leaving { animation: wd-page-out 320ms cubic-bezier(0.4, 0, 1, 1) both; }
+}
+@keyframes wd-page-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes wd-page-out { from { opacity: 1; } to { opacity: 0; } }
+
+:root {
+  --wd-header-height: 4rem;
+  --wd-logo-height: 2.25rem;
+}
 
 body {
-  font-family: var(--font-body), "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-body), "Figtree", ui-sans-serif, system-ui, sans-serif;
   background: var(--color-background);
   color: var(--color-text);
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+body.wd-has-flow {
+  position: relative;
 }
 
 .halite-layout-offset {
@@ -81,7 +100,7 @@ button { cursor: pointer; background: none; border: none; font: inherit; }
 input, textarea { font: inherit; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display), "Fraunces", ui-serif, Georgia, serif;
+  font-family: var(--font-display), "Outfit", ui-sans-serif, system-ui, sans-serif;
   font-weight: 500;
   letter-spacing: -0.025em;
   color: var(--halite-rock);
@@ -157,7 +176,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .wd-header-inner {
   display: flex;
-  height: 4rem;
+  height: var(--wd-header-height);
   align-items: center;
   justify-content: space-between;
 }
@@ -165,19 +184,21 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-flex;
   align-items: center;
   gap: 0.625rem;
+  /* 44px tap target (Apple HIG / WCAG 2.5.5); absorbed by the 64px header row, so no visual change. */
+  min-height: 44px;
 }
-.wd-logo img { width: 2.25rem; height: 2.25rem; flex-shrink: 0; }
+.wd-logo img { height: var(--wd-logo-height); width: auto; flex-shrink: 0; }
 .wd-logo-text { display: flex; flex-direction: column; line-height: 1; }
 .wd-logo-primary {
-  font-family: var(--font-display), "Fraunces", serif;
+  font-family: var(--font-display), "Outfit", ui-sans-serif, system-ui, sans-serif;
   font-size: 1.125rem;
   font-weight: 600;
   letter-spacing: -0.025em;
   color: var(--halite-rock);
 }
-@media (min-width: 640px) { .wd-logo-primary { font-size: 1.25rem; } }
+@media (min-width: 640px) { .wd-logo-primary { font-size: 1.125rem; } }
 .wd-logo-accent {
-  font-size: 0.65rem;
+  font-size: 0.6875rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.2em;
@@ -205,7 +226,7 @@ h1, h2, h3, h4, h5, h6 {
 .wd-nav-cta {
   display: inline-flex;
   border-radius: 0.5rem;
-  padding: 0.625rem 1.25rem;
+  padding: 0.625rem 1.5rem;
   font-size: 0.875rem;
   font-weight: 600;
   color: #fff;
@@ -224,7 +245,7 @@ h1, h2, h3, h4, h5, h6 {
 .wd-nav-phone:hover { color: var(--halite-crystal-deep); }
 
 .wd-nav-mobile-phone {
-  font-family: var(--font-body), "Source Sans 3", sans-serif;
+  font-family: var(--font-body), "Figtree", ui-sans-serif, system-ui, sans-serif;
   font-size: 1.125rem;
   font-weight: 600;
   color: var(--halite-crystal-deep);
@@ -234,6 +255,11 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   z-index: 51;
   display: inline-flex;
+  /* Guarantee a 44×44 touch target (Apple HIG / WCAG 2.5.5), icon centered. */
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
   border-radius: 0.375rem;
   padding: 0.5rem;
   color: var(--halite-rock);
@@ -244,7 +270,7 @@ body.wd-menu-open { overflow: hidden; }
 
 .wd-nav-mobile {
   position: fixed;
-  inset: 4rem 0 0 0;
+  inset: var(--wd-header-height) 0 0 0;
   z-index: 40;
   display: flex;
   align-items: center;
@@ -307,7 +333,7 @@ body.wd-menu-open { overflow: hidden; }
 }
 
 .wd-nav-mobile a:not(.wd-nav-mobile-cta) {
-  font-family: var(--font-display), "Fraunces", serif;
+  font-family: var(--font-display), "Outfit", ui-sans-serif, system-ui, sans-serif;
   font-size: 1.75rem;
   font-weight: 500;
   letter-spacing: -0.025em;
@@ -338,7 +364,7 @@ body.wd-menu-open { overflow: hidden; }
 }
 .wd-menu-btn svg { width: 1.5rem; height: 1.5rem; }
 
-main { padding-top: 4rem; }
+main { padding-top: var(--wd-header-height); }
 
 /* Hero */
 :root {
@@ -353,6 +379,34 @@ main { padding-top: 4rem; }
   /* Card hover lift (Motion-style: small rise, soft diffuse shadow) */
   --wd-card-lift: -4px;
   --wd-card-hover-shadow: 0 14px 28px -16px rgba(24, 12, 8, 0.28);
+  --wd-portfolio-swap-duration: 16s;
+  --wd-portfolio-stagger: 0.2s;
+  --wd-founder-photo-stagger-steps: 3;
+  --wd-founder-title-text-stroke: 16px;
+  --wd-portfolio-desktop-ratio: 16 / 10;
+  --wd-portfolio-frame-radius: 0.75rem;
+  --wd-portfolio-phone-height: 90%;
+  --wd-portfolio-phone-radius: 1.4rem;
+  --wd-portfolio-phone-bezel: 5px solid #1c1814;
+  --wd-portfolio-phone-shadow: 0 16px 36px oklch(0.22 0.01 50 / 0.28);
+  --wd-portfolio-app-bar-height: 38px;
+  --wd-portfolio-app-bar-bg: #ececec;
+  --wd-portfolio-app-bar-text: #6b6b70;
+  --wd-portfolio-traffic-size: 10px;
+  --wd-portfolio-traffic-gap: 6px;
+  --wd-portfolio-traffic-inset: 12px;
+  --wd-portfolio-traffic-red: #ff5f57;
+  --wd-portfolio-traffic-yellow: #febc2e;
+  --wd-portfolio-traffic-green: #28c840;
+  --wd-flow-stroke: #1d1d1f;
+  --wd-flow-width: 5px;
+  --wd-flow-len: 0px;
+  --wd-flow-z: 1;
+  --wd-content-z: 2;
+  --wd-flow-fade: 0.85;
+  --wd-cta-z: 3;
+  --wd-flow-name-arrow-size: 144px;
+  --wd-flow-text-stroke: 5px;
 }
 .wd-hero { background: var(--wd-glass-base); }
 .wd-hero-media {
@@ -457,7 +511,7 @@ main { padding-top: 4rem; }
   line-height: 1.625;
   color: #f5f5f7;
 }
-@media (min-width: 640px) { .wd-hero-body { font-size: 1.25rem; } }
+@media (min-width: 640px) { .wd-hero-body { font-size: 1.125rem; } }
 .wd-hero-cta {
   display: inline-flex;
   border-radius: 0.5rem;
@@ -472,6 +526,19 @@ main { padding-top: 4rem; }
   align-items: center;
   gap: 0.75rem;
   margin-top: 0.25rem;
+}
+.wd-hero-cta-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.wd-hero-cta-block .wd-reach-note {
+  margin: 0;
+  max-width: 28rem;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: #d1d1d6;
 }
 .wd-hero-cta-secondary {
   display: inline-flex;
@@ -491,7 +558,7 @@ main { padding-top: 4rem; }
 }
 .wd-hero-pricing-teaser {
   margin-top: 1rem;
-  font-size: 0.9375rem;
+  font-size: 1rem;
   color: #d1d1d6;
 }
 .wd-hero-pricing-teaser a {
@@ -499,6 +566,9 @@ main { padding-top: 4rem; }
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 0.2em;
+  /* Give the inline link a ≥24px tap height (WCAG 2.5.8 AA) without disturbing the text flow. */
+  display: inline-block;
+  padding-block: 4px;
 }
 .wd-hero-pricing-teaser a:hover { color: #fff; }
 
@@ -510,7 +580,7 @@ main { padding-top: 4rem; }
 .wd-trust-strip-grid {
   display: grid;
   gap: 1rem;
-  padding: 1.25rem 0;
+  padding: 1.5rem 0;
 }
 @media (min-width: 640px) {
   .wd-trust-strip-grid { grid-template-columns: repeat(2, 1fr); }
@@ -527,14 +597,14 @@ main { padding-top: 4rem; }
 }
 @media (min-width: 1024px) { .wd-trust-stat { text-align: left; } }
 .wd-trust-stat strong {
-  font-family: var(--font-display), "Fraunces", serif;
+  font-family: var(--font-display), "Outfit", ui-sans-serif, system-ui, sans-serif;
   font-size: 1.125rem;
   font-weight: 600;
   color: var(--halite-rock);
   line-height: 1.2;
 }
 .wd-trust-stat span {
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   color: var(--halite-stone);
 }
 
@@ -554,7 +624,7 @@ main { padding-top: 4rem; }
 }
 @media (min-width: 640px) {
   .wd-value-props { grid-template-columns: repeat(3, 1fr); }
-  .wd-value-props li { padding: 1.25rem 1rem; }
+  .wd-value-props li { padding: 1.5rem 1rem; }
   .wd-value-props li + li { border-left: 1px solid #424245; }
   .wd-value-props li { border-top: none; }
 }
@@ -590,19 +660,38 @@ main { padding-top: 4rem; }
 @media (min-width: 1024px) { .wd-service-grid { grid-template-columns: repeat(3, 1fr); } }
 
 .wd-service-card {
+  position: relative;
   overflow: hidden;
   border-radius: 0.75rem;
   border: 1px solid var(--border);
   background: var(--halite-sand);
-  transition: all 0.3s;
+  transition: border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
-@media (hover: hover) {
+/* Hover shadow cross-faded on a pseudo-element — never animate box-shadow directly (paint = jank). */
+.wd-service-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: var(--wd-card-hover-shadow);
+  opacity: 0;
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+@media (hover: hover) and (pointer: fine) {
   .wd-service-card:hover {
     border-color: var(--primary);
     background: #fff;
-    box-shadow: var(--wd-card-hover-shadow);
     transform: translateY(var(--wd-card-lift));
   }
+  .wd-service-card:hover::after {
+    opacity: 1;
+  }
+}
+.wd-service-card.is-open {
+  border-color: var(--primary);
+  background: #fff;
 }
 .wd-service-toggle {
   display: flex;
@@ -612,6 +701,12 @@ main { padding-top: 4rem; }
   gap: 1rem;
   padding: 1.5rem;
   text-align: center;
+  /* reset native <button> chrome */
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
 }
 .wd-service-icon { width: 2.5rem; height: 2.5rem; color: var(--primary); }
 .wd-service-toggle h3 {
@@ -620,7 +715,7 @@ main { padding-top: 4rem; }
   line-height: 1.375;
   color: var(--halite-rock);
 }
-@media (min-width: 640px) { .wd-service-toggle h3 { font-size: 1.25rem; } }
+@media (min-width: 640px) { .wd-service-toggle h3 { font-size: 1.125rem; } }
 .wd-service-toggle h3 em { font-style: normal; color: var(--halite-crystal-deep); }
 .wd-service-hint {
   font-size: 0.75rem;
@@ -630,37 +725,40 @@ main { padding-top: 4rem; }
   width: 1.25rem;
   height: 1.25rem;
   color: var(--halite-stone);
-  transition: transform 0.3s;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s;
 }
-@media (hover: hover) {
-  .wd-service-card:hover .wd-service-chevron {
-    transform: rotate(180deg);
-    color: var(--halite-crystal-deep);
-  }
+.wd-service-card.is-open .wd-service-chevron {
+  transform: rotate(180deg);
+  color: var(--halite-crystal-deep);
 }
 .wd-service-panel {
   display: grid;
   grid-template-rows: 0fr;
   opacity: 0;
-  transition: all 0.3s ease-in-out;
+  transition: grid-template-rows 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1);
 }
-@media (hover: hover) {
-  .wd-service-card:hover .wd-service-panel {
-    grid-template-rows: 1fr;
-    opacity: 1;
+.wd-service-card.is-open .wd-service-panel {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+.wd-service-panel-inner {
+  overflow: hidden;
+  transform: translateY(6px);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.wd-service-card.is-open .wd-service-panel-inner {
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .wd-service-card,
+  .wd-service-card::after,
+  .wd-service-chevron,
+  .wd-service-panel,
+  .wd-service-panel-inner {
+    transition: none;
   }
 }
-@media (hover: none) {
-  .wd-service-card .wd-service-panel {
-    grid-template-rows: 1fr;
-    opacity: 1;
-  }
-  .wd-service-card .wd-service-chevron {
-    transform: rotate(180deg);
-    color: var(--halite-crystal-deep);
-  }
-}
-.wd-service-panel-inner { overflow: hidden; }
 .wd-service-detail {
   border-top: 1px solid var(--border);
   padding: 0.5rem 1.5rem 1.5rem;
@@ -682,6 +780,10 @@ main { padding-top: 4rem; }
   font-weight: 600;
   color: var(--primary);
   transition: color 0.15s;
+  /* 44px tap target for the panel CTA (Apple HIG / WCAG 2.5.5). */
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }
 .wd-service-detail a:hover { color: var(--halite-rock); }
 .wd-services-footer-cta {
@@ -700,7 +802,7 @@ main { padding-top: 4rem; }
 
 /* Pricing */
 .wd-pricing { background: #fff; padding: 4rem 0; }
-@media (min-width: 1024px) { .wd-pricing { padding: 5rem 0; } }
+@media (min-width: 1024px) { .wd-pricing { padding: 4rem 0; } }
 .wd-pricing-inner { display: flex; flex-direction: column; gap: 3rem; }
 .wd-pricing-header { text-align: center; max-width: 42rem; margin: 0 auto; }
 .wd-pricing-header-compact { margin-bottom: 0.5rem; }
@@ -718,7 +820,7 @@ main { padding-top: 4rem; }
 }
 .wd-pricing-beta-badge {
   display: inline-block;
-  margin-top: 1.25rem;
+  margin-top: 1.5rem;
   border-radius: 9999px;
   background: var(--halite-crystal-deep);
   color: #fff;
@@ -740,7 +842,7 @@ main { padding-top: 4rem; }
 .wd-pricing-billing-btn {
   border: 0;
   border-radius: 9999px;
-  padding: 0.625rem 1.25rem;
+  padding: 0.625rem 1.5rem;
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--halite-stone);
@@ -761,30 +863,38 @@ main { padding-top: 4rem; }
   display: none;
 }
 .wd-pricing-handoff {
-  padding-top: 0.5rem;
+  padding-top: 2rem;
   border-top: 1px solid var(--border);
 }
 .wd-pricing-handoff h3 {
   margin-bottom: 0.75rem;
+  font-size: 1.125rem;
+  font-weight: 600;
 }
 @media (min-width: 768px) {
   .wd-pricing-grid-handoff { grid-template-columns: repeat(2, 1fr); }
+}
+.wd-pricing-grid-handoff:has(.wd-pricing-handoff-card:only-child) {
+  grid-template-columns: 1fr;
+  max-width: 40rem;
+  margin-inline: auto;
 }
 .wd-pricing-handoff-card {
   min-height: 100%;
 }
 .wd-pricing-section h3 {
-  margin-bottom: 1.25rem;
-  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.125rem;
   font-weight: 600;
   color: var(--halite-rock);
 }
 .wd-pricing-note {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
   font-size: 0.875rem;
   line-height: 1.625;
   color: var(--halite-stone);
 }
+.wd-pricing-grid-handoff + .wd-pricing-note { margin-top: 1.5rem; }
 .wd-pricing-grid {
   display: grid;
   gap: 1rem;
@@ -896,11 +1006,16 @@ main { padding-top: 4rem; }
   gap: 0.75rem;
 }
 @media (min-width: 768px) { .wd-pricing-addons { grid-template-columns: repeat(2, 1fr); } }
+.wd-pricing-addons:has(.wd-pricing-addon:only-child) {
+  grid-template-columns: 1fr;
+  max-width: 40rem;
+  margin-inline: auto;
+}
 .wd-pricing-addon {
   border-radius: 0.75rem;
   border: 1px solid var(--border);
   background: var(--halite-sand);
-  padding: 1rem 1.25rem;
+  padding: 1rem 1.5rem;
 }
 .wd-pricing-addon-head {
   display: flex;
@@ -910,7 +1025,7 @@ main { padding-top: 4rem; }
   margin-bottom: 0.5rem;
 }
 .wd-pricing-addon h4 {
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--halite-rock);
 }
@@ -921,7 +1036,7 @@ main { padding-top: 4rem; }
   color: var(--halite-crystal-deep);
 }
 .wd-pricing-addon p {
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   line-height: 1.5;
   color: var(--halite-stone);
 }
@@ -940,7 +1055,7 @@ main { padding-top: 4rem; }
 .wd-page-intro {
   border-bottom: 1px solid var(--border);
   background: var(--halite-sand);
-  padding: 3.5rem 0;
+  padding: 3rem 0;
 }
 @media (min-width: 1024px) { .wd-page-intro { padding: 4rem 0; } }
 .wd-page-intro .section-container { max-width: 48rem; }
@@ -959,7 +1074,7 @@ main { padding-top: 4rem; }
 @media (min-width: 640px) { .wd-page-intro p { font-size: 1.125rem; } }
 .wd-page-intro-link {
   display: inline-block;
-  margin-top: 1.25rem;
+  margin-top: 1.5rem;
   font-size: 1rem;
   font-weight: 600;
   color: var(--halite-accent);
@@ -967,11 +1082,27 @@ main { padding-top: 4rem; }
   transition: color 0.2s ease;
 }
 .wd-page-intro-link:hover { color: var(--halite-rock); }
+.wd-page-intro:has(+ .wd-workflow) {
+  --wd-intro-into-workflow-pad: 2rem;
+  border-bottom: none;
+  background: var(--color-background);
+  padding-bottom: var(--wd-intro-into-workflow-pad);
+}
+.wd-page-intro:has(+ .wd-apply-form) {
+  border-bottom: none;
+}
+.wd-page-intro:has(+ .wd-pricing) {
+  border-bottom: none;
+  background: #fff;
+}
+.wd-page-intro + .wd-pricing {
+  padding-top: 0;
+}
 
 /* Confrontation */
 .wd-confrontation {
   background: var(--halite-sand);
-  padding: 5rem 0;
+  padding: 4rem 0;
 }
 @media (min-width: 1024px) { .wd-confrontation { padding: 6rem 0; } }
 .wd-confrontation-inner { display: flex; flex-direction: column; gap: 3rem; }
@@ -1010,7 +1141,7 @@ main { padding-top: 4rem; }
     box-shadow: var(--wd-card-hover-shadow);
   }
 }
-.wd-confrontation-card h3 { font-size: 1.25rem; font-weight: 600; }
+.wd-confrontation-card h3 { font-size: 1.125rem; font-weight: 600; }
 .wd-confrontation-card p {
   font-size: 1rem;
   line-height: 1.625;
@@ -1021,12 +1152,12 @@ main { padding-top: 4rem; }
 .wd-framework {
   background: var(--halite-rock);
   color: var(--halite-cream);
-  padding: 5rem 0;
+  padding: 4rem 0;
 }
 @media (min-width: 1024px) { .wd-framework { padding: 6rem 0; } }
 .wd-framework-grid {
   display: grid;
-  gap: 2.5rem;
+  gap: 3rem;
 }
 @media (min-width: 1024px) {
   .wd-framework-grid {
@@ -1043,7 +1174,7 @@ main { padding-top: 4rem; }
 }
 @media (min-width: 640px) { .wd-framework h2 { font-size: 2.25rem; } }
 @media (min-width: 1024px) { .wd-framework h2 { font-size: 2.75rem; } }
-.wd-framework-copy { display: flex; flex-direction: column; gap: 1.25rem; }
+.wd-framework-copy { display: flex; flex-direction: column; gap: 1.5rem; }
 .wd-framework-copy p {
   font-size: 1rem;
   line-height: 1.625;
@@ -1059,7 +1190,7 @@ main { padding-top: 4rem; }
 @media (min-width: 1024px) { .wd-founder { padding: 6rem 0; } }
 .wd-founder-grid {
   display: grid;
-  gap: 2.5rem;
+  gap: 3rem;
   align-items: start;
 }
 @media (min-width: 900px) {
@@ -1068,7 +1199,12 @@ main { padding-top: 4rem; }
     gap: 3rem;
   }
 }
-.wd-founder-portrait { display: flex; justify-content: center; }
+.wd-founder-portrait {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: var(--wd-cta-z);
+}
 .wd-founder-photo,
 .wd-founder-photo-carousel {
   width: min(100%, 280px);
@@ -1085,6 +1221,9 @@ main { padding-top: 4rem; }
   overflow: hidden;
   background: var(--color-surface);
 }
+body.wd-has-flow .wd-founder-photo-slide {
+  position: absolute;
+}
 .wd-founder-photo-slide {
   position: absolute;
   inset: 0;
@@ -1093,25 +1232,17 @@ main { padding-top: 4rem; }
   object-fit: cover;
   object-position: top center;
   opacity: 0;
-  animation-duration: 12s;
+  animation-duration: var(--wd-portfolio-swap-duration);
+  animation-delay: calc(var(--wd-portfolio-stagger) * var(--wd-founder-photo-stagger-steps));
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
+  animation-fill-mode: backwards;
 }
 .wd-founder-photo-slide:nth-child(1) {
-  animation-name: wd-founder-photo-first;
+  animation-name: wd-portfolio-swap-first;
 }
 .wd-founder-photo-slide:nth-child(2) {
-  animation-name: wd-founder-photo-second;
-}
-@keyframes wd-founder-photo-first {
-  0%, 42% { opacity: 1; }
-  50%, 92% { opacity: 0; }
-  100% { opacity: 1; }
-}
-@keyframes wd-founder-photo-second {
-  0%, 42% { opacity: 0; }
-  50%, 92% { opacity: 1; }
-  100% { opacity: 0; }
+  animation-name: wd-portfolio-swap-second;
 }
 @media (prefers-reduced-motion: reduce) {
   .wd-founder-photo-slide {
@@ -1131,27 +1262,33 @@ main { padding-top: 4rem; }
   font-size: 3rem;
   font-weight: 600;
 }
+.wd-founder-copy {
+  position: relative;
+}
 .wd-founder-copy h2 {
   font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 2.75rem);
   line-height: 1.1;
   margin-bottom: 0.75rem;
+  width: fit-content;
 }
 .wd-founder-name {
   font-size: 1.125rem;
   font-weight: 600;
   color: var(--halite-rock);
+  width: fit-content;
 }
 .wd-founder-role {
   color: var(--halite-stone);
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
+  width: fit-content;
 }
 .wd-founder-body {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   color: var(--halite-stone);
-  font-size: 1.0625rem;
+  font-size: 1rem;
   line-height: 1.7;
 }
 .wd-founder-highlights {
@@ -1180,6 +1317,10 @@ main { padding-top: 4rem; }
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 0.2em;
+  /* 44px tap target for the call/email CTAs (Apple HIG / WCAG 2.5.5). */
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }
 
 .wd-legal {
@@ -1194,7 +1335,7 @@ main { padding-top: 4rem; }
   margin-bottom: 1rem;
 }
 .wd-legal-intro {
-  font-size: 1.0625rem;
+  font-size: 1rem;
   line-height: 1.7;
   color: var(--halite-stone);
   margin-bottom: 2rem;
@@ -1226,8 +1367,15 @@ main { padding-top: 4rem; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1.5rem;
   text-align: center;
+  position: relative;
+}
+.wd-local-cta-inner h2,
+.wd-local-cta-inner p,
+.wd-local-cta-inner .btn-primary {
+  position: relative;
+  z-index: var(--wd-cta-z);
 }
 .wd-local-cta h2 {
   font-size: 1.875rem;
@@ -1264,7 +1412,7 @@ main { padding-top: 4rem; }
 @media (min-width: 1024px) { .wd-portfolio-header h2 { font-size: 2.75rem; } }
 .wd-portfolio-header h3 {
   margin-bottom: 1rem;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 500;
   color: var(--halite-stone);
 }
@@ -1285,10 +1433,17 @@ main { padding-top: 4rem; }
 .wd-portfolio-image {
   position: relative;
   overflow: hidden;
-  border-radius: 0.75rem;
+  border-radius: var(--wd-portfolio-frame-radius);
   border: 1px solid var(--border);
   background: var(--halite-sand);
   box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.wd-portfolio-image:has(.wd-portfolio-screenshot-swap) {
+  overflow: visible;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
 }
 .wd-portfolio-demo-badge {
   position: absolute;
@@ -1304,7 +1459,120 @@ main { padding-top: 4rem; }
   text-transform: uppercase;
   padding: 0.35rem 0.65rem;
 }
-.wd-portfolio-image img { width: 100%; object-fit: cover; object-position: top; }
+.wd-portfolio-image img { width: 100%; object-fit: cover; object-position: top; display: block; }
+.wd-portfolio-screenshot-swap {
+  position: relative;
+  aspect-ratio: var(--wd-portfolio-desktop-ratio);
+  overflow: visible;
+  background: transparent;
+}
+.wd-portfolio-slide-layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  animation-duration: var(--wd-portfolio-swap-duration);
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-delay: 0s;
+  animation-fill-mode: backwards;
+}
+.wd-portfolio-item:nth-child(2) .wd-portfolio-slide-layer {
+  animation-delay: var(--wd-portfolio-stagger);
+}
+.wd-portfolio-item:nth-child(3) .wd-portfolio-slide-layer {
+  animation-delay: calc(var(--wd-portfolio-stagger) * 2);
+}
+.wd-portfolio-slide-layer-mobile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  background: transparent;
+  animation-name: wd-portfolio-swap-first;
+}
+.wd-portfolio-slide-layer-desktop {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--wd-portfolio-frame-radius);
+  animation-name: wd-portfolio-swap-second;
+}
+.wd-portfolio-safari {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: var(--wd-portfolio-frame-radius);
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  background: var(--wd-portfolio-app-bar-bg);
+}
+.wd-portfolio-app-bar {
+  position: relative;
+  flex: 0 0 var(--wd-portfolio-app-bar-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--wd-portfolio-app-bar-bg);
+  color: var(--wd-portfolio-app-bar-text);
+  font-size: 0.75rem;
+  letter-spacing: 0.01em;
+  border-bottom: 1px solid var(--border);
+}
+.wd-portfolio-app-bar::before {
+  content: "";
+  position: absolute;
+  left: var(--wd-portfolio-traffic-inset);
+  top: 50%;
+  translate: 0 -50%;
+  width: var(--wd-portfolio-traffic-size);
+  height: var(--wd-portfolio-traffic-size);
+  border-radius: 50%;
+  background: var(--wd-portfolio-traffic-red);
+  box-shadow:
+    calc(var(--wd-portfolio-traffic-size) + var(--wd-portfolio-traffic-gap)) 0 0 var(--wd-portfolio-traffic-yellow),
+    calc((var(--wd-portfolio-traffic-size) + var(--wd-portfolio-traffic-gap)) * 2) 0 0 var(--wd-portfolio-traffic-green);
+}
+.wd-portfolio-screenshot-swap img.wd-portfolio-desktop-shot {
+  flex: 1 1 0;
+  width: 100%;
+  min-height: 0;
+  height: 0;
+  object-fit: cover;
+  object-position: top;
+}
+.wd-portfolio-screenshot-swap img.wd-portfolio-phone {
+  width: auto;
+  height: var(--wd-portfolio-phone-height);
+  max-width: none;
+  object-fit: contain;
+  object-position: top;
+  border-radius: var(--wd-portfolio-phone-radius);
+  border: var(--wd-portfolio-phone-bezel);
+  box-shadow: var(--wd-portfolio-phone-shadow);
+  background: #111;
+}
+@keyframes wd-portfolio-swap-first {
+  0%, 43.75% { opacity: 1; }
+  50%, 93.75% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes wd-portfolio-swap-second {
+  0%, 43.75% { opacity: 0; }
+  50%, 93.75% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wd-portfolio-slide-layer {
+    animation: none;
+    opacity: 0;
+  }
+  .wd-portfolio-slide-layer:first-child {
+    opacity: 1;
+  }
+}
 .wd-portfolio-tags {
   display: flex;
   flex-wrap: wrap;
@@ -1339,59 +1607,163 @@ main { padding-top: 4rem; }
   font-weight: 600;
   color: var(--halite-crystal-deep);
   transition: color 0.15s;
+  /* 44px tap target (Apple HIG / WCAG 2.5.5) for this standalone project link. */
+  min-height: 44px;
 }
 .wd-portfolio-link:hover { color: var(--halite-rock); }
 .wd-portfolio-link svg { width: 1rem; height: 1rem; }
 
 /* Workflow */
 .wd-workflow {
-  background: var(--halite-sand);
-  padding: 5rem 0;
+  --wd-workflow-node: 3rem;
+  --wd-workflow-gap: 3.5rem;
+  --wd-workflow-copy-max: 36rem;
+  --wd-workflow-col-gap: 1.5rem;
+  --wd-workflow-after-intro-pad: 1.5rem;
+  --wd-workflow-end-gap: 1.15rem;
+  --wd-workflow-line-track: color-mix(in oklch, var(--wd-flow-stroke) 32%, var(--color-background));
+  background: var(--color-background);
+  padding: 2rem 0 5rem;
 }
-@media (min-width: 1024px) { .wd-workflow { padding: 6rem 0; } }
+@media (min-width: 768px) {
+  .wd-workflow {
+    --wd-workflow-node: 3.25rem;
+    --wd-workflow-gap: 4.25rem;
+    --wd-workflow-col-gap: 2rem;
+    --wd-workflow-after-intro-pad: 2rem;
+  }
+}
+@media (min-width: 1024px) { .wd-workflow { padding: 3rem 0 7rem; } }
+.wd-page-intro + .wd-workflow { padding-top: var(--wd-workflow-after-intro-pad); }
 .wd-workflow-inner { display: flex; flex-direction: column; gap: 3rem; }
 .wd-workflow-header {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 42rem;
-  text-align: center;
+  max-width: 40rem;
+}
+@media (min-width: 768px) {
+  .wd-workflow-header {
+    max-width: 44rem;
+    margin-inline: auto;
+    text-align: center;
+  }
 }
 .wd-workflow-header h2 {
+  font-family: var(--font-display), "Outfit", ui-sans-serif, system-ui, sans-serif;
   font-size: 1.875rem;
   font-weight: 600;
 }
 @media (min-width: 640px) { .wd-workflow-header h2 { font-size: 2.25rem; } }
-.wd-workflow-grid {
+.wd-workflow-rail {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--wd-workflow-gap);
+  padding-bottom: 0.5rem;
+}
+.wd-workflow-line {
+  position: absolute;
+  left: calc(var(--wd-workflow-node) / 2);
+  top: calc(var(--wd-workflow-node) / 2);
+  bottom: calc(var(--wd-workflow-node) / 2);
+  width: var(--wd-flow-width);
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: var(--wd-workflow-line-track);
+}
+.wd-workflow-line-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--wd-flow-stroke);
+  transform: scaleY(0);
+  transform-origin: top center;
+}
+.wd-workflow-row {
+  position: relative;
   display: grid;
-  gap: 1.5rem;
+  grid-template-columns: var(--wd-workflow-node) minmax(0, 1fr);
+  column-gap: var(--wd-workflow-col-gap);
+  align-items: start;
 }
-@media (min-width: 1024px) { .wd-workflow-grid { grid-template-columns: repeat(3, 1fr); } }
-.wd-workflow-card {
-  border-radius: 0.75rem;
-  border: 1px solid var(--border);
-  background: #fff;
-  padding: 1.5rem;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+.wd-workflow-node {
+  position: relative;
+  z-index: var(--wd-content-z);
+  display: flex;
+  width: var(--wd-workflow-node);
+  height: var(--wd-workflow-node);
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: var(--wd-flow-width) solid var(--wd-flow-stroke);
+  background: var(--color-background);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--wd-flow-stroke);
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
-.wd-workflow-step {
-  display: inline-flex;
-  margin-bottom: 1rem;
-  border-radius: 9999px;
-  background: color-mix(in oklch, var(--primary) 10%, transparent);
-  padding: 0.25rem 0.75rem;
-  font-size: 0.75rem;
+.wd-workflow-node-active {
+  background: var(--wd-flow-stroke);
+  border-color: var(--wd-flow-stroke);
+  color: var(--color-background);
+}
+.wd-workflow-node-end {
+  color: var(--wd-flow-stroke);
+}
+.wd-workflow-node-end.wd-workflow-node-active {
+  color: var(--color-background);
+}
+.wd-workflow-check {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+.wd-workflow-copy h3 {
+  margin: 0.2rem 0 0.5rem;
+  font-family: var(--font-display), "Outfit", ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.5rem;
   font-weight: 600;
-  color: var(--primary);
+  letter-spacing: -0.025em;
+  line-height: 1.2;
 }
-.wd-workflow-card h3 {
-  margin-bottom: 0.75rem;
-  font-size: 1.25rem;
-  font-weight: 600;
-}
-.wd-workflow-card p {
-  font-size: 1rem;
-  line-height: 1.625;
+.wd-workflow-copy p {
+  margin: 0;
+  max-width: 36em;
+  font-size: 1.05rem;
+  line-height: 1.65;
   color: var(--halite-stone);
+}
+.wd-workflow-finish {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: var(--wd-workflow-end-gap);
+}
+@media (min-width: 768px) {
+  .wd-workflow-line {
+    left: 50%;
+  }
+  .wd-workflow-row {
+    grid-template-columns: minmax(0, 1fr) var(--wd-workflow-node) minmax(0, 1fr);
+  }
+  .wd-workflow-node {
+    grid-column: 2;
+    justify-self: center;
+  }
+  .wd-workflow-copy {
+    grid-column: 3;
+    max-width: var(--wd-workflow-copy-max);
+    padding-top: 0.15rem;
+  }
+  .wd-workflow-row-flip .wd-workflow-copy {
+    grid-column: 1;
+    justify-self: end;
+    text-align: right;
+  }
+  .wd-workflow-copy h3 { font-size: 1.75rem; }
+  .wd-workflow-finish {
+    justify-content: center;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wd-workflow-line-fill { transform: scaleY(1); }
 }
 
 /* Differentiators */
@@ -1410,7 +1782,7 @@ main { padding-top: 4rem; }
     align-items: start;
   }
 }
-.wd-diff-intro { display: flex; flex-direction: column; gap: 1.25rem; }
+.wd-diff-intro { display: flex; flex-direction: column; gap: 1.5rem; }
 .wd-diff-intro h2 {
   font-size: 1.875rem;
   font-weight: 600;
@@ -1440,7 +1812,7 @@ main { padding-top: 4rem; }
   border-radius: 0.75rem;
   border: 1px solid var(--border);
   background: #fff;
-  padding: 1.25rem;
+  padding: 1.5rem;
   box-shadow: 0 1px 2px rgba(0,0,0,0.05);
   transition: box-shadow 0.15s;
 }
@@ -1467,7 +1839,7 @@ main { padding-top: 4rem; }
 .wd-contact-cta.is-apply-lead {
   border-bottom: none;
   background: linear-gradient(180deg, var(--halite-sand) 0%, var(--halite-cream) 100%);
-  padding: 4rem 0 1.25rem;
+  padding: 4rem 0 1.5rem;
 }
 @media (min-width: 1024px) { .wd-contact-cta.is-apply-lead { padding: 5rem 0 1.5rem; } }
 .wd-contact-cta-inner {
@@ -1484,7 +1856,7 @@ main { padding-top: 4rem; }
 @media (min-width: 640px) { .wd-contact-cta h2 { font-size: 2.25rem; } }
 @media (min-width: 1024px) { .wd-contact-cta h2 { font-size: 3rem; } }
 .wd-contact-cta h3 {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 500;
   color: var(--halite-crystal-deep);
 }
@@ -1510,6 +1882,20 @@ main { padding-top: 4rem; }
   justify-content: center;
   gap: 1rem;
   padding-top: 0.5rem;
+}
+.wd-contact-cta .wd-reach-note {
+  margin: 0;
+  max-width: 32rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--halite-stone);
+}
+.wd-footer .wd-reach-note {
+  margin: 0.35rem 0 0;
+  max-width: 22rem;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--halite-stone);
 }
 .wd-btn-secondary {
   display: inline-flex;
@@ -1543,14 +1929,64 @@ main { padding-top: 4rem; }
 .wd-page-intro + .wd-apply-form {
   padding-top: 0;
 }
+.wd-page-intro + .wd-apply-form {
+  background: var(--halite-sand);
+}
 .wd-apply-form-grid {
   display: grid;
-  gap: 2.5rem;
+  gap: 3rem;
 }
 .wd-apply-form-grid.compact {
   grid-template-columns: 1fr;
-  max-width: 40rem;
+  max-width: 36rem;
   margin: 0 auto;
+}
+.wd-apply-contact {
+  max-width: 40rem;
+}
+.wd-apply-contact .section-eyebrow { color: var(--halite-crystal-deep); }
+.wd-apply-contact h1 {
+  margin-bottom: 0.85rem;
+  font-size: 1.875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--halite-rock);
+}
+@media (min-width: 640px) { .wd-apply-contact h1 { font-size: 2.25rem; } }
+@media (min-width: 1024px) { .wd-apply-contact h1 { font-size: 2.75rem; } }
+.wd-apply-contact-lead {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--halite-stone);
+}
+.wd-apply-reach {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 1.75rem 0 1.5rem;
+}
+.wd-apply-reach-row {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: 0.75rem;
+  align-items: baseline;
+  font-size: 1.05rem;
+}
+.wd-apply-reach-label {
+  color: var(--halite-stone);
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.wd-apply-reach-row a {
+  color: var(--halite-crystal-deep);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+.wd-apply-contact .wd-reach-note {
+  margin-top: 0.35rem;
+  color: var(--halite-stone);
 }
 @media (min-width: 1024px) {
   .wd-apply-form-grid {
@@ -1585,6 +2021,51 @@ main { padding-top: 4rem; }
   text-decoration: underline;
   text-underline-offset: 0.15em;
 }
+.wd-apply-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.wd-apply-card h2 {
+  font-size: 1.65rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--halite-rock);
+}
+.wd-apply-card > p {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--halite-stone);
+}
+.wd-apply-hold {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.wd-apply-sooner {
+  font-size: 1rem;
+  line-height: 1.625;
+  color: var(--halite-stone);
+}
+.wd-apply-sooner a {
+  color: var(--halite-crystal-deep);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+.wd-apply-hold-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+.wd-apply-back {
+  color: var(--halite-stone);
+  text-decoration: none;
+}
+.wd-apply-back:hover {
+  color: var(--halite-crystal-deep);
+}
 
 .halite-elevated-form {
   background: #fff;
@@ -1600,7 +2081,7 @@ main { padding-top: 4rem; }
   margin-top: 0.25rem;
 }
 
-.wd-form { display: flex; flex-direction: column; gap: 1.25rem; }
+.wd-form { display: flex; flex-direction: column; gap: 1.5rem; }
 .wd-form label {
   display: block;
   margin-bottom: 0.5rem;
@@ -1643,7 +2124,7 @@ main { padding-top: 4rem; }
   text-align: center;
 }
 .wd-form-success p:first-child {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 600;
   color: var(--halite-rock);
   margin-bottom: 0.75rem;
@@ -1653,13 +2134,15 @@ main { padding-top: 4rem; }
 
 /* Footer */
 .wd-footer {
+  position: relative;
+  z-index: var(--wd-content-z);
   border-top: 1px solid var(--border);
   background: var(--halite-sand);
   padding: 3rem 0;
 }
 .wd-footer-grid {
   display: grid;
-  gap: 2.5rem;
+  gap: 3rem;
 }
 @media (min-width: 1024px) { .wd-footer-grid { grid-template-columns: 1.2fr 1fr; } }
 .wd-footer-brand { display: flex; flex-direction: column; gap: 1rem; }
@@ -1689,7 +2172,8 @@ main { padding-top: 4rem; }
   display: block;
   font-size: 0.875rem;
   color: var(--halite-stone);
-  margin-bottom: 0.75rem;
+  /* 44px tap target for footer nav links (Apple HIG / WCAG 2.5.5); padding supplies the row rhythm. */
+  padding-block: 0.75rem;
   transition: color 0.15s;
 }
 .wd-footer-links a:hover { color: var(--halite-crystal-deep); }
@@ -1753,23 +2237,23 @@ main { padding-top: 4rem; }
 .wd-testimonials-header {
   text-align: center;
   max-width: 40rem;
-  margin: 0 auto 2.5rem;
+  margin: 0 auto 3rem;
 }
 .wd-testimonials-header h2 {
-  font-family: var(--font-display), "Fraunces", serif;
+  font-family: var(--font-display), "Outfit", ui-sans-serif, system-ui, sans-serif;
   font-size: 2rem;
   font-weight: 600;
   color: var(--halite-rock);
   margin: 0.5rem 0 0.75rem;
 }
 .wd-testimonials-rating {
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--halite-crystal-deep);
 }
 .wd-testimonials-grid {
   display: grid;
-  gap: 1.25rem;
+  gap: 1.5rem;
 }
 @media (min-width: 768px) {
   .wd-testimonials-grid { grid-template-columns: repeat(3, 1fr); }
@@ -1786,13 +2270,13 @@ main { padding-top: 4rem; }
 }
 .wd-testimonial-stars {
   color: #c9953a;
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   letter-spacing: 0.05em;
 }
 .wd-testimonial-card blockquote {
   flex: 1;
   margin: 0;
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   line-height: 1.6;
   color: var(--halite-rock);
 }
@@ -1810,7 +2294,7 @@ main { padding-top: 4rem; }
   color: var(--halite-rock);
 }
 .wd-testimonial-card footer span {
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   color: var(--halite-stone);
 }
 .wd-testimonials-disclaimer {
@@ -1844,10 +2328,336 @@ main { padding-top: 4rem; }
 .wd-back-to-top.visible { display: flex; }
 .wd-back-to-top svg { width: 1.25rem; height: 1.25rem; }
 
+.wd-template-catalog {
+  padding: 0 0 5rem;
+}
+.wd-template-catalog-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 640px) {
+  .wd-template-catalog-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 1024px) {
+  .wd-template-catalog-grid { grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; }
+}
+.wd-template-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid color-mix(in oklch, var(--border) 70%, transparent);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+.wd-template-card-preview {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 10;
+  background: var(--halite-sand);
+  overflow: hidden;
+}
+.wd-template-card-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.wd-template-card-preview-label {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  background: color-mix(in oklch, var(--halite-cream) 88%, transparent);
+  color: var(--halite-rock);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.wd-template-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1rem 1.1rem 1.15rem;
+}
+.wd-template-card-tag {
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--halite-crystal-deep);
+}
+.wd-template-card-body h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--halite-rock);
+}
+.wd-template-card-price {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--halite-rock);
+}
+.wd-template-card-cta {
+  margin-top: 0.65rem;
+  align-self: flex-start;
+}
+
+/**
+ * ELI5: Extra phone-first polish for the studio site so it feels quick in a thumb, not a brochure.
+ * What: Mobile dock, tighter hero, scroll-reveal, and portfolio image-first stacking.
+ * Owns: Web-developer motion and small-screen UX layered on styles.css.
+ * Depends on: templates/web-developer/default/styles.css (loaded first).
+ */
+
+.wd-hero-actions {
+  width: 100%;
+}
+.wd-hero-cta,
+.wd-hero-cta-secondary {
+  min-height: 2.75rem;
+}
+@media (max-width: 639px) {
+  :root {
+    --wd-header-height: 3.5rem;
+  }
+  .wd-hero-cta,
+  .wd-hero-cta-secondary {
+    width: 100%;
+  }
+  .wd-hero-inner {
+    max-width: none;
+  }
+  .wd-hero-content {
+    padding-top: 6rem;
+    padding-bottom: 2rem;
+    min-height: 0;
+  }
+  .wd-hero h1 {
+    font-size: 1.85rem;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+  }
+  .wd-hero-body {
+    font-size: 1rem;
+    max-width: none;
+  }
+  .wd-hero-eyebrow {
+    letter-spacing: 0.08em;
+    font-size: 0.6875rem;
+  }
+  .wd-header-inner {
+    height: var(--wd-header-height);
+  }
+  .wd-nav-mobile {
+    inset: var(--wd-header-height) 0 0 0;
+  }
+}
+
+.wd-portfolio-item .wd-portfolio-image {
+  order: -1;
+}
+.wd-portfolio-list {
+  gap: 3rem;
+}
+@media (max-width: 1023px) {
+  .wd-portfolio {
+    padding: 3rem 0 1.5rem;
+  }
+  .wd-founder {
+    padding: 3rem 0;
+  }
+  .wd-local-cta {
+    padding: 3rem 0 6rem;
+  }
+}
+
+.wd-reveal {
+  animation: wd-reveal-in linear both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 40%;
+}
+@keyframes wd-reveal-in {
+  from {
+    opacity: 0.35;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wd-reveal {
+    animation: none;
+  }
+}
+body.wd-has-flow .wd-reveal {
+  animation: none;
+  animation-timeline: none;
+  transform: none;
+  opacity: 1;
+}
+
+.wd-mobile-dock {
+  display: none;
+}
+@media (max-width: 1023px) {
+  :root {
+    --wd-mobile-dock-offset: calc(4.25rem + env(safe-area-inset-bottom, 0px));
+  }
+  body:has(.wd-mobile-dock) {
+    padding-bottom: var(--wd-mobile-dock-offset);
+  }
+  body:has(.wd-mobile-dock) .wd-back-to-top {
+    bottom: calc(var(--wd-mobile-dock-offset) + 0.75rem);
+  }
+  body.wd-menu-open .wd-mobile-dock {
+    display: none;
+  }
+  .wd-mobile-dock {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    position: fixed;
+    z-index: 45;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0.5rem 0.75rem calc(0.5rem + env(safe-area-inset-bottom, 0px));
+    background: var(--color-background);
+    border-top: 1px solid var(--border);
+  }
+  .wd-mobile-dock:not(:has(.wd-mobile-dock-call)) {
+    grid-template-columns: 1fr;
+  }
+  .wd-mobile-dock a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  .wd-mobile-dock-call {
+    border: 1px solid var(--border);
+    color: var(--halite-rock);
+    background: var(--color-surface);
+  }
+  .wd-mobile-dock-chat {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wd-hero-cta,
+  .wd-hero-cta-secondary {
+    width: auto;
+  }
+}
+
+@property --wd-flow-p {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+.wd-flow {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: var(--wd-flow-z);
+  pointer-events: none;
+  overflow: visible;
+  opacity: var(--wd-flow-fade);
+}
+body.wd-has-flow .wd-portfolio-header {
+  position: relative;
+  z-index: var(--wd-content-z);
+}
+body.wd-has-flow .wd-portfolio-copy h3,
+body.wd-has-flow .wd-portfolio-copy p,
+body.wd-has-flow .wd-portfolio-link-label {
+  -webkit-text-stroke: var(--wd-flow-text-stroke) var(--color-background);
+  paint-order: stroke fill;
+}
+body.wd-has-flow .wd-portfolio-tags {
+  position: relative;
+  z-index: var(--wd-content-z);
+}
+body.wd-has-flow .wd-portfolio-tags span {
+  -webkit-text-stroke: var(--wd-flow-text-stroke) var(--color-background);
+  paint-order: stroke fill;
+}
+body.wd-has-flow .wd-portfolio-link-label {
+  position: relative;
+  z-index: var(--wd-content-z);
+}
+body.wd-has-flow .wd-founder-name,
+body.wd-has-flow .wd-founder-role,
+body.wd-has-flow .wd-founder-highlights,
+body.wd-has-flow .wd-founder-contact {
+  background-color: var(--color-background);
+}
+body.wd-has-flow .wd-founder-copy h2 {
+  -webkit-text-stroke: var(--wd-founder-title-text-stroke) var(--color-background);
+  paint-order: stroke fill;
+}
+body.wd-has-flow .wd-founder-body p {
+  -webkit-text-stroke: var(--wd-flow-text-stroke) var(--color-background);
+  paint-order: stroke fill;
+}
+body.wd-has-flow .wd-local-cta-inner h2,
+body.wd-has-flow .wd-local-cta-inner p {
+  background-color: var(--primary-soft);
+}
+body.wd-has-flow main :is(
+  h1,
+  h2,
+  h3,
+  p,
+  li,
+  a:not(.wd-portfolio-link),
+  button,
+  img:not(.wd-founder-photo-slide),
+  .wd-portfolio-header,
+  .wd-portfolio-image,
+  .wd-portfolio-phone,
+  .wd-portfolio-safari,
+  .wd-founder-portrait,
+  .wd-founder-photo,
+  .wd-founder-photo-carousel
+) {
+  position: relative;
+  z-index: var(--wd-content-z);
+}
+.wd-flow-draw {
+  fill: none;
+  stroke: var(--wd-flow-stroke);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: var(--wd-flow-width);
+  stroke-dasharray: var(--wd-flow-len);
+  stroke-dashoffset: calc(var(--wd-flow-len) * (1 - var(--wd-flow-p)));
+}
+.wd-flow-name-arrow {
+  pointer-events: none;
+}
+.wd-flow-name-arrow-icon {
+  display: block;
+  overflow: visible;
+  color: var(--wd-flow-stroke);
+  stroke: var(--wd-flow-stroke);
+}
+@media (prefers-reduced-motion: reduce) {
+  .wd-flow-draw {
+    --wd-flow-p: 1;
+  }
+}
+
 
 </style>
 </head>
-<body>
+<body class="wd-page-fade">
 
 <header class="wd-header" id="wd-header" data-halite-section="nav">
   <div class="section-container wd-header-inner">
@@ -1855,7 +2665,7 @@ main { padding-top: 4rem; }
   <img data-halite-path='["assets","logo"]' data-halite-image="true" src="../images/halite/logo.svg" alt="" width="36" height="36"/>
   <span class="wd-logo-text">
     <span data-halite-path='["brand","namePrimary"]' class="wd-logo-primary">Halite</span>
-    <span data-halite-path='["brand","nameAccent"]' class="wd-logo-accent">WebDev</span>
+    <span data-halite-path='["brand","nameAccent"]' class="wd-logo-accent">Studio</span>
   </span>
 </a>
     <nav class="wd-nav-desktop" aria-label="Main">
@@ -1864,8 +2674,8 @@ main { padding-top: 4rem; }
           <a href="../process/index.html"><span data-halite-path='["nav","links","2","label"]'>Process</span></a>
           <a href="../pricing/index.html"><span data-halite-path='["nav","links","3","label"]'>Pricing</span></a>
           <a href="../about/index.html"><span data-halite-path='["nav","links","4","label"]'>About</span></a>
-      <a href="tel:+15053739851" class="wd-nav-phone"><span data-halite-path='["nav","phoneCta","label"]'>Call (505) 373-9851</span></a>
-      <a href="../apply/index.html" class="btn-hover-effect btn-primary wd-nav-cta"><span data-halite-path='["nav","applyCta","label"]'>Let&#39;s chat</span></a>
+      
+      <a href="../apply/index.html" class="btn-hover-effect btn-primary wd-nav-cta"><span data-halite-path='["nav","applyCta","label"]'>Let&#39;s talk</span></a>
     </nav>
     <button type="button" class="wd-menu-btn" id="wd-menu-btn" aria-expanded="false" aria-controls="wd-nav-mobile" aria-label="Open menu">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
@@ -1879,30 +2689,42 @@ main { padding-top: 4rem; }
           <a href="../process/index.html"><span data-halite-path='["nav","links","2","label"]'>Process</span></a>
           <a href="../pricing/index.html"><span data-halite-path='["nav","links","3","label"]'>Pricing</span></a>
           <a href="../about/index.html"><span data-halite-path='["nav","links","4","label"]'>About</span></a>
-        <a href="tel:+15053739851" class="wd-nav-mobile-phone"><span data-halite-path='["nav","phoneCta","label"]'>Call (505) 373-9851</span></a>
-        <a href="../apply/index.html" class="btn-hover-effect btn-primary wd-nav-mobile-cta"><span data-halite-path='["nav","mobileApplyCta","label"]'>Let&#39;s chat</span></a>
+        
+        <a href="../apply/index.html" class="btn-hover-effect btn-primary wd-nav-mobile-cta"><span data-halite-path='["nav","mobileApplyCta","label"]'>Let&#39;s talk</span></a>
       </nav>
     </div>
   </div>
 </header>
+<nav class="wd-mobile-dock" aria-label="Let&#39;s talk">
+  <a href="../apply/index.html" class="wd-mobile-dock-chat"><span data-halite-path='["labels","mobileDockChat"]'>Let&#39;s talk</span></a>
+</nav>
 
 <main>
 
 <section class="wd-page-intro" data-halite-section="pageIntro">
   <div class="section-container">
     <p data-halite-path='["pageCopy","work","eyebrow"]' data-halite-rich="true" class="section-eyebrow">Work</p>
-    <h1 data-halite-path='["pageCopy","work","title"]' data-halite-rich="true">Sites for local businesses</h1>
-    <p data-halite-path='["pageCopy","work","description"]' data-halite-rich="true">Live restaurant, tattoo, and food-brand sites, built and shipped for real local businesses.</p>
+    <h1 data-halite-path='["pageCopy","work","title"]' data-halite-rich="true">Live shops I have already shipped</h1>
+    <p data-halite-path='["pageCopy","work","description"]' data-halite-rich="true">Open these on your phone. Restaurant, tattoo, and food-brand pages built for real owners.</p>
     <a href="../about/index.html#about" class="wd-page-intro-link"><span data-halite-path='["pageCopy","work","link","label"]'>Meet Sebastian</span> &gt;</a>
   </div>
 </section>
 
 <section id="work" class="scroll-mt wd-portfolio" data-halite-section="portfolio">
   <div class="section-container wd-portfolio-inner">
+    
     <div class="wd-portfolio-list">
-      <div class="wd-portfolio-item">
+      <div class="wd-portfolio-item wd-reveal">
         <div class="wd-portfolio-image">
-          <img data-halite-path='["portfolio","projects","0","image"]' data-halite-image="true" src="../images/halite/el-vagon-tacos.png" alt="El Vagon Tacos homepage screenshot" width="1280" height="800" loading="lazy"/>
+          <div class="wd-portfolio-screenshot-swap" role="img" aria-label="El Vagon Tacos desktop and mobile homepage">
+    <div class="wd-portfolio-slide-layer wd-portfolio-slide-layer-mobile"><img data-halite-path='["portfolio","projects","0","mobileImage"]' data-halite-image="true" src="../images/halite/el-vagon-tacos-mobile.png" class="wd-portfolio-phone" alt="El Vagon Tacos mobile homepage screenshot" width="390" height="844" loading="lazy"/></div>
+    <div class="wd-portfolio-slide-layer wd-portfolio-slide-layer-desktop">
+      <div class="wd-portfolio-safari">
+        <div class="wd-portfolio-app-bar" aria-hidden="true">cloxeer.github.io</div>
+        <img data-halite-path='["portfolio","projects","0","image"]' data-halite-image="true" src="../images/halite/el-vagon-tacos.png" class="wd-portfolio-desktop-shot" alt="El Vagon Tacos homepage screenshot" width="1280" height="800" loading="lazy"/>
+      </div>
+    </div>
+  </div>
           
         </div>
         <div class="wd-portfolio-copy">
@@ -1910,16 +2732,24 @@ main { padding-top: 4rem; }
             <span><span data-halite-path='["portfolio","projects","0","tags","0"]'>Restaurant</span></span><span><span data-halite-path='["portfolio","projects","0","tags","1"]'>Live Site</span></span><span><span data-halite-path='["portfolio","projects","0","tags","2"]'>Mobile-First</span></span>
           </div>
           <h3><span data-halite-path='["portfolio","projects","0","name"]'>El Vagon Tacos</span></h3>
-          <p><span data-halite-path='["portfolio","projects","0","description"]' data-halite-rich="true">Restaurant site—full menu, daily specials, hours, tap-to-call, and photo gallery. Built for phones and Google Maps.</span></p>
+          <p><span data-halite-path='["portfolio","projects","0","description"]' data-halite-rich="true">Full menu, hours, tap-to-call, and photos. Built so someone can order or visit from a phone.</span></p>
           <a href="https://cloxeer.github.io/El-Vagon-Tacos/" class="wd-portfolio-link" target="_blank" rel="noopener noreferrer">
-            <span data-halite-path='["portfolio","projects","0","linkLabel"]'>Visit live site</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            <span class="wd-portfolio-link-label"><span data-halite-path='["portfolio","projects","0","linkLabel"]'>Visit live site</span></span>
+            <svg class="wd-portfolio-link-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
           </a>
         </div>
       </div>
-<div class="wd-portfolio-item image-second">
+<div class="wd-portfolio-item wd-reveal">
         <div class="wd-portfolio-image">
-          <img data-halite-path='["portfolio","projects","1","image"]' data-halite-image="true" src="../images/halite/syncere-tattoo.png" alt="Syncere Tattoo homepage screenshot" width="1280" height="800" loading="lazy"/>
+          <div class="wd-portfolio-screenshot-swap" role="img" aria-label="Syncere Tattoo desktop and mobile homepage">
+    <div class="wd-portfolio-slide-layer wd-portfolio-slide-layer-mobile"><img data-halite-path='["portfolio","projects","1","mobileImage"]' data-halite-image="true" src="../images/halite/syncere-tattoo-mobile.png" class="wd-portfolio-phone" alt="Syncere Tattoo mobile homepage screenshot" width="390" height="844" loading="lazy"/></div>
+    <div class="wd-portfolio-slide-layer wd-portfolio-slide-layer-desktop">
+      <div class="wd-portfolio-safari">
+        <div class="wd-portfolio-app-bar" aria-hidden="true">cloxeer.github.io</div>
+        <img data-halite-path='["portfolio","projects","1","image"]' data-halite-image="true" src="../images/halite/syncere-tattoo.png" class="wd-portfolio-desktop-shot" alt="Syncere Tattoo homepage screenshot" width="1280" height="800" loading="lazy"/>
+      </div>
+    </div>
+  </div>
           
         </div>
         <div class="wd-portfolio-copy">
@@ -1927,16 +2757,24 @@ main { padding-top: 4rem; }
             <span><span data-halite-path='["portfolio","projects","1","tags","0"]'>Tattoo Studio</span></span><span><span data-halite-path='["portfolio","projects","1","tags","1"]'>Live Site</span></span><span><span data-halite-path='["portfolio","projects","1","tags","2"]'>Gallery</span></span>
           </div>
           <h3><span data-halite-path='["portfolio","projects","1","name"]'>Syncere Tattoo</span></h3>
-          <p><span data-halite-path='["portfolio","projects","1","description"]' data-halite-rich="true">Tattoo studio site—artist portfolios, gallery, studio story, and a booking request form. Designed for Las Cruces and El Paso.</span></p>
+          <p><span data-halite-path='["portfolio","projects","1","description"]' data-halite-rich="true">Artists, gallery, shop story, and a booking form. Dark, quiet, and easy to tap through.</span></p>
           <a href="https://cloxeer.github.io/Syncere-Tattoo/" class="wd-portfolio-link" target="_blank" rel="noopener noreferrer">
-            <span data-halite-path='["portfolio","projects","1","linkLabel"]'>Visit live site</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            <span class="wd-portfolio-link-label"><span data-halite-path='["portfolio","projects","1","linkLabel"]'>Visit live site</span></span>
+            <svg class="wd-portfolio-link-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
           </a>
         </div>
       </div>
-<div class="wd-portfolio-item">
+<div class="wd-portfolio-item wd-reveal">
         <div class="wd-portfolio-image">
-          <img data-halite-path='["portfolio","projects","2","image"]' data-halite-image="true" src="../images/halite/la-mesillera.png" alt="La Mesillera Jalapeño Salsa homepage screenshot" width="1280" height="800" loading="lazy"/>
+          <div class="wd-portfolio-screenshot-swap" role="img" aria-label="La Mesillera Jalapeño Salsa desktop and mobile homepage">
+    <div class="wd-portfolio-slide-layer wd-portfolio-slide-layer-mobile"><img data-halite-path='["portfolio","projects","2","mobileImage"]' data-halite-image="true" src="../images/halite/la-mesillera-mobile.png" class="wd-portfolio-phone" alt="La Mesillera Jalapeño Salsa mobile homepage screenshot" width="390" height="844" loading="lazy"/></div>
+    <div class="wd-portfolio-slide-layer wd-portfolio-slide-layer-desktop">
+      <div class="wd-portfolio-safari">
+        <div class="wd-portfolio-app-bar" aria-hidden="true">lamesillerajalapenosalsa.com</div>
+        <img data-halite-path='["portfolio","projects","2","image"]' data-halite-image="true" src="../images/halite/la-mesillera.png" class="wd-portfolio-desktop-shot" alt="La Mesillera Jalapeño Salsa homepage screenshot" width="1280" height="800" loading="lazy"/>
+      </div>
+    </div>
+  </div>
           
         </div>
         <div class="wd-portfolio-copy">
@@ -1944,10 +2782,10 @@ main { padding-top: 4rem; }
             <span><span data-halite-path='["portfolio","projects","2","tags","0"]'>Food Brand</span></span><span><span data-halite-path='["portfolio","projects","2","tags","1"]'>Live Site</span></span><span><span data-halite-path='["portfolio","projects","2","tags","2"]'>Product Story</span></span>
           </div>
           <h3><span data-halite-path='["portfolio","projects","2","name"]'>La Mesillera Jalapeño Salsa</span></h3>
-          <p><span data-halite-path='["portfolio","projects","2","description"]' data-halite-rich="true">Food brand site—product story, ingredients, and where to buy. Clean layout that makes a local salsa look shelf-ready.</span></p>
-          <a href="https://cloxeer.github.io/La-Mesillera-Jalapeno-Salsa/" class="wd-portfolio-link" target="_blank" rel="noopener noreferrer">
-            <span data-halite-path='["portfolio","projects","2","linkLabel"]'>Visit live site</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          <p><span data-halite-path='["portfolio","projects","2","description"]' data-halite-rich="true">One salsa, English and Spanish, order by phone. Her own domain. Built for an owner who is not technical.</span></p>
+          <a href="https://lamesillerajalapenosalsa.com/" class="wd-portfolio-link" target="_blank" rel="noopener noreferrer">
+            <span class="wd-portfolio-link-label"><span data-halite-path='["portfolio","projects","2","linkLabel"]'>Visit live site</span></span>
+            <svg class="wd-portfolio-link-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
           </a>
         </div>
       </div>
@@ -1964,12 +2802,12 @@ main { padding-top: 4rem; }
   <img data-halite-path='["assets","logo"]' data-halite-image="true" src="../images/halite/logo.svg" alt="" width="36" height="36"/>
   <span class="wd-logo-text">
     <span data-halite-path='["brand","namePrimary"]' class="wd-logo-primary">Halite</span>
-    <span data-halite-path='["brand","nameAccent"]' class="wd-logo-accent">WebDev</span>
+    <span data-halite-path='["brand","nameAccent"]' class="wd-logo-accent">Studio</span>
   </span>
 </a>
-      <p><span data-halite-path='["brand","founderNote"]' data-halite-rich="true">A small Las Cruces studio. You work directly with Sebastian—the person building your site. Clear prices, honest answers, and genuine care for your business.</span></p>
+      <p><span data-halite-path='["brand","founderNote"]' data-halite-rich="true">I&#39;m Sebastian, a CS student in Las Cruces. You work with me, not a call center. Clear prices, Zoom together, and a page that looks like your shop.</span></p>
       <p><a href="mailto:salsalgadonm@gmail.com"><span data-halite-path='["brand","email"]'>salsalgadonm@gmail.com</span></a></p>
-      <p><a href="tel:+15053739851"><span data-halite-path='["brand","phone"]'>(505) 373-9851</span></a></p>
+      <p><a href="sms:+15053739851?body=It&#39;s%20about%20Halite%20Studio"><span data-halite-path='["brand","phone"]'>(505) 373-9851</span></a></p><p class="wd-reach-note"><span data-halite-path='["brand","reachNote"]'>Text me anytime. If you&#39;d rather talk, I take calls 4–7pm weekdays (MT) — or we book a 20-minute Zoom.</span></p>
     </div>
     <div class="wd-footer-links">
       <div>
@@ -1982,7 +2820,7 @@ main { padding-top: 4rem; }
         <h3><span data-halite-path='["labels","footerCompanyHeading"]'>Company</span></h3>
         <a href="../about/index.html"><span data-halite-path='["footer","company","0","label"]'>About</span></a>
 <a href="index.html"><span data-halite-path='["footer","company","1","label"]'>Work</span></a>
-<a href="../apply/index.html"><span data-halite-path='["footer","company","2","label"]'>Let&#39;s chat</span></a>
+<a href="../apply/index.html"><span data-halite-path='["footer","company","2","label"]'>Let&#39;s talk</span></a>
       </div>
       <div>
         <h3><span data-halite-path='["labels","footerLegalHeading"]'>Legal</span></h3>
@@ -1993,7 +2831,7 @@ main { padding-top: 4rem; }
     </div>
   </div>
   <div class="section-container wd-footer-copy">
-    <p><span data-halite-path='["footer","copyright"]'>© 2026–2026 Halite WebDev. All rights reserved.</span></p>
+    <p><span data-halite-path='["footer","copyright"]'>© 2026–2026 Halite Studio. All rights reserved.</span></p>
   </div>
   <button type="button" class="btn-primary wd-back-to-top" id="wd-back-to-top" aria-label="Back to top">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
@@ -2001,8 +2839,34 @@ main { padding-top: 4rem; }
   
 </footer>
 
+
 <script>
 (function() {
+  // Smooth cross-device page transition: fade OUT on internal nav (JS), fade IN on load (CSS).
+  // Skipped inside the Halite preview — its own bridge owns page swaps there.
+  if (!document.querySelector('script[data-halite-preview-bridge]')) {
+    window.addEventListener('pageshow', function() {
+      document.body.classList.remove('is-leaving');
+    });
+    document.addEventListener('click', function(e) {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      var a = e.target && e.target.closest ? e.target.closest('a') : null;
+      if (!a || a.target === '_blank' || a.hasAttribute('download')) return;
+      var href = a.getAttribute('href');
+      if (!href || href.charAt(0) === '#' || /^(mailto:|tel:|sms:)/i.test(href)) return;
+      var url;
+      try { url = new URL(a.href); } catch (err) { return; } // a.href respects any <base>
+      if (url.origin !== location.origin || url.href === location.href) return;
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      e.preventDefault();
+      var body = document.body, done = false;
+      var go = function() { if (done) return; done = true; window.location.href = url.href; };
+      body.classList.add('is-leaving');
+      body.addEventListener('animationend', go, { once: true });
+      setTimeout(go, 420); // safety net > wd-page-out (320ms); animationend normally wins
+    });
+  }
+
   var header = document.getElementById('wd-header');
   if (header) {
     function onScroll() {
@@ -2011,6 +2875,27 @@ main { padding-top: 4rem; }
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
   }
+
+  // Service cards: intentional click accordion, one open at a time (keyboard works — it's a button).
+  var serviceCards = Array.prototype.slice.call(document.querySelectorAll('.wd-service-card'));
+  serviceCards.forEach(function(card) {
+    var toggle = card.querySelector('.wd-service-toggle');
+    if (!toggle) return;
+    toggle.addEventListener('click', function() {
+      // In the Halite editor's edit mode, let clicks edit the text instead of toggling.
+      if (document.body.classList.contains('halite-preview-edit-mode')) return;
+      var willOpen = !card.classList.contains('is-open');
+      serviceCards.forEach(function(other) {
+        other.classList.remove('is-open');
+        var t = other.querySelector('.wd-service-toggle');
+        if (t) t.setAttribute('aria-expanded', 'false');
+      });
+      if (willOpen) {
+        card.classList.add('is-open');
+        toggle.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
 
   var menuBtn = document.getElementById('wd-menu-btn');
   var mobileNav = document.getElementById('wd-nav-mobile');
@@ -2055,6 +2940,46 @@ main { padding-top: 4rem; }
     });
   }
 
+
+
+
+  document.querySelectorAll(".apply-form-link").forEach(function(link) {
+    link.addEventListener('click', function(event) {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+        return;
+      }
+      var bookingPage = link.getAttribute('data-booking-page');
+      var bookingHref = link.getAttribute('data-booking-href');
+      if (!bookingPage && !bookingHref) return;
+      if (window.parent !== window && bookingPage) {
+        window.parent.postMessage({ type: 'halite-preview-navigate', page: bookingPage }, '*');
+        return;
+      }
+      var path = window.location.pathname;
+      var apiMatch = path.match(/^\/api\/site\/([^/]+)/);
+      var projectId = apiMatch ? apiMatch[1] : null;
+      if (!projectId && (path === "/api/preview" || path === "/local-preview")) {
+        projectId = new URLSearchParams(window.location.search).get("id");
+      }
+      if (!projectId) {
+        var bridge = document.querySelector('script[data-halite-preview-bridge]');
+        if (bridge && bridge.textContent) {
+          var projectMatch = bridge.textContent.match(/var PROJECT_ID = "([^"]*)"/);
+          if (projectMatch && projectMatch[1]) {
+            projectId = projectMatch[1];
+          }
+        }
+      }
+      if (projectId && bookingPage) {
+        var base = '/api/site/' + encodeURIComponent(projectId);
+        window.location.href = bookingPage === 'home' ? base : base + '/' + bookingPage;
+        return;
+      }
+      if (bookingHref) {
+        window.location.href = bookingHref;
+      }
+    });
+  });
 
 
 })();

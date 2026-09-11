@@ -1,32 +1,35 @@
 type: web-developer
+integrations:
+  cmsEnabled: true
 meta:
-  title: Halite Studio | Websites That Get Local Businesses Found
-  description: Halite WebDev builds professional websites for restaurants, tattoo
-    shops, and salons in Las Cruces, Albuquerque, Santa Fe, and El Paso.
-    Founding rates from $500. Talk directly to Sebastian—the person building
-    your site.
+  title: Halite Studio | Landing pages for local shops
+  description: I'm Sebastian, a CS student in Las Cruces. I build custom landing
+    pages for restaurants, tattoo shops, and local businesses. Fast on phones.
+    From $500. We sit on Zoom together.
 theme:
-  fontDisplay: Fraunces
-  fontBody: Source Sans 3
-  colorText: oklch(0.22 0.01 50)
-  colorMuted: oklch(0.52 0.02 50)
-  colorAccent: oklch(0.63 0.09 48)
-  colorBackground: oklch(0.995 0.004 90)
-  colorSurface: oklch(0.97 0.012 85)
+  fontDisplay: Outfit
+  fontBody: Figtree
+  colorText: oklch(0.24 0.02 40)
+  colorMuted: oklch(0.46 0.03 45)
+  colorAccent: oklch(0.55 0.12 48)
+  colorBackground: oklch(0.985 0.008 70)
+  colorSurface: oklch(0.96 0.014 60)
 brand:
   name: Halite Studio
   namePrimary: Halite
-  nameAccent: WebDev
+  nameAccent: Studio
   location: Las Cruces, NM
   email: salsalgadonm@gmail.com
   phone: (505) 373-9851
   phoneTel: "+15053739851"
+  reachNote: Text me anytime. If you'd rather talk, I take calls 4–7pm weekdays
+    (MT) — or we book a 20-minute Zoom.
   foundedYear: "2026"
   currentYear: "2026"
-  legalName: Halite WebDev
-  founderNote: A small Las Cruces studio. You work directly with Sebastian—the
-    person building your site. Clear prices, honest answers, and genuine care
-    for your business.
+  legalName: Halite Studio
+  founderNote: I'm Sebastian, a CS student in Las Cruces. You work with me, not a
+    call center. Clear prices, Zoom together, and a page that looks like your
+    shop.
 assets:
   logo: images/halite/logo.svg
   hero: images/halite/hero.png
@@ -45,34 +48,33 @@ nav:
     - label: About
       href: /about
   phoneCta:
-    label: Call (505) 373-9851
-    href: tel:+15053739851
+    label: ""
+    href: sms:+15053739851?body=It%27s%20about%20Halite%20Studio
   applyCta:
-    label: Let's chat
+    label: Let's talk
     href: /apply
   mobileApplyCta:
-    label: Let's chat
+    label: Let's talk
     href: /apply
 hero:
-  eyebrow: WEBSITES FOR LOCAL BUSINESSES · LAS CRUCES · EL PASO · NEW MEXICO
-  headline: Websites that help local businesses get found—and get calls.
+  eyebrow: LAS CRUCES · EL PASO · SOUTHERN NM
+  headline: Your shop. On their phone.
   headlineAccent: ""
-  body: We design and build mobile-friendly sites for restaurants, tattoo shops,
-    salons, and local services. Your domain. Your photos. Founding rates from
-    $500. You work directly with Sebastian—the person building your site.
+  body: When someone taps you on Maps, they land here. I build that page with you
+    on Zoom. From $500.
   primaryCta:
-    label: Schedule a free call
+    label: Let's talk
     href: /apply
   secondaryCta:
-    label: Call (505) 373-9851
-    href: tel:+15053739851
-  pricingTeaser: Founding rates from <strong>$500</strong>
+    label: ""
+    href: sms:+15053739851?body=It%27s%20about%20Halite%20Studio
+  pricingTeaser: From <strong>$500</strong>
   image: images/halite/hero.png
   imageAlt: Natural halite crystals on weathered stone
 valueProps:
-  - title: Get found on Google & Maps
-  - title: Built for phones—tap to call
-  - title: Clear prices from $500
+  - title: Built for phones
+  - title: Looks like your shop
+  - title: From $500
 trustStrip:
   items:
     - value: Las Cruces, NM
@@ -84,32 +86,13 @@ trustStrip:
     - value: 5.0 ★
       label: Early client feedback
 testimonials:
-  eyebrow: Client feedback
-  title: What local owners say about working with Halite
-  ratingSummary: 5.0 ★ average · founding client experience
-  disclaimer: Preview testimonials representing the experience we deliver to
-    founding clients. Verified Google reviews will replace these as projects
-    launch.
-  items:
-    - quote: Sebastian listened to what we actually needed—not a template. Our menu
-        and photos look like us, and people finally find us when they search on
-        their phones.
-      name: Maria G.
-      role: Café owner · Las Cruces, NM
-      rating: 5
-    - quote: Clear price upfront, no surprises. He walked us through the domain stuff
-        and launched faster than the last guy who quoted us three months.
-      name: James R.
-      role: Tattoo studio · El Paso, TX
-      rating: 5
-    - quote: I wanted something I could be proud of—not a Facebook page. Sebastian
-        built it around our salon photos and made updates easy when we changed
-        hours.
-      name: Elena V.
-      role: Salon owner · Las Cruces, NM
-      rating: 5
+  eyebrow: ""
+  title: ""
+  ratingSummary: ""
+  disclaimer: ""
+  items: []
 services:
-  title: How we help local businesses
+  title: How we help local shops
   showTitle: true
   showFooterCta: true
   footerCta:
@@ -118,53 +101,47 @@ services:
   cards:
     - id: brand
       prompt: I want a site that
-      emphasis: feels like my business.
+      emphasis: feels like my shop.
       icon: Globe
-      serviceTitle: Your Branding Hub Online
-      body: Whether you run a restaurant, tattoo shop, salon, or service business—we
-        shape your website around your photos, colors, menu or portfolio, and
-        story. One polished place that looks like you, not a generic template.
+      serviceTitle: A page that looks like you
+      body: Your photos, colors, menu or portfolio, hours, and story. One place that
+        feels like walking into your shop, not a generic template.
       href: /work
       cta: See our work
     - id: pricing
       prompt: I want to know
-      emphasis: what it costs upfront.
+      emphasis: what it costs.
       icon: Search
-      serviceTitle: Transparent Starting Prices
-      body: We publish clear starting prices and confirm the full scope in writing
-        before work begins. No hidden fees and no pressure—just an honest quote
-        so you can decide in your own time.
+      serviceTitle: A clear number first
+      body: We publish starting prices and confirm the full scope in writing before
+        work begins. No hidden fees. You can think it over.
       href: /pricing
       cta: View pricing
     - id: cost
       prompt: I need a site
-      emphasis: on a realistic timeline.
+      emphasis: without learning web stuff.
       icon: Rocket
-      serviceTitle: Built at Your Pace
-      body: Once you send your photos, wording, and logo, we work at your speed—not a
-        rigid agency calendar. Need to move quickly? We can. Want time to
-        review? No rush. We agree on timing before we start.
+      serviceTitle: We sit on Zoom together
+      body: You do not need to be technical. We share a screen, I ask what you like,
+        you send photos when you can. We go at your pace.
       href: /process
       cta: See how we work
     - id: mobile
-      prompt: My customers find me
-      emphasis: on their phones.
+      prompt: People tap me
+      emphasis: on Google Maps.
       icon: Zap
-      serviceTitle: Mobile-Friendly from Day One
-      body: Your site is laid out for real phones—easy tap-to-call, hours, directions,
-        and menus or galleries that are simple to scroll. The basics done
-        properly so visitors know how to reach you.
+      serviceTitle: That tap deserves a real page
+      body: Most people look you up on their phone. The page they open should load
+        fast, show your photos, and make it easy to call or visit.
       href: /services#framework
       cta: How we build
     - id: updates
       prompt: I'll need to update
-      emphasis: my menu or photos later.
+      emphasis: my menu later.
       icon: Layers
-      serviceTitle: Update it yourself, anytime
-      body: Your site comes with a built-in CMS, so you can change your menu, prices,
-        hours, and photos yourself whenever you want—no monthly plan and no
-        waiting on me. Need a bigger change like a new page? Send it over and
-        I'll quote it first.
+      serviceTitle: Change it yourself
+      body: Your site comes with a simple editor so you can change menu items, photos,
+        and hours without waiting on me. Bigger changes, I quote first.
       href: /pricing
       cta: See what's included
     - id: apply
@@ -172,57 +149,51 @@ services:
       emphasis: friendly conversation.
       icon: MessageCircle
       serviceTitle: Let's Talk About Your Project
-      body: Share a few details and we'll schedule a short Zoom call. No hard
-        sell—just an honest conversation about what you need, what it costs, and
-        whether we're a good fit.
+      body: Share a few details and we will set a short Zoom. No hard sell. Just what
+        you need, what it costs, and whether we fit.
       href: /apply
-      cta: Let's chat
+      cta: Let's talk
 confrontation:
   eyebrow: What you get
   title: ""
   cards:
-    - title: Your brand in one place
-      body: Your logo, photos, menu or portfolio, hours, and story—organized so new
-        customers see who you are at a glance. A home online that reflects the
-        care you put into your work.
-    - title: Built for how people actually look you up
-      body: Most people check you out on their phone first. We build for that—clear
-        layout, tap-to-call, and the details they need in one easy place.
-    - title: Ready for Google and your Maps listing
-      body: We set up the fundamentals—clear page titles, descriptions, and a proper
-        link from your Google Business Profile—so when someone searches for what
-        you offer, they land somewhere that represents you well.
+    - title: Looks like your place
+      body: Your photos, logo, hours, and story on one page. People should feel like
+        they already walked in.
+    - title: Made for a thumb
+      body: Most visits start on a phone, often from Maps. Tap to call, hours, and a
+        menu or gallery that is easy to scroll.
+    - title: We do it together
+      body: I am a CS student, not an agency. We sit on Zoom. You do not need to know
+        how websites work.
 framework:
   eyebrow: How we build
-  title: A proven layout. Your unique brand.
+  title: Your photos. A layout that already works.
   paragraphs:
-    - Every Halite site starts from layouts we've refined on real projects—then
-      we customize your colors, photos, wording, and goals so it feels
-      unmistakably yours. A clean, custom site built around your business—not a
-      generic template.
-    - The result loads quickly on phones, looks professional, and gives visitors
-      a clear path to call, message, or visit. We keep the process simple so you
-      can stay focused on running your shop—not learning web technology.
+    - Every Halite page starts from layouts we have already used on real shops,
+      then we swap in your colors, photos, and words so it feels like you.
+    - It should load quickly on a phone and make it obvious how to call,
+      message, or visit. You stay focused on the shop. I handle the website
+      part.
   emphasis: Founding rates start at $500 for a Starter site and $750 for a Full
-    site—we confirm your exact price before any work begins.
+    site. We confirm the exact price before any work begins.
 localBusinessCta:
-  title: Ready for more calls from your website?
-  body: Free 20-minute Zoom—or call Sebastian directly. We'll look at what you
-    have now, suggest what fits, and give you an honest price. No jargon, no
-    pressure.
-  cta: Schedule a free call
+  title: Want that Maps tap to land somewhere you are proud of?
+  body: "Free 20-minute Zoom, or text me. Bring whatever you have: photos, a
+    Facebook page, or nothing yet. We will look at it together."
+  cta: Let's talk
   href: /apply
 portfolio:
   eyebrow: Work
-  title: Sites for local businesses
-  subtitle: Live sites for restaurants, tattoo shops, and local food brands.
-  body: Founding client projects appear here first. Every Halite site is
-    customized with your photos, colors, and story.
+  title: Live shops I have already shipped
+  subtitle: Restaurant, tattoo, and food-brand pages on real phones.
+  body: This is the work. Open them on your phone if you want. That is the test.
   projects:
     - name: El Vagon Tacos
-      description: Restaurant site—full menu, daily specials, hours, tap-to-call, and
-        photo gallery. Built for phones and Google Maps.
+      description: Full menu, hours, tap-to-call, and photos. Built so someone can
+        order or visit from a phone.
       image: images/halite/el-vagon-tacos.png
+      mobileImage: images/halite/el-vagon-tacos-mobile.png
       href: https://cloxeer.github.io/El-Vagon-Tacos/
       linkLabel: Visit live site
       tags:
@@ -231,21 +202,23 @@ portfolio:
         - Mobile-First
       imageFirst: true
     - name: Syncere Tattoo
-      description: Tattoo studio site—artist portfolios, gallery, studio story, and a
-        booking request form. Designed for Las Cruces and El Paso.
+      description: Artists, gallery, shop story, and a booking form. Dark, quiet, and
+        easy to tap through.
       image: images/halite/syncere-tattoo.png
+      mobileImage: images/halite/syncere-tattoo-mobile.png
       href: https://cloxeer.github.io/Syncere-Tattoo/
       linkLabel: Visit live site
       tags:
         - Tattoo Studio
         - Live Site
         - Gallery
-      imageFirst: false
+      imageFirst: true
     - name: La Mesillera Jalapeño Salsa
-      description: Food brand site—product story, ingredients, and where to buy. Clean
-        layout that makes a local salsa look shelf-ready.
+      description: One salsa, English and Spanish, order by phone. Her own domain.
+        Built for an owner who is not technical.
       image: images/halite/la-mesillera.png
-      href: https://cloxeer.github.io/La-Mesillera-Jalapeno-Salsa/
+      mobileImage: images/halite/la-mesillera-mobile.png
+      href: https://lamesillerajalapenosalsa.com/
       linkLabel: Visit live site
       tags:
         - Food Brand
@@ -254,37 +227,39 @@ portfolio:
       imageFirst: true
 workflow:
   eyebrow: How we work
-  title: A straightforward process from first call to launch.
+  title: You start on this page.
   steps:
     - step: "01"
-      title: A short Zoom call
-      description: We learn about your business, what you have now, and what you'd
-        like your site to do. We'll share a clear price range—no obligation to
-        move forward.
+      title: You look around, then Let's talk
+      description: You're on this site. When you're ready, tap Let's talk. No account,
+        no homework, no need to know websites.
     - step: "02"
+      title: A short Zoom call
+      description: We look at your shop together. I'll tell you if a $500 template
+        fits, or if custom is smarter. No obligation to move forward.
+    - step: "03"
       title: You share your content
       description: Photos, logo, menu or portfolio, hours, and the words you want on
         the page. We put it together and send previews for your feedback.
-    - step: "03"
+    - step: "04"
       title: Review and refine
       description: We adjust until the site feels right. You approve before anything
         goes live.
-    - step: "04"
+    - step: "05"
       title: Launch and hand off
       description: We help connect your domain and publish your site. You get a live
         walkthrough plus a built-in CMS to update your own text and photos—no
         monthly plan. Need a bigger change later? It's quoted as you go.
 differentiators:
-  title: One person. Full accountability.
-  body: Halite WebDev is a small studio in Las Cruces. You work directly with the
-    person building your site—clear answers, honest timelines, and genuine care
-    for your business.
+  title: One person. You can text him.
+  body: Halite Studio is me, Sebastian, in Las Cruces. Clear answers, honest
+    timelines, and a page that looks like your shop.
   link:
     label: Meet Sebastian
     href: /about
   items:
     - title: Talk to a real person
-      body: Phone, email, or our contact form—you'll hear back from Sebastian
+      body: Text, email, or our contact form—you'll hear back from Sebastian
         personally. No account managers, no runaround.
       icon: Users
     - title: Clear scope and pricing
@@ -379,45 +354,14 @@ pricing:
     choice. This is financing to help you get online, not a subscription: once
     the term is paid you're done, and you own your site. No ongoing fees, no
     lock-in."
-  waasPlans:
-    - id: finance-starter
-      name: Starter Site — Monthly
-      description: The $500 Starter Site split into easy payments. Pick a 6- or
-        12-month term.
-      price: from $45
-      betaPrice: from $45
-      priceSuffix: / month
-      features:
-        - 6 months at $85/mo, or 12 months at $45/mo
-        - The same Starter Site—just paid over time
-        - You own your site once the term is paid
-        - No ongoing fees or lock-in afterward
-        - Zoom kickoff and launch call
-      cta:
-        label: Finance a Starter site
-        href: /apply
-    - id: finance-full
-      name: Full Site — Monthly
-      description: The $750 Full Site split into easy payments. Pick a 6- or 12-month term.
-      price: from $65
-      betaPrice: from $65
-      priceSuffix: / month
-      features:
-        - 6 months at $130/mo, or 12 months at $65/mo
-        - The same Full Site—just paid over time
-        - You own your site once the term is paid
-        - No ongoing fees or lock-in afterward
-        - Priority scheduling at launch
-      cta:
-        label: Finance a Full site
-        href: /apply
-      highlighted: true
+  waasPlans: []
   addonsHeading: Optional add-on
   addons:
     - name: English & Spanish Website
-      price: $150 upfront
+      price: Quote on request
       description: "Your key pages in both English and Spanish—a great fit for El
-        Paso, southern New Mexico, and borderland customers. Heads-up: the CMS
+        Paso, southern New Mexico, and borderland customers. Price depends on
+        how many pages and how much translation you need. Heads-up: the CMS
         doesn't auto-translate, so text you edit in English won't update the
         Spanish on its own—you update both, or send it over and I'll translate."
   testimonialNote: Founding clients who leave an honest Google review receive 10%
@@ -426,56 +370,56 @@ pricing:
     label: Schedule a free Zoom call
     href: /apply
 contactCta:
-  title: Talk to Sebastian today
-  subtitle: Call, text, or send a quick message.
-  body: Most owners just want to know cost and timeline—we'll answer both on a
-    free call. Same-day reply on business days.
+  title: Talk to me today
+  subtitle: Text me or send a short note.
+  body: Most owners want cost and timing. I will answer both on a free Zoom.
+    Same-day reply on business days.
   primaryCta:
-    label: Schedule a free call
+    label: Let's talk
     href: /apply
   secondaryCta:
-    label: Call (505) 373-9851
-    href: tel:+15053739851
+    label: ""
+    href: ""
 applicationForm:
   eyebrow: Get started
-  title: Tell us about your business.
-  body: Share a few details and we'll get back to you within one business day. No
-    tech jargon needed—whether you have a full website, a social page, or
-    nothing online yet, we're happy to help you figure out the right fit.
-  phoneNote: "Prefer to call? Sebastian picks up:"
+  title: Tell me about your shop.
+  body: A few details is enough. Facebook page, photos, or nothing yet. We will
+    figure out the right fit.
+  phoneNote: "Prefer to text? Sebastian replies fast:"
   submitLabel: Send message
   successTitle: Message sent — thank you!
   successBody: We received your details and will reply within one business day. If
     you need us sooner, email
   compact: true
   delivery: formsubmit
+  formUrl: https://docs.google.com/forms/d/e/1FAIpQLSdtX1MzjSXjcvp_HkPbZAdyJGt-bfVQPpfqLDN_CR4NX0WUTQ/viewform
+  soonerLead: If you want to reach me sooner, please text
+  soonerTrail: and say it's about Halite Studio.
+  smsPrefill: It's about Halite Studio
+  formAgainLabel: Open the form again
+  backLinkLabel: ← Back
 founder:
-  eyebrow: Meet the builder
+  eyebrow: ""
   title: Hi, I'm Sebastian.
   name: Sebastian Salgado
-  role: Founder, Halite WebDev
+  role: CS student, Halite Studio
   image: images/halite/sebastian-2.jpg
   images:
     - images/halite/sebastian-2.jpg
     - images/halite/sebastian-1.jpg
-  imageAlt: Sebastian Salgado, founder of Halite WebDev
+  imageAlt: Sebastian Salgado, Halite Studio
   paragraphs:
-    - I started Halite WebDev because I wanted local businesses to have a
-      website they could feel proud of—one that looks like them, loads well on
-      phones, and makes it easy for customers to get in touch.
-    - "Whether you run a restaurant, tattoo shop, salon, or service business, we
-      treat your site as your branding hub online: your photos, your menu or
-      portfolio, your hours, your story. I listen first, keep pricing clear, and
-      build something that represents the care you put into your work."
-    - Halite is intentionally small. When you work with us, you work directly
-      with me—the person building your site. We'll give you honest answers,
-      confirm the price before we start, and won't sell you things you don't
-      need.
+    - I run Halite Studio from Las Cruces while I study computer science. I
+      started it because local shops deserve a page that looks like them, not a
+      Facebook wall or a template they cannot change.
+    - You work with me. We sit on Zoom. You send photos when you can. I will not
+      sell you SEO magic. I will make a landing page that feels good in a hand,
+      and show you how to update it.
   highlights:
-    - label: Your branding hub online
-    - label: You talk directly to the builder
-    - label: Clear prices before work begins
-    - label: Las Cruces · ABQ · Santa Fe · El Paso
+    - label: Custom landing pages for local shops
+    - label: You talk to the person building it
+    - label: Clear prices before we start
+    - label: Las Cruces, El Paso, southern NM
 footerCredit:
   enabled: false
 footer:
@@ -491,7 +435,7 @@ footer:
       href: /about
     - label: Work
       href: /work
-    - label: Let's chat
+    - label: Let's talk
       href: /apply
   legal:
     - label: Privacy Policy
@@ -709,29 +653,26 @@ legalPages:
 pageCopy:
   services:
     eyebrow: Services
-    title: Websites that help local businesses look credible, get found, and get
-      contacted
-    description: From a focused starter site to a full menu or portfolio—we build
-      your brand online with clear pricing and a site you can update yourself.
-      Every project starts with a free Zoom call.
+    title: Landing pages for local shops
+    description: A page that looks like you, loads on a phone, and is easy to tap.
+      Clear prices. We start with a free Zoom.
   work:
     eyebrow: Work
-    title: Sites for local businesses
-    description: Live restaurant, tattoo, and food-brand sites, built and shipped
-      for real local businesses.
+    title: Live shops I have already shipped
+    description: Open these on your phone. Restaurant, tattoo, and food-brand pages
+      built for real owners.
     link:
       label: Meet Sebastian
       href: /about#about
   process:
     eyebrow: How we work
-    title: A straightforward process from first conversation to launch
-    description: You'll always know what's happening, what it costs, and who to talk to.
+    title: You start on this page. Then we work in five clear steps.
+    description: Let's talk, a short Zoom, your photos, a review, then launch.
+      You'll always know what's next.
   apply:
     eyebrow: Get started
-    title: Let's chat about your project
-    description: Share a few details or call Sebastian directly. Same-day reply on
-      business days—no hard sell, just an honest conversation about what you
-      need and what it costs.
+    title: Let's talk about your shop
+    description: A few details or a text. Same-day reply on business days. No hard sell.
   pricing:
     eyebrow: Pricing
     title: Clear starting prices
@@ -741,9 +682,9 @@ pageCopy:
       writing before any work begins.
   about:
     eyebrow: About
-    title: The person behind your website
-    description: A small Las Cruces studio for owners who want a professional
-      website—and someone who will actually listen and help.
+    title: A CS student in Las Cruces
+    description: I build custom landing pages for local shops. We sit on Zoom. You
+      do not need to be technical.
   privacy:
     eyebrow: Legal
     title: Privacy Policy

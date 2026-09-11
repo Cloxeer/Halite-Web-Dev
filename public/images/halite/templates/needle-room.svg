@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Needle Room template preview">
+  <rect width="640" height="400" rx="18" fill="#0a0a0a"/>
+  <rect x="24" y="20" width="592" height="360" rx="12" fill="#111111"/>
+  <rect x="24" y="20" width="592" height="36" rx="12" fill="#1c1c1c"/>
+  <circle cx="48" cy="38" r="5" fill="#d6b36a"/>
+  <circle cx="66" cy="38" r="5" fill="#a8a29e"/>
+  <circle cx="84" cy="38" r="5" fill="#525252"/>
+  <text x="56" y="124" fill="#f4efe6" font-family="Times New Roman, serif" font-size="34">Quiet shop.</text>
+  <text x="56" y="168" fill="#b7b0a4" font-family="Segoe UI, sans-serif" font-size="18">Dark room. Your next piece.</text>
+  <rect x="56" y="200" width="150" height="36" rx="18" fill="#d6b36a"/>
+  <rect x="56" y="264" width="220" height="64" rx="12" fill="#1c1c1c"/>
+</svg>
