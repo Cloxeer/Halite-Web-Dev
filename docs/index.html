@@ -5,9 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Halite Studio | Landing pages for local shops</title>
 <meta name="description" content="I&#39;m Sebastian, a CS student in Las Cruces. I build custom landing pages for restaurants, tattoo shops, and local businesses. Fast on phones. From $500. We sit on Zoom together."/>
+<link rel="icon" href="./favicon.ico" sizes="any"/>
+<link rel="shortcut icon" href="./favicon.ico"/>
+<link rel="icon" type="image/x-icon" href="./favicon.ico"/>
+<link rel="icon" type="image/png" sizes="48x48" href="./favicon-48x48.png"/>
+<link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png"/>
+<link rel="icon" type="image/png" sizes="192x192" href="./favicon-192x192.png"/>
+<link rel="apple-touch-icon" href="./apple-touch-icon.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Figtree:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet"/></noscript>
 <style>
 :root {
   --font-display: 'Outfit';
@@ -426,7 +434,8 @@ main { padding-top: var(--wd-header-height); }
     var(--wd-glass-glow-outer) 63%,
     transparent 84%);
 }
-/* Grid of frosted-glass tiles laid over the bloom */
+/* Grid of frosted-glass tiles laid over the bloom (no backdrop blur: the bloom is already a smooth
+   gradient, so blurring it was invisible but cost a full-hero GPU pass on every scroll frame) */
 .wd-hero-tiles {
   position: absolute;
   inset: 0;
@@ -436,8 +445,6 @@ main { padding-top: var(--wd-header-height); }
   gap: var(--wd-glass-tile-gap);
   padding: var(--wd-glass-tile-gap);
   overflow: hidden;
-  backdrop-filter: blur(7px);
-  -webkit-backdrop-filter: blur(7px);
 }
 .wd-hero-tile {
   border-radius: var(--wd-glass-tile-radius);
@@ -448,6 +455,14 @@ main { padding-top: var(--wd-header-height); }
     inset -1px -1px 3px rgba(38,18,74,0.28),
     0 2px 8px rgba(18,7,44,0.20);
 }
+/* The grid fills row by row, so the tiles a screen can show are always the first N. Extras past
+   each width's cap skip style/layout/paint/animation entirely (648 were built; phones show ~35).
+   Cap = most columns at that width × 20 rows (phones/tablets) or 16 rows (desktop, fixed-height
+   hero) — headroom for large-text settings. 1920px+ keeps every tile. */
+@media (max-width: 480px) { .wd-hero-tile:nth-child(n+121) { display: none; } }
+@media (min-width: 481px) and (max-width: 1023px) { .wd-hero-tile:nth-child(n+281) { display: none; } }
+@media (min-width: 1024px) and (max-width: 1439px) { .wd-hero-tile:nth-child(n+321) { display: none; } }
+@media (min-width: 1440px) and (max-width: 1919px) { .wd-hero-tile:nth-child(n+433) { display: none; } }
 /* Centre-out cascade: JS sets each tile's animation-delay by ring distance,
    then adds .is-cascading to start them all from the same instant. */
 @keyframes wd-hero-tile-in {
@@ -2662,7 +2677,7 @@ body.wd-has-flow main :is(
 <header class="wd-header" id="wd-header" data-halite-section="nav">
   <div class="section-container wd-header-inner">
     <a href="index.html" class="wd-logo" aria-label="Halite Studio">
-  <img data-halite-path='["assets","logo"]' data-halite-image="true" src="./images/halite/logo.svg" alt="" width="36" height="36"/>
+  <img data-halite-path='["assets","logo"]' data-halite-image="true" src="./images/halite/logo.png" alt="" width="36" height="36"/>
   <span class="wd-logo-text">
     <span data-halite-path='["brand","namePrimary"]' class="wd-logo-primary">Halite</span>
     <span data-halite-path='["brand","nameAccent"]' class="wd-logo-accent">Studio</span>
@@ -2752,11 +2767,11 @@ body.wd-has-flow main :is(
       <div class="wd-portfolio-item wd-reveal">
         <div class="wd-portfolio-image">
           <div class="wd-portfolio-screenshot-swap" role="img" aria-label="El Vagon Tacos desktop and mobile homepage">
-    <div class="wd-portfolio-slide-layer wd-portfolio-slide-layer-mobile"><img data-halite-path='["portfolio","projects","0","mobileImage"]' data-halite-image="true" src="./images/halite/el-vagon-tacos-mobile.png" class="wd-portfolio-phone" alt="El Vagon Tacos mobile homepage screenshot" width="390" height="844" loading="eager"/></div>
+    <div class="wd-portfolio-slide-layer wd-portfolio-slide-layer-mobile"><img data-halite-path='["portfolio","projects","0","mobileImage"]' data-halite-image="true" src="./images/halite/el-vagon-tacos-mobile.webp" class="wd-portfolio-phone" alt="El Vagon Tacos mobile homepage screenshot" width="390" height="844" loading="eager"/></div>
     <div class="wd-portfolio-slide-layer wd-portfolio-slide-layer-desktop">
       <div class="wd-portfolio-safari">
         <div class="wd-portfolio-app-bar" aria-hidden="true">cloxeer.github.io</div>
-        <img data-halite-path='["portfolio","projects","0","image"]' data-halite-image="true" src="./images/halite/el-vagon-tacos.png" class="wd-portfolio-desktop-shot" alt="El Vagon Tacos homepage screenshot" width="1280" height="800" loading="eager"/>
+        <img data-halite-path='["portfolio","projects","0","image"]' data-halite-image="true" src="./images/halite/el-vagon-tacos.webp" class="wd-portfolio-desktop-shot" alt="El Vagon Tacos homepage screenshot" width="1280" height="800" loading="eager"/>
       </div>
     </div>
   </div>
@@ -2777,11 +2792,11 @@ body.wd-has-flow main :is(
 <div class="wd-portfolio-item wd-reveal">
         <div class="wd-portfolio-image">
           <div class="wd-portfolio-screenshot-swap" role="img" aria-label="Syncere Tattoo desktop and mobile homepage">
-    <div class="wd-portfolio-slide-layer wd-portfolio-slide-layer-mobile"><img data-halite-path='["portfolio","projects","1","mobileImage"]' data-halite-image="true" src="./images/halite/syncere-tattoo-mobile.png" class="wd-portfolio-phone" alt="Syncere Tattoo mobile homepage screenshot" width="390" height="844" loading="lazy"/></div>
+    <div class="wd-portfolio-slide-layer wd-portfolio-slide-layer-mobile"><img data-halite-path='["portfolio","projects","1","mobileImage"]' data-halite-image="true" src="./images/halite/syncere-tattoo-mobile.webp" class="wd-portfolio-phone" alt="Syncere Tattoo mobile homepage screenshot" width="390" height="844" loading="lazy"/></div>
     <div class="wd-portfolio-slide-layer wd-portfolio-slide-layer-desktop">
       <div class="wd-portfolio-safari">
         <div class="wd-portfolio-app-bar" aria-hidden="true">cloxeer.github.io</div>
-        <img data-halite-path='["portfolio","projects","1","image"]' data-halite-image="true" src="./images/halite/syncere-tattoo.png" class="wd-portfolio-desktop-shot" alt="Syncere Tattoo homepage screenshot" width="1280" height="800" loading="lazy"/>
+        <img data-halite-path='["portfolio","projects","1","image"]' data-halite-image="true" src="./images/halite/syncere-tattoo.webp" class="wd-portfolio-desktop-shot" alt="Syncere Tattoo homepage screenshot" width="1280" height="800" loading="lazy"/>
       </div>
     </div>
   </div>
@@ -2802,11 +2817,11 @@ body.wd-has-flow main :is(
 <div class="wd-portfolio-item wd-reveal">
         <div class="wd-portfolio-image">
           <div class="wd-portfolio-screenshot-swap" role="img" aria-label="La Mesillera Jalapeño Salsa desktop and mobile homepage">
-    <div class="wd-portfolio-slide-layer wd-portfolio-slide-layer-mobile"><img data-halite-path='["portfolio","projects","2","mobileImage"]' data-halite-image="true" src="./images/halite/la-mesillera-mobile.png" class="wd-portfolio-phone" alt="La Mesillera Jalapeño Salsa mobile homepage screenshot" width="390" height="844" loading="lazy"/></div>
+    <div class="wd-portfolio-slide-layer wd-portfolio-slide-layer-mobile"><img data-halite-path='["portfolio","projects","2","mobileImage"]' data-halite-image="true" src="./images/halite/la-mesillera-mobile.webp" class="wd-portfolio-phone" alt="La Mesillera Jalapeño Salsa mobile homepage screenshot" width="390" height="844" loading="lazy"/></div>
     <div class="wd-portfolio-slide-layer wd-portfolio-slide-layer-desktop">
       <div class="wd-portfolio-safari">
         <div class="wd-portfolio-app-bar" aria-hidden="true">lamesillerajalapenosalsa.com</div>
-        <img data-halite-path='["portfolio","projects","2","image"]' data-halite-image="true" src="./images/halite/la-mesillera.png" class="wd-portfolio-desktop-shot" alt="La Mesillera Jalapeño Salsa homepage screenshot" width="1280" height="800" loading="lazy"/>
+        <img data-halite-path='["portfolio","projects","2","image"]' data-halite-image="true" src="./images/halite/la-mesillera.webp" class="wd-portfolio-desktop-shot" alt="La Mesillera Jalapeño Salsa homepage screenshot" width="1280" height="800" loading="lazy"/>
       </div>
     </div>
   </div>
@@ -2871,7 +2886,7 @@ body.wd-has-flow main :is(
   <div class="section-container wd-footer-grid">
     <div class="wd-footer-brand">
       <a href="index.html" class="wd-logo" aria-label="Halite Studio">
-  <img data-halite-path='["assets","logo"]' data-halite-image="true" src="./images/halite/logo.svg" alt="" width="36" height="36"/>
+  <img data-halite-path='["assets","logo"]' data-halite-image="true" src="./images/halite/logo.png" alt="" width="36" height="36"/>
   <span class="wd-logo-text">
     <span data-halite-path='["brand","namePrimary"]' class="wd-logo-primary">Halite</span>
     <span data-halite-path='["brand","nameAccent"]' class="wd-logo-accent">Studio</span>
@@ -3070,17 +3085,37 @@ body.wd-has-flow main :is(
     var HERO_CASCADE_FOCAL_Y = 0.52; // matches the bloom focal point (52%)
     var HERO_CASCADE_RING_PX = 70;   // tiles within this radius band share a step
     var HERO_CASCADE_STEP_S = 0.3;   // delay added per ring, centre outward
-    var box = heroTiles.getBoundingClientRect();
-    var focalX = box.left + box.width * HERO_CASCADE_FOCAL_X;
-    var focalY = box.top + box.height * HERO_CASCADE_FOCAL_Y;
-    heroTiles.querySelectorAll('.wd-hero-tile').forEach(function(tile) {
-      var rect = tile.getBoundingClientRect();
-      var dx = (rect.left + rect.width / 2) - focalX;
-      var dy = (rect.top + rect.height / 2) - focalY;
+    var heroGrid = window.getComputedStyle(heroTiles);
+    var heroGap = parseFloat(heroGrid.rowGap) || 0;
+    var heroPad = parseFloat(heroGrid.paddingLeft) || 0;
+    var heroRowH = parseFloat(heroGrid.gridAutoRows) || 0;
+    var heroCols = heroGrid.gridTemplateColumns.split(' ').length;
+    var heroWidth = heroTiles.clientWidth;
+    var heroHeight = heroTiles.clientHeight;
+    var heroTileW = (heroWidth - heroPad * 2 - heroGap * (heroCols - 1)) / heroCols;
+    var heroRows = Math.ceil((heroHeight - heroPad) / (heroRowH + heroGap));
+    var focalX = heroWidth * HERO_CASCADE_FOCAL_X;
+    var focalY = heroHeight * HERO_CASCADE_FOCAL_Y;
+    var heroTileList = heroTiles.querySelectorAll('.wd-hero-tile');
+    var heroShown = Math.min(heroTileList.length, heroCols * heroRows);
+    for (var t = 0; t < heroShown; t += 1) {
+      var col = t % heroCols;
+      var row = Math.floor(t / heroCols);
+      var dx = heroPad + col * (heroTileW + heroGap) + heroTileW / 2 - focalX;
+      var dy = heroPad + row * (heroRowH + heroGap) + heroRowH / 2 - focalY;
       var ring = Math.round(Math.sqrt(dx * dx + dy * dy) / HERO_CASCADE_RING_PX);
-      tile.style.animationDelay = (ring * HERO_CASCADE_STEP_S) + 's';
-    });
+      heroTileList[t].style.animationDelay = (ring * HERO_CASCADE_STEP_S) + 's';
+    }
     heroTiles.classList.add('is-cascading');
+  }
+
+  if ('serviceWorker' in navigator && window.top === window && !document.querySelector('script[data-halite-preview-bridge]') && !/^\/(api|projects|local-preview)(\/|$)/.test(window.location.pathname)) {
+    var swHome = document.querySelector('a.wd-logo');
+    if (swHome && swHome.href) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register(new URL("sw.js", swHome.href).href).catch(function() {});
+      });
+    }
   }
 
   var flowRoot = document.querySelector('.wd-flow');
@@ -3095,7 +3130,6 @@ body.wd-has-flow main :is(
     var FLOW_HANDLE_RATIO = 0.32;
     var FLOW_HANDLE_MAX = 48;
     var FLOW_PAD = 16;
-    var FLOW_PEN_VIEW = 0.7;
     var FLOW_LERP = 0.18;
     var FLOW_SNAP = 0.6;
     var FLOW_CUT_PAD = 6;
@@ -3359,27 +3393,23 @@ body.wd-has-flow main :is(
       var i = 0;
       while (i < shown.length) {
         var next = target[i];
-        shown[i].x += (next.x - shown[i].x) * FLOW_LERP;
-        shown[i].y += (next.y - shown[i].y) * FLOW_LERP;
-        shown[i].loopRx += (next.loopRx - shown[i].loopRx) * FLOW_LERP;
-        shown[i].loopRy += (next.loopRy - shown[i].loopRy) * FLOW_LERP;
+        shown[i].x = easeToward(shown[i].x, next.x);
+        shown[i].y = easeToward(shown[i].y, next.y);
+        shown[i].loopRx = easeToward(shown[i].loopRx, next.loopRx);
+        shown[i].loopRy = easeToward(shown[i].loopRy, next.loopRy);
         shown[i].loopLeft = next.loopLeft;
         shown[i].nameArrow = next.nameArrow ? true : false;
-        if (Math.abs(next.x - shown[i].x) < FLOW_SNAP) {
-          shown[i].x = next.x;
-        }
-        if (Math.abs(next.y - shown[i].y) < FLOW_SNAP) {
-          shown[i].y = next.y;
-        }
-        if (Math.abs(next.loopRx - shown[i].loopRx) < FLOW_SNAP) {
-          shown[i].loopRx = next.loopRx;
-        }
-        if (Math.abs(next.loopRy - shown[i].loopRy) < FLOW_SNAP) {
-          shown[i].loopRy = next.loopRy;
-        }
         i += 1;
       }
       return shown;
+    }
+    // One lerp step toward the target, snapping the last sub-pixel remainder.
+    function easeToward(from, to) {
+      var value = from + (to - from) * FLOW_LERP;
+      if (Math.abs(to - value) < FLOW_SNAP) {
+        return to;
+      }
+      return value;
     }
     function appendTangentLoop(parts, x, cy, rx, ry, loopLeft, bumpPt) {
       var s = loopLeft ? -1 : 1;
@@ -3557,13 +3587,13 @@ body.wd-has-flow main :is(
     function paint() {
       var target = targetStops();
       if (!target) {
-        return;
+        return false;
       }
       var stops = blendStops(target.stops);
       var next = serialize(stops);
       var key = next.d + '|' + next.left + '|' + next.top + '|' + next.width + '|' + next.height + '|' + target.holes.length;
       if (key === lastKey) {
-        return;
+        return false;
       }
       lastKey = key;
       flowRoot.style.left = next.left + 'px';
@@ -3575,7 +3605,15 @@ body.wd-has-flow main :is(
       draw.style.setProperty('--wd-flow-len', String(draw.getTotalLength()) + 'px');
       paintNameArrow(stops, next);
       paintMask(target.holes, next);
+      return true;
     }
+
+    var FLOW_PEN_VIEW = 0.7;
+    var FLOW_IDLE_FRAMES = 12;
+    var lastPen = '';
+    var ticking = false;
+    var idleFrames = 0;
+    var penQueued = false;
     function syncPen() {
       if (!startEl || !endEl) {
         return;
@@ -3597,17 +3635,60 @@ body.wd-has-flow main :is(
       if (progress > 1) {
         progress = 1;
       }
-      draw.style.setProperty('--wd-flow-p', String(progress));
+      var pen = String(progress);
+      if (pen !== lastPen) {
+        lastPen = pen;
+        draw.style.setProperty('--wd-flow-p', pen);
+      }
     }
+    // Layout loop runs only while the path is still easing; it sleeps once settled and
+    // wakes on anything that can move the anchors (resize, fonts, images, clicks, transitions).
     function tick() {
-      paint();
+      if (paint()) {
+        idleFrames = 0;
+      } else {
+        idleFrames += 1;
+      }
       syncPen();
-      window.requestAnimationFrame(tick);
+      if (idleFrames < FLOW_IDLE_FRAMES) {
+        window.requestAnimationFrame(tick);
+      } else {
+        ticking = false;
+      }
     }
-    paint();
-    syncPen();
-    window.requestAnimationFrame(tick);
-    window.addEventListener('resize', paint);
+    function wake() {
+      idleFrames = 0;
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(tick);
+      }
+    }
+    // Scrolling never moves the anchors (document coordinates), so it only advances the pen.
+    function onScroll() {
+      if (penQueued) {
+        return;
+      }
+      penQueued = true;
+      window.requestAnimationFrame(function() {
+        penQueued = false;
+        syncPen();
+      });
+    }
+    // First draw happens in the first frame's own layout pass (the line starts empty: pen 0,
+    // no path), instead of forcing an extra synchronous layout while the page is parsing.
+    wake();
+    window.addEventListener('resize', wake);
+    window.addEventListener('load', wake);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    document.addEventListener('click', wake, true);
+    document.addEventListener('transitionend', wake, true);
+    document.addEventListener('load', wake, true);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(wake);
+    }
+    if (window.ResizeObserver) {
+      new ResizeObserver(wake).observe(document.body);
+    }
   }
 })();
 </script>

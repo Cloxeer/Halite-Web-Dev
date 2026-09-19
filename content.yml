@@ -14,7 +14,7 @@ brand:
     call center. Clear prices, Zoom together, and a page that looks like your
     shop.
 assets:
-  logo: images/halite/logo.svg
+  logo: images/halite/logo.png
   hero: images/halite/hero.png
   getCampusGig: images/halite/getcampusgig.png
   whatYourVibe: images/halite/whatyourvibe.png
@@ -98,8 +98,8 @@ portfolio:
     - name: El Vagon Tacos
       description: Full menu, hours, tap-to-call, and photos. Built so someone can
         order or visit from a phone.
-      image: images/halite/el-vagon-tacos.png
-      mobileImage: images/halite/el-vagon-tacos-mobile.png
+      image: images/halite/el-vagon-tacos.webp
+      mobileImage: images/halite/el-vagon-tacos-mobile.webp
       href: https://cloxeer.github.io/El-Vagon-Tacos/
       linkLabel: Visit live site
       tags:
@@ -110,8 +110,8 @@ portfolio:
     - name: Syncere Tattoo
       description: Artists, gallery, shop story, and a booking form. Dark, quiet, and
         easy to tap through.
-      image: images/halite/syncere-tattoo.png
-      mobileImage: images/halite/syncere-tattoo-mobile.png
+      image: images/halite/syncere-tattoo.webp
+      mobileImage: images/halite/syncere-tattoo-mobile.webp
       href: https://cloxeer.github.io/Syncere-Tattoo/
       linkLabel: Visit live site
       tags:
@@ -122,8 +122,8 @@ portfolio:
     - name: La Mesillera Jalapeño Salsa
       description: One salsa, English and Spanish, order by phone. Her own domain.
         Built for an owner who is not technical.
-      image: images/halite/la-mesillera.png
-      mobileImage: images/halite/la-mesillera-mobile.png
+      image: images/halite/la-mesillera.webp
+      mobileImage: images/halite/la-mesillera-mobile.webp
       href: https://lamesillerajalapenosalsa.com/
       linkLabel: Visit live site
       tags:

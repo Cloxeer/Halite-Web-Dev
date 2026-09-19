@@ -5,9 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>A CS student in Las Cruces | Halite Studio</title>
 <meta name="description" content="I&#39;m Sebastian, a CS student in Las Cruces. I build custom landing pages for restaurants, tattoo shops, and local businesses. Fast on phones. From $500. We sit on Zoom together."/>
+<link rel="icon" href="../favicon.ico" sizes="any"/>
+<link rel="shortcut icon" href="../favicon.ico"/>
+<link rel="icon" type="image/x-icon" href="../favicon.ico"/>
+<link rel="icon" type="image/png" sizes="48x48" href="../favicon-48x48.png"/>
+<link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png"/>
+<link rel="icon" type="image/png" sizes="192x192" href="../favicon-192x192.png"/>
+<link rel="apple-touch-icon" href="../apple-touch-icon.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Figtree:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet"/></noscript>
 <style>
 :root {
   --font-display: 'Outfit';
@@ -426,7 +434,8 @@ main { padding-top: var(--wd-header-height); }
     var(--wd-glass-glow-outer) 63%,
     transparent 84%);
 }
-/* Grid of frosted-glass tiles laid over the bloom */
+/* Grid of frosted-glass tiles laid over the bloom (no backdrop blur: the bloom is already a smooth
+   gradient, so blurring it was invisible but cost a full-hero GPU pass on every scroll frame) */
 .wd-hero-tiles {
   position: absolute;
   inset: 0;
@@ -436,8 +445,6 @@ main { padding-top: var(--wd-header-height); }
   gap: var(--wd-glass-tile-gap);
   padding: var(--wd-glass-tile-gap);
   overflow: hidden;
-  backdrop-filter: blur(7px);
-  -webkit-backdrop-filter: blur(7px);
 }
 .wd-hero-tile {
   border-radius: var(--wd-glass-tile-radius);
@@ -448,6 +455,14 @@ main { padding-top: var(--wd-header-height); }
     inset -1px -1px 3px rgba(38,18,74,0.28),
     0 2px 8px rgba(18,7,44,0.20);
 }
+/* The grid fills row by row, so the tiles a screen can show are always the first N. Extras past
+   each width's cap skip style/layout/paint/animation entirely (648 were built; phones show ~35).
+   Cap = most columns at that width × 20 rows (phones/tablets) or 16 rows (desktop, fixed-height
+   hero) — headroom for large-text settings. 1920px+ keeps every tile. */
+@media (max-width: 480px) { .wd-hero-tile:nth-child(n+121) { display: none; } }
+@media (min-width: 481px) and (max-width: 1023px) { .wd-hero-tile:nth-child(n+281) { display: none; } }
+@media (min-width: 1024px) and (max-width: 1439px) { .wd-hero-tile:nth-child(n+321) { display: none; } }
+@media (min-width: 1440px) and (max-width: 1919px) { .wd-hero-tile:nth-child(n+433) { display: none; } }
 /* Centre-out cascade: JS sets each tile's animation-delay by ring distance,
    then adds .is-cascading to start them all from the same instant. */
 @keyframes wd-hero-tile-in {
@@ -2662,7 +2677,7 @@ body.wd-has-flow main :is(
 <header class="wd-header" id="wd-header" data-halite-section="nav">
   <div class="section-container wd-header-inner">
     <a href="../index.html" class="wd-logo" aria-label="Halite Studio">
-  <img data-halite-path='["assets","logo"]' data-halite-image="true" src="../images/halite/logo.svg" alt="" width="36" height="36"/>
+  <img data-halite-path='["assets","logo"]' data-halite-image="true" src="../images/halite/logo.png" alt="" width="36" height="36"/>
   <span class="wd-logo-text">
     <span data-halite-path='["brand","namePrimary"]' class="wd-logo-primary">Halite</span>
     <span data-halite-path='["brand","nameAccent"]' class="wd-logo-accent">Studio</span>
@@ -2759,7 +2774,7 @@ body.wd-has-flow main :is(
   <div class="section-container wd-footer-grid">
     <div class="wd-footer-brand">
       <a href="../index.html" class="wd-logo" aria-label="Halite Studio">
-  <img data-halite-path='["assets","logo"]' data-halite-image="true" src="../images/halite/logo.svg" alt="" width="36" height="36"/>
+  <img data-halite-path='["assets","logo"]' data-halite-image="true" src="../images/halite/logo.png" alt="" width="36" height="36"/>
   <span class="wd-logo-text">
     <span data-halite-path='["brand","namePrimary"]' class="wd-logo-primary">Halite</span>
     <span data-halite-path='["brand","nameAccent"]' class="wd-logo-accent">Studio</span>
@@ -2941,6 +2956,15 @@ body.wd-has-flow main :is(
     });
   });
 
+
+  if ('serviceWorker' in navigator && window.top === window && !document.querySelector('script[data-halite-preview-bridge]') && !/^\/(api|projects|local-preview)(\/|$)/.test(window.location.pathname)) {
+    var swHome = document.querySelector('a.wd-logo');
+    if (swHome && swHome.href) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register(new URL("sw.js", swHome.href).href).catch(function() {});
+      });
+    }
+  }
 
 })();
 </script>
