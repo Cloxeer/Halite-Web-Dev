@@ -388,6 +388,8 @@ main { padding-top: var(--wd-header-height); }
   --wd-card-lift: -4px;
   --wd-card-hover-shadow: 0 14px 28px -16px rgba(24, 12, 8, 0.28);
   --wd-portfolio-swap-duration: 16s;
+  /* Crossfade length (the old keyframes' 43.75%→50% ramp of the 16s cycle). Plain value: JS reads it. */
+  --wd-portfolio-fade-duration: 1s;
   --wd-portfolio-stagger: 0.2s;
   --wd-founder-photo-stagger-steps: 3;
   --wd-founder-title-text-stroke: 16px;
@@ -408,7 +410,6 @@ main { padding-top: var(--wd-header-height); }
   --wd-portfolio-traffic-green: #28c840;
   --wd-flow-stroke: #1d1d1f;
   --wd-flow-width: 5px;
-  --wd-flow-len: 0px;
   --wd-flow-z: 1;
   --wd-content-z: 2;
   --wd-flow-fade: 0.85;
@@ -1247,25 +1248,21 @@ body.wd-has-flow .wd-founder-photo-slide {
   object-fit: cover;
   object-position: top center;
   opacity: 0;
-  animation-duration: var(--wd-portfolio-swap-duration);
-  animation-delay: calc(var(--wd-portfolio-stagger) * var(--wd-founder-photo-stagger-steps));
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  animation-fill-mode: backwards;
+  transition: opacity var(--wd-portfolio-fade-duration) ease-in-out;
+  transition-delay: calc(var(--wd-portfolio-stagger) * var(--wd-founder-photo-stagger-steps));
 }
-.wd-founder-photo-slide:nth-child(1) {
-  animation-name: wd-portfolio-swap-first;
+/* Swaps are one-shot transitions toggled by .is-swapped (see web-developer-photo-swap) instead of
+   an infinite animation, so the screen only redraws during the 1s fades — not 60-120x a second. */
+.wd-founder-photo-slide:nth-child(1),
+.is-swapped > .wd-founder-photo-slide:nth-child(2) {
+  opacity: 1;
 }
-.wd-founder-photo-slide:nth-child(2) {
-  animation-name: wd-portfolio-swap-second;
+.is-swapped > .wd-founder-photo-slide:nth-child(1) {
+  opacity: 0;
 }
 @media (prefers-reduced-motion: reduce) {
   .wd-founder-photo-slide {
-    animation: none;
-    opacity: 0;
-  }
-  .wd-founder-photo-slide:first-child {
-    opacity: 1;
+    transition: none;
   }
 }
 .wd-founder-photo-placeholder {
@@ -1485,17 +1482,13 @@ body.wd-has-flow .wd-founder-photo-slide {
   position: absolute;
   inset: 0;
   opacity: 0;
-  animation-duration: var(--wd-portfolio-swap-duration);
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  animation-delay: 0s;
-  animation-fill-mode: backwards;
+  transition: opacity var(--wd-portfolio-fade-duration) ease-in-out;
 }
 .wd-portfolio-item:nth-child(2) .wd-portfolio-slide-layer {
-  animation-delay: var(--wd-portfolio-stagger);
+  transition-delay: var(--wd-portfolio-stagger);
 }
 .wd-portfolio-item:nth-child(3) .wd-portfolio-slide-layer {
-  animation-delay: calc(var(--wd-portfolio-stagger) * 2);
+  transition-delay: calc(var(--wd-portfolio-stagger) * 2);
 }
 .wd-portfolio-slide-layer-mobile {
   display: flex;
@@ -1503,14 +1496,19 @@ body.wd-has-flow .wd-founder-photo-slide {
   justify-content: center;
   overflow: visible;
   background: transparent;
-  animation-name: wd-portfolio-swap-first;
+  opacity: 1;
+}
+.is-swapped > .wd-portfolio-slide-layer-mobile {
+  opacity: 0;
+}
+.is-swapped > .wd-portfolio-slide-layer-desktop {
+  opacity: 1;
 }
 .wd-portfolio-slide-layer-desktop {
   display: flex;
   flex-direction: column;
   overflow: hidden;
   border-radius: var(--wd-portfolio-frame-radius);
-  animation-name: wd-portfolio-swap-second;
 }
 .wd-portfolio-safari {
   display: flex;
@@ -1569,23 +1567,9 @@ body.wd-has-flow .wd-founder-photo-slide {
   box-shadow: var(--wd-portfolio-phone-shadow);
   background: #111;
 }
-@keyframes wd-portfolio-swap-first {
-  0%, 43.75% { opacity: 1; }
-  50%, 93.75% { opacity: 0; }
-  100% { opacity: 1; }
-}
-@keyframes wd-portfolio-swap-second {
-  0%, 43.75% { opacity: 0; }
-  50%, 93.75% { opacity: 1; }
-  100% { opacity: 0; }
-}
 @media (prefers-reduced-motion: reduce) {
   .wd-portfolio-slide-layer {
-    animation: none;
-    opacity: 0;
-  }
-  .wd-portfolio-slide-layer:first-child {
-    opacity: 1;
+    transition: none;
   }
 }
 .wd-portfolio-tags {
@@ -2485,29 +2469,28 @@ body.wd-has-flow .wd-founder-photo-slide {
   }
 }
 
-.wd-reveal {
-  animation: wd-reveal-in linear both;
-  animation-timeline: view();
-  animation-range: entry 0% entry 40%;
+/* One-shot fade-up when a block enters the screen (web-developer-reveal adds .is-revealed via
+   IntersectionObserver). Replaces a scroll-driven view() animation: those stay "running" and kept
+   the compositor drawing every frame while idle (heat). Hidden state only applies once the script
+   has marked the page ready, so no-JS visitors see everything. */
+.wd-reveal-ready .wd-reveal {
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
-@keyframes wd-reveal-in {
-  from {
-    opacity: 0.35;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
+.wd-reveal-ready .wd-reveal:not(.is-revealed) {
+  opacity: 0.35;
+  transform: translateY(12px);
 }
 @media (prefers-reduced-motion: reduce) {
-  .wd-reveal {
-    animation: none;
+  .wd-reveal-ready .wd-reveal,
+  .wd-reveal-ready .wd-reveal:not(.is-revealed) {
+    transition: none;
+    transform: none;
+    opacity: 1;
   }
 }
-body.wd-has-flow .wd-reveal {
-  animation: none;
-  animation-timeline: none;
+body.wd-has-flow .wd-reveal,
+body.wd-has-flow .wd-reveal:not(.is-revealed) {
+  transition: none;
   transform: none;
   opacity: 1;
 }
@@ -2571,17 +2554,28 @@ body.wd-has-flow .wd-reveal {
   }
 }
 
-@property --wd-flow-p {
-  syntax: "<number>";
-  inherits: false;
-  initial-value: 0;
-}
-.wd-flow {
+/* The lace is painted ONCE; scrolling only slides this clip pair (outer up, inner back down by the
+   same amount) so the clip's bottom edge sits at the pen line. Transform-only = no repaint of the
+   page-tall SVG per frame (animating its dash offset re-rastered the whole thing: ~10x raster cost,
+   stutter + heat on phones). JS sets left/top/size and the two transforms. */
+.wd-flow-clip {
   position: absolute;
   left: 0;
   top: 0;
   z-index: var(--wd-flow-z);
   pointer-events: none;
+  overflow: hidden;
+  will-change: transform;
+}
+.wd-flow-clip-inner {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+.wd-flow {
+  position: absolute;
+  left: 0;
+  top: 0;
   overflow: visible;
   opacity: var(--wd-flow-fade);
 }
@@ -2651,8 +2645,6 @@ body.wd-has-flow main :is(
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: var(--wd-flow-width);
-  stroke-dasharray: var(--wd-flow-len);
-  stroke-dashoffset: calc(var(--wd-flow-len) * (1 - var(--wd-flow-p)));
 }
 .wd-flow-name-arrow {
   pointer-events: none;
@@ -2662,11 +2654,6 @@ body.wd-has-flow main :is(
   overflow: visible;
   color: var(--wd-flow-stroke);
   stroke: var(--wd-flow-stroke);
-}
-@media (prefers-reduced-motion: reduce) {
-  .wd-flow-draw {
-    --wd-flow-p: 1;
-  }
 }
 
 
@@ -2931,6 +2918,45 @@ body.wd-has-flow main :is(
     });
   });
 
+
+  var swapRoots = document.querySelectorAll(".wd-portfolio-screenshot-swap, .wd-founder-photo-carousel");
+  var swapReduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (swapRoots.length > 0 && !swapReduce) {
+    var swapStyle = window.getComputedStyle(swapRoots[0]);
+    var swapCycleS = parseFloat(swapStyle.getPropertyValue('--wd-portfolio-swap-duration')) || 0;
+    var swapFadeS = parseFloat(swapStyle.getPropertyValue('--wd-portfolio-fade-duration')) || 0;
+    if (swapCycleS > 0) {
+      var swapHalfMs = swapCycleS * 1000 / 2;
+      var swapFlip = function() {
+        if (document.hidden) {
+          return;
+        }
+        swapRoots.forEach(function(root) {
+          root.classList.toggle('is-swapped');
+        });
+      };
+      window.setTimeout(function() {
+        swapFlip();
+        window.setInterval(swapFlip, swapHalfMs);
+      }, swapHalfMs - swapFadeS * 1000);
+    }
+  }
+
+  var revealBlocks = document.querySelectorAll('.wd-reveal');
+  if (revealBlocks.length > 0 && 'IntersectionObserver' in window && !document.body.classList.contains('wd-has-flow')) {
+    document.documentElement.classList.add('wd-reveal-ready');
+    var revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: "0px 0px -10% 0px" });
+    revealBlocks.forEach(function(block) {
+      revealObserver.observe(block);
+    });
+  }
 
   if ('serviceWorker' in navigator && window.top === window && !document.querySelector('script[data-halite-preview-bridge]') && !/^\/(api|projects|local-preview)(\/|$)/.test(window.location.pathname)) {
     var swHome = document.querySelector('a.wd-logo');
